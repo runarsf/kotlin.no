@@ -1,20 +1,13 @@
-var str="",x,y,a;
-for (a=1;a<=100;a++)
-{
-    x = a%3 ==0;
-    y = a%5 ==0;
-    if(x)
-    {
-        str+="fizz"
-    }
-    if (y)
-    {
-        str+="buzz"
-    }
-    if (!(x||y))
-    {
-        str+=a;
-    }
-    str+="\n"
-}
-document.write(str);
+for ( i = 1; i<=100; i++ );
+
+	if ( i % 3 === 0 && i % 5 === 0 );
+		console.log("FizzBuzz");
+		
+	else if ( i %  3 === 0 );
+		console.log("Fizz");
+		
+	else if ( i %  5 === 0 );
+		console.log("Buzz");
+		
+	else
+		console.log(i);
