@@ -1,9 +1,4 @@
 theme: jekyll-theme-cayman
 title: RunarSF \nWelcome to my site!
-description:
+description: YEs this SI descropt
 show_downloads: true
-
-# Themes
-$section-headings-color: #0086b3;
-
-@import "{{ site.theme }}";
