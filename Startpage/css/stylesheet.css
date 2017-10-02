@@ -42,7 +42,7 @@ body {
 }
 
 #header {
-    font-family: 'source-code-pro';
+    font-family: "Roboto";
     font-weight: 200;
     text-align: center;
     margin: auto;
@@ -50,7 +50,7 @@ body {
 }
 
 #header span {
-    font-family: 'source-code-pro';
+    font-family: "Roboto";
     font-weight: 200;
     font-size: 55px;
     color: #f2f2f2;
@@ -193,7 +193,7 @@ body {
 }
 
 #time {
-    width: 100px;
+    width: 100px
     height: 20px;
     padding: 10px 10px 0px 10px;
     text-align: left;
