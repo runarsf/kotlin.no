@@ -34,7 +34,8 @@ body {
     background-size: 100% auto;
     background-repeat: no-repeat;
 	background-size: cover;
-	min-height: 150%;
+	min-height: 100%;
+	background-attachment: inherit;
     background-color: #010028;
     margin: 0;
     padding: 0;
