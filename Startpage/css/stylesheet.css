@@ -26,11 +26,11 @@
 
 body {
     background-image: url("../images/wp1.png");
-    background-repeat: no-repeat;
-	background-size: cover;
+    background-size: contain;
 	min-height: 100%;
-	background-attachment: inherit;
+    background-repeat: no-repeat;
     background-color: #010028;
+	background-attachment: fixed;
     margin: 0;
     padding: 0;
 }
