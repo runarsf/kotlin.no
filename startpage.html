@@ -52,14 +52,14 @@
                 <div id="time"></div>
                 <script type="text/javascript">
                     var dt = new Date();
-                    var time = dt.getDate() + "." + dt.getMonth() + "." + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+                    var time = dt.getDate() + "." + (dt.getMonth() + 1) + "." + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
                     $("#time").text(time);
                     setInterval(function(){
                         dt = new Date();
-                        time = dt.getDate() + "." + dt.getMonth() + "." + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+                        time = dt.getDate() + "." + (dt.getMonth() + 1) + "." + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
                         console.log(time);
                         $("#time").text(time);
-                    },);
+                    },1000);
                 </script>
             </div>
             <div class="terminal-row">
