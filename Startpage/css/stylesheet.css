@@ -25,17 +25,20 @@
 }
 
 img {
-  max-width:100%;
-  height:auto;
+	max-width:100%;
+  	height:auto;
 }
 
 body {
     background-image: url("../images/wp1.png");
     background-size: 100% auto;
     background-repeat: no-repeat;
+	background-size: cover;
     background-color: #010028;
     margin: 0;
     padding: 0;
+	max-width:100%;
+  	height:auto;
 }
 
 #wrapper {
