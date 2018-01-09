@@ -33,12 +33,13 @@
             },1000);
         </script>
         <div class="search-row">
-            <input id="search-field" type="text" name="search-field" placeholder="Search DuckDuckGo" onkeypress="return search(event)" autofocus/>
+            <input id="search-field" type="text" name="search-field" placeholder="Search Google" onkeypress="return search(event)" autofocus/>
             <script type="text/javascript">
             function search(e) {
                 if (e.keyCode == 13) {
                     var val = $("#search-field").val();
-                    window.location = "https://duckduckgo.com/?q=" + val + "&kp=1&kl=en-us&kh=1&kg=p&k5=1&kae=d&k1=-1";
+                    //window.location = "https://duckduckgo.com/?q=" + val + "&kp=1&kl=en-us&kh=1&kg=p&k5=1&kae=d&k1=-1";
+					window.location = "https://google.com/?q=" + val + "&kp=1&kl=en-us&kh=1&kg=p&k5=1&kae=d&k1=-1";
                     return false;
                 }
             }
