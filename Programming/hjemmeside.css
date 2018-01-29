@@ -1,0 +1,32 @@
+/*når man skal style noe med CSS, må man bruke "." også navnet på klassen man har gitt det man skal style i HTML. I tilfellet her bruker jeg .meny for å style menyen*/
+.meny {position:absolute;background-color:#009900; color: white; font-size: 24px; height:50px; }
+
+.menyitem {padding:10px; display: inline-block;}
+.menyitem:hover {cursor:hand;background-color:#006600;}
+
+.submeny {background-color:#2280cf; border: 1px black solid; position:absolute;}
+
+.innhold {position:absolute; top:50px; padding:10px; visibility:hidden; z-index:-1;}
+
+.menyinn{padding:10px;}
+
+.menyinn:hover {cursor:hand;background-color:#084999;}
+
+.center {
+  text-align: center
+
+}
+
+.watdis {padding:10px;color:white;background-color: white;}
+.watdis:hover {cursor:hand;color:black}
+
+/* Her styler jeg en tabell. Rett nedenfor styler jeg selve tabellen, og enda lenger ned tar jeg individuelle deler av tabellen for å få den til å se perfekt ut. */
+.tabell {
+  border-collapse: collapse;
+  text-align: center;
+  width: 125%;
+  border: 2px solid black;
+}
+/* Et unntak er når man styler tabeller. Da skriver man direkte det man vil style, også "{det man skal gjøre;}" Skal man style flere ting samtidig, har man komma mellom tingene man skal style. */
+th {border:2px solid black;}
+td, th {border-right:2px solid black;0}
