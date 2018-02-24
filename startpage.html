@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Startpage</title>
+	<link rel="icon" href="favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="NPL1270018">
+    <meta name="description" content="">
+
+    <link type="text/css" rel="stylesheet" href="Startpage/css/stylesheet.css">
+    <link type="text/css" rel="stylesheet" href="Startpage/font-awesome/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="Startpage/js/jquery-2.2.2.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header"><span id="header-time"></span></div>
+        <script type="text/javascript">
+            var dt = new Date();
+            minute = "" + dt.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+            second = "" + dt.getSeconds(); if (second.length == 1) { second = "0" + second; }
+            var time = dt.getHours() + ":" + minute + ":" + second;
+
+            $("#header-time").text(time);
+
+            setInterval(function(){
+                dt = new Date();
+                minute = "" + dt.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+                second = "" + dt.getSeconds(); if (second.length == 1) { second = "0" + second; }
+                time = dt.getHours() + ":" + minute + ":" + second;
+                console.log(time);
+                $("#header-time").text(time);
+
+            },1000);
+        </script>
+        <div class="search-row">
+            <input id="search-field" type="text" name="search-field" placeholder="Search duckduckgo [!g / !w / !yt / !osu / !o]" onkeypress="return search(event)" autofocus/>
+            <script type="text/javascript">
+            function search(e) {
+                if (e.keyCode == 13) {
+                    var val = $("#search-field").val();
+                    window.location = "https://duckduckgo.com/?q=" + val;
+                    return false;
+                }
+            }
+            </script>
+        </div>
+        <div class="terminal-con">
+            <div class="terminal-row ext-top">
+                <div class="terminal-label"><span class="hl-gray">---------------------------------------------------</span></div>
+            </div>
+            <div class="terminal-row">
+                <div class="terminal-label i1"><span class="hl-gray">Last login: </span></div>
+                <div id="time"></div>
+                <script type="text/javascript">
+                    var dt = new Date();
+                    var time = dt.getDate() + "." + (dt.getMonth()+1) + "." + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+                    $("#time").text(time);
+
+                    setInterval(function(){
+                        dt = new Date();
+                        time = dt.getDate() + "." + (dt.getMonth()+1) + "." + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+                        console.log(time);
+                        $("#time").text(time);
+
+                    },);
+                </script>
+            </div>
+            <div class="terminal-row">
+                <div class="terminal-label i1"><span class="hl-gray">This is the property of <span class="hl-blue"><a href="cs/batt.html">Trump Pence</a></span>. Get off my lawn.</span></div>
+            </div>
+            <div class="terminal-row">
+                <div class="terminal-label"><span class="hl-gray">---------------------------------------------------</span></div>
+            </div>
+            <div class="terminal-row">
+                <div class="terminal-label"><span><span class="hl-red">[$]user</span><span class="hl-blue"> > /usr/local/bin </span><span class="hl-gray">./showfavpages.sh</span></span></div>
+            </div>
+            <div class="terminal-innerCon">
+                <div class="favCon">
+                    <div class="favCon-header">
+                        <span>favorites</span>
+                    </div>
+                    <div class="favCon-body">
+                        <a href="https://github.com/runarsf" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>my github</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.youtube.com" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>youtube</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.reddit.com" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>reddit</span>
+                                </div>
+                            </div>
+                        </a>
+						<a href="https://twist.moe" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>animetwist</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="favCon">
+                    <div class="favCon-header">
+                        <span>forums</span>
+                    </div>
+                    <div class="favCon-body">
+                        <a href="https://forum.xda-developers.com/" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>xda forum</span>
+                                </div>
+                            </div>
+                        </a>
+                         <a href="https://osu.ppy.sh/forum" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>osu! forum</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.reddit.com" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>reddit</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://myanimelist.net" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>myanimelist</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="favCon">
+                    <div class="favCon-header">
+                        <span>stuff</span>
+                    </div>
+                    <div class="favCon-body">
+                        <a href="https://netflix.com/" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>netflix</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://www.humblebundle.com/" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>humble bundle</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://osu.ppy.sh/u/Zawaken" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>my osu! profile</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="https://ameobea.me/osutrack/user/zawaken/" onfocus="if(this.blur)this.blur()">
+                            <div class="favCon-el">
+                                <div class="favCon-el-content">
+                                    <span>my osu!track stats</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          <div class="terminal-row ext-btm">
+              <div class="terminal-label"><span><span class="hl-red">[$]user</span><span class="hl-blue"> > /usr/local/bin </span><span class="hl-gray"></span></span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
