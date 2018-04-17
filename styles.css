@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
 body {
-    background-color: #44708B;
+    /* background-color: #44708B; */
+    background-image: url("forest.jpg");
     margin: 0px;
 }
 
@@ -15,11 +17,11 @@ body {
 }
 
 #clock {
-    font-family: sans-serif;
+    font-family: "Source Code Pro";
     font-size: 3.5rem;
     font-weight: 600;
-    font-family: "Roboto Mono";
-    color: #fff;
+    font-family: "Source Code Pro";
+    color: #ffffff;
     margin-bottom: .25em;
 }
 
@@ -41,7 +43,7 @@ body {
     box-sizing: border-box;
     background-color: #272727;
     border: solid 0px #272727;
-    font-family: "Roboto Mono";
+    font-family: "Source Code Pro";
     font-size: 4rem;
     color: #f2f2f2;
     outline: none;
