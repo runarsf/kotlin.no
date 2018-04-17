@@ -66,14 +66,7 @@
         // Search on enter key event
         function search(e) {
             if (e.keyCode == 13) {
-                var val = document.getElementById("search-field").value; 
-                var str = val;
-                if (val == str.trim()) {
-                    window.open("https://" + val);
-                }
-                else {
-                    window.open("https://duckduckgo.com/?q=" + str.trim());
-                }
+
             }
         }
 
