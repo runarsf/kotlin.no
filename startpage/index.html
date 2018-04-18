@@ -7,11 +7,12 @@
 
     <title>Home</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="icon" href="https://runarsf.github.io/favicon.ico">
 </head>
 <body>
     <div id="search">
         <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+        <div id="line"></div> 
     </div>
     <div class="container">
         <div id="clock"></div>
@@ -26,37 +27,39 @@
             <div class="bookmark-set">
                 <div class="bookmark-title">Daily</div>
                 <div class="bookmark-inner-container">
-                    <a class="bookmark" href="https://inbox.google.com/" target="_blank">Inbox</a>
-                    <a class="bookmark" href="https://github.com/" target="_blank">Github</a>
-                    <a class="bookmark" href="https://drive.google.com/" target="_blank">Drive</a>
+                    <a class="bookmark" href="https://github.com/runarsf" target="_blank">github/runarsf</a>
+                    <a class="bookmark" href="https://www.youtube.com" target="_blank">youtube</a>
+                    <a class="bookmark" href="https://mail.google.com/mail/u/0/#inbox" target="_blank">gmail</a>
+                    <a class="bookmark" href="https://mail.protonmail.com/login" target="_blank">protonmail</a>
                 </div>
             </div>
             <div class="bookmark-set">
-                <div class="bookmark-title">Media</div>
+                <div class="bookmark-title">Forums</div>
                 <div class="bookmark-inner-container">
-                    <a class="bookmark" href="https://youtube.com" target="_blank">Youtube</a>
-                    <a class="bookmark" href="https://netflix.com" target="_blank">Netflix</a>
-                    <a class="bookmark" href="https://crunchyroll.com" target="_blank">Crunchyroll</a>
-                    <a class="bookmark" href="https://" target="_blank">Amazon Prime</a>
+                    <a class="bookmark" href="https://autohotkey.com/boards/viewforum.php?f=5" target="_blank">ahk forum</a>
+                    <a class="bookmark" href="https://osu.ppy.sh/forum" target="_blank">osu! forum</a>
+                    <a class="bookmark" href="https://www.reddit.com" target="_blank">reddit</a>
+                    <a class="bookmark" href="https://kitsu.io/users/magicstick/library?status=current" target="_blank">kitsu</a>
                 </div>
             </div>
             <div class="bookmark-set">
-            <div class="bookmark-title">Reddit</div>
+            <div class="bookmark-title">Stuff</div>
                 <div class="bookmark-inner-container">
-                    <a class="bookmark" href="https://reddit.com/r/overwatch" target="_blank">/r/overwatch</a>
-                    <a class="bookmark" href="https://reddit.com/r/pcmasterrace" target="_blank">/r/pcmasterrace</a>
-                    <a class="bookmark" href="https://reddit.com/r/me_irl" target="_blank">/r/me_irl</a>
-                    <a class="bookmark" href="https://reddit.com/r/battlestations" target="_blank">/r/battlestations</a>
-                    <a class="bookmark" href="https://reddit.com/r/unixporn" target="_blank">/r/unixporn</a>
-
-                    <a class="bookmark" href="https://reddit.com/r/news" target="_blank">/r/news</a>
+                    <a class="bookmark" href="https://netflix.com/" target="_blank">netflix</a>
+                    <a class="bookmark" href="https://www.humblebundle.com/" target="_blank">humble</a>
+                    <a class="bookmark" href="https://osu.ppy.sh/users/MagicStick" target="_blank">osu!</a>
+                    <a class="bookmark" href="https://ameobea.me/osutrack/user/MagicStick/" target="_blank">osu!track</a>
                 </div>
             </div>
             <div class="bookmark-set">
-                <div class="bookmark-title">Social</div>
+                <div class="bookmark-title">Reddit</div>
                 <div class="bookmark-inner-container">
-                    <a class="bookmark" href="https://twitter.com" target="_blank">Twitter</a>
-                    <a class="bookmark" href="https://facebook.com" target="_blank">Facebook</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/FirefoxCSS" target="_blank">/r/FirefoxCSS</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/Piracy" target="_blank">/r/Piracy</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/osugame" target="_blank">/r/osugame</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/MechanicalKeyboards" target="_blank">/r/MechanicalKeyboards</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/startpages" target="_blank">/r/startpages</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/identifythisfont" target="_blank">/r/identifythisfont</a>
                 </div>
             </div>
         </div>
@@ -64,12 +67,25 @@
 
     <script>
         // Search on enter key event
+        document.getElementById('line').style.visibility = 'hidden';
         function search(e) {
             if (e.keyCode == 13) {
                 var val = document.getElementById("search-field").value; 
+
+                var strap = val.trim();
                 var str = val;
-                if (val == str.trim()) {
-                    window.open("https://" + val);
+
+                if (strap.startsWith("r:")) {
+                	window.open("https://reddit.com/r/" + val.replace("r:", "").replace(" ", ""));
+                } else if (strap.startsWith("o:")) {
+                	window.open("https://osu.ppy.sh/home/search?mode=all&query=" + val.replace("o:", "").replace(" ", ""));
+                } else if (strap.startsWith("t:")) {
+                	window.open("https://twitter.com/search?q=" + val.replace("t:", "").replace(" ", ""));
+                } else if (strap.startsWith("g:")) {
+                	window.open("https://www.google.no/#q=" + val.replace("g:", "").replace(" ", ""));
+                } else if (val == str.trim()) {
+                	newVal = val.replace("https://", "").replace("http://", "")
+                    window.open("https://" + newVal);
                 }
                 else {
                     window.open("https://duckduckgo.com/?q=" + str.trim());
@@ -119,7 +135,9 @@
             if (event.keyCode == 32) {          // Spacebar code to open search
                 document.getElementById('search').style.display = 'flex';
                 document.getElementById('search-field').focus();
+                document.getElementById('line').style.visibility = 'visible';
             } else if (event.keyCode == 27) {   // Esc to close search
+            	document.getElementById('line').style.visibility = 'hidden';
                 document.getElementById('search-field').value = '';
                 document.getElementById('search-field').blur();
                 document.getElementById('search').style.display = 'none';

@@ -1,9 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 
+#line {
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(
+        135deg,
+        rgba(143, 36, 237, 1) 20%,
+        rgba(143, 36, 237, 1) 20%,
+        rgba(143, 36, 237, 1) 22%,
+        rgba(143, 36, 237, 1) 25%,
+        rgba(16, 124, 179, 1) 100%
+    );
+    animation: line 1.25s ease forwards;
+}
+@keyframes line {
+    from { width: 0%; }
+    to { width: 100%; }
+    from { height: 0%; }
+    to { height: 100%; }
+}
+
 body {
-    /* background-color: #44708B; */
-    background-image: url("forest.jpg");
+    background: linear-gradient(
+        135deg,
+        rgba(143, 36, 237, 1) 20%,
+        rgba(143, 36, 237, 1) 20%,
+        rgba(143, 36, 237, 1) 22%,
+        rgba(143, 36, 237, 1) 25%,
+        rgba(16, 124, 179, 1) 100%
+      );
+    /* background-image: url("forest.jpg"); */
     margin: 0px;
 }
 
@@ -17,10 +44,10 @@ body {
 }
 
 #clock {
-    font-family: "Source Code Pro";
+    font-family: "Roboto Mono";
     font-size: 3.5rem;
     font-weight: 600;
-    font-family: "Source Code Pro";
+    font-family: "Roboto Mono";
     color: #ffffff;
     margin-bottom: .25em;
 }
