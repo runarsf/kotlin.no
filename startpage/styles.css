@@ -3,7 +3,7 @@
 
 #line {
     width: 100%;
-    height: 3px;
+    height: 100%;
     background: linear-gradient(
         135deg,
         rgba(143, 36, 237, 1) 20%,
@@ -12,13 +12,11 @@
         rgba(143, 36, 237, 1) 25%,
         rgba(16, 124, 179, 1) 100%
     );
-    animation: line 1s ease forwards;
+    animation: line 0.25s ease forwards;
 }
 @keyframes line {
-    from { margin-top: -13%; }
+    from { margin-top: -50%; }
     to { margin-top: -2%; }
-    from { height: 100%; }
-    to { height: 100%; }
 }
 
 body {
