@@ -11,7 +11,6 @@
 <body>
 	<div id="search">
         <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
-        <div id="line"></div> 
     </div>
     <div id="links" class="-">
         <div id="tabs" class="!-">
@@ -37,27 +36,28 @@
             <ul class="boards" active>
                 <div class="links">
                     <li>
-                        <h1>Fun</h1>
-                        <a href="https://4chan.org/a/">/a/</a>
-                        <a href="https://4chan.org/b/">/b/</a>
-                        <a href="https://4chan.org/jp/">/jp/</a>
-                        <a href="https://4chan.org/r9k/">/r9k/</a>
+                        <h1>Favorites</h1>
+                        <a href="https://github.com/runarsf/">git</a>
+                        <a href="https://youtube.com/">youtube</a>
+                        <a href="https://reddit.com/">reddit</a>
+                        <a href="https://twist.moe/">kitsu</a>
                         <a href="https://www.4chan.org/wg/">/wg/</a>
                     </li>
                     <li>
-                        <h1>Comfy</h1>
-                        <a href="https://sushigirl.us/kawaii/">/kawaii/</a>
-                        <a href="https://sushigirl.us/lounge/">/lounge/</a>
-                        <a href="https://www.4chan.org/wsg/">/wsg/</a>
+                        <h1>Forums</h1>
+                        <a href="https://forum.xda-developers.com/">xda</a>
+                        <a href="https://osu.ppy.sh/forum/">osu!</a>
+                        <a href="https://reddit.com/">reddit</a>
+						<a href="https://kitsu.io/users/magicstick/library?status=current">kitsu</a>
+						<a href="https://4chan.org/g/">/g/</a>
                     </li>
                     <li>
-                        <h1>Technology</h1>
-                        <a href="https://4chan.org/g/">/g/</a>
-                        <a href="https://www.lainchan.org/lambda/">/λ/</a>
-                        <a href="https://www.lainchan.org/sec/">/sec/</a>
-                        <a href="https://boards.420chan.org/prog/">/prog/</a>
-                        <a href="https://8ch.net/g/">/8g/</a>
-                    </li>
+                        <h1>Stuff</h1>
+                        <a href="https://netflix.com/">netflix</a>
+                        <a href="https://humblebundle.com/">humble</a>
+                        <a href="https://osu.ppy.sh/u/MagicStick/">osu!userprofile</a>
+                        <a href="https://mail.protonmail.com/login/">proton</a>
+</li>
                 </div>
             </ul>
             <ul class="music">   
@@ -94,7 +94,6 @@
     <script type="text/javascript" src="js/script.js"></script>
     <script>
         // Search on enter key event
-        document.getElementById('line').style.visibility = 'hidden';
         function search(e) {
             if (e.keyCode == 13) {
                 var val = document.getElementById("search-field").value; 
