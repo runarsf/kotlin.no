@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://runarsf.github.io/favicon.ico">
+</head>
+<body>
+    <div id="search">
+        <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+        <div id="line"></div> 
+    </div>
+    <div class="container">
+        <div id="clock"></div>
+        <div class="weather-container">
+            <div class="row">
+                <div id="weather-description"class="inline"></div>
+                <div class="inline">-</div>
+                <div id="temp" class="inline"></div>
+            </div>
+        </div>
+        <div class="bookmark-container">
+            <div class="bookmark-set">
+                <div class="bookmark-title">Daily</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://github.com/runarsf" target="_blank">github/runarsf</a>
+                    <a class="bookmark" href="https://www.youtube.com" target="_blank">youtube</a>
+                    <a class="bookmark" href="https://mail.google.com/mail/u/0/#inbox" target="_blank">gmail</a>
+                    <a class="bookmark" href="https://mail.protonmail.com/login" target="_blank">protonmail</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Forums</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://autohotkey.com/boards/viewforum.php?f=5" target="_blank">ahk forum</a>
+                    <a class="bookmark" href="https://osu.ppy.sh/forum" target="_blank">osu! forum</a>
+                    <a class="bookmark" href="https://www.reddit.com" target="_blank">reddit</a>
+                    <a class="bookmark" href="https://kitsu.io/users/magicstick/library?status=current" target="_blank">kitsu</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+            <div class="bookmark-title">Stuff</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://netflix.com/" target="_blank">netflix</a>
+                    <a class="bookmark" href="https://www.humblebundle.com/" target="_blank">humble</a>
+                    <a class="bookmark" href="https://osu.ppy.sh/users/MagicStick" target="_blank">osu!</a>
+                    <a class="bookmark" href="https://ameobea.me/osutrack/user/MagicStick/" target="_blank">osu!track</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Reddit</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://www.reddit.com/r/FirefoxCSS" target="_blank">/r/FirefoxCSS</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/Piracy" target="_blank">/r/Piracy</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/osugame" target="_blank">/r/osugame</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/MechanicalKeyboards" target="_blank">/r/MechanicalKeyboards</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/startpages" target="_blank">/r/startpages</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/identifythisfont" target="_blank">/r/identifythisfont</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search on enter key event
+        document.getElementById('line').style.visibility = 'hidden';
+        function search(e) {
+            if (e.keyCode == 13) {
+                var val = document.getElementById("search-field").value; 
+
+                var strap = val.trim();
+                var str = val;
+
+                if (strap.startsWith("r:")) {
+                	window.open("https://reddit.com/r/" + val.replace("r:", "").replace(" ", ""));
+                } else if (strap.startsWith("o:")) {
+                	window.open("https://osu.ppy.sh/home/search?mode=all&query=" + val.replace("o:", "").replace(" ", ""));
+                } else if (strap.startsWith("t:")) {
+                	window.open("https://twitter.com/search?q=" + val.replace("t:", "").replace(" ", ""));
+                } else if (strap.startsWith("g:")) {
+                	window.open("https://www.google.no/#q=" + val.replace("g:", "").replace(" ", ""));
+                } else if (val == str.trim()) {
+                	newVal = val.replace("https://", "").replace("http://", "")
+                    window.open("https://" + newVal);
+                }
+                else {
+                    window.open("https://duckduckgo.com/?q=" + str.trim());
+                }
+            }
+        }
+
+        // Get current time and format
+        function getTime() {
+            let date = new Date(),
+                min = date.getMinutes(),
+                sec = date.getSeconds(),
+                hour = date.getHours();
+
+            return "" +
+                (hour < 10 ? ("0" + hour) : hour) + ":" +
+                (min < 10 ? ("0" + min) : min) + ":" +
+                (sec < 10 ? ("0" + sec) : sec);
+        }
+
+        window.onload = () => {
+            let xhr = new XMLHttpRequest();
+            // Request to open weather map
+            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?id=4737316&units=metric&appid=e5b292ae2f9dae5f29e11499c2d82ece');
+            xhr.onload = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let json = JSON.parse(xhr.responseText);
+                        console.log(json);
+                        document.getElementById("temp").innerHTML = json.main.temp.toFixed(0) + " F";
+                        document.getElementById("weather-description").innerHTML = json.weather[0].description;
+                    } else {
+                        console.log('error msg: ' + xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+            // Set up the clock
+            document.getElementById("clock").innerHTML = getTime();
+            // Set clock interval to tick clock
+            setInterval( () => {
+                document.getElementById("clock").innerHTML = getTime();
+            },100);
+        }
+
+        document.addEventListener("keydown", event => {
+            if (event.keyCode == 32) {          // Spacebar code to open search
+                document.getElementById('search').style.display = 'flex';
+                document.getElementById('search-field').focus();
+                document.getElementById('line').style.visibility = 'visible';
+            } else if (event.keyCode == 27) {   // Esc to close search
+            	document.getElementById('line').style.visibility = 'hidden';
+                document.getElementById('search-field').value = '';
+                document.getElementById('search-field').blur();
+                document.getElementById('search').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
