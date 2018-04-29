@@ -9,6 +9,10 @@
     <title>~</title>
 </head>
 <body>
+	<div id="search">
+        <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+        <div id="line"></div> 
+    </div>
     <div id="links" class="-">
         <div id="tabs" class="!-">
             <cols>
@@ -88,5 +92,44 @@
     <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript" src="js/powerline.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <script>
+        // Search on enter key event
+        document.getElementById('line').style.visibility = 'hidden';
+        function search(e) {
+            if (e.keyCode == 13) {
+                var val = document.getElementById("search-field").value; 
+
+                var strap = val.trim();
+                var str = val;
+
+                if (strap.startsWith("r:")) {
+                	window.open("https://reddit.com/r/" + val.replace("r:", "").replace(" ", ""));
+                } else if (strap.startsWith("o:")) {
+                	window.open("https://osu.ppy.sh/home/search?mode=all&query=" + val.replace("o:", "").replace(" ", ""));
+                } else if (strap.startsWith("t:")) {
+                	window.open("https://twitter.com/search?q=" + val.replace("t:", "").replace(" ", ""));
+                } else if (strap.startsWith("g:")) {
+                	window.open("https://www.google.no/#q=" + val.replace("g:", "").replace(" ", ""));
+                } else if (val == str.trim()) {
+                	newVal = val.replace("https://", "").replace("http://", "")
+                    window.open("https://" + newVal);
+                }
+                else {
+                    window.open("https://duckduckgo.com/?q=" + str.trim());
+                }
+            }
+        }
+
+        document.addEventListener("keydown", event => {
+            if (event.keyCode == 32) {          // Spacebar code to open search
+                document.getElementById('search').style.display = 'flex';
+                document.getElementById('search-field').focus();
+            } else if (event.keyCode == 27) {   // Esc to close search
+                document.getElementById('search-field').value = '';
+                document.getElementById('search-field').blur();
+                document.getElementById('search').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
