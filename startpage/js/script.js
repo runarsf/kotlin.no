@@ -8,7 +8,7 @@ const { parse, stringify } = JSON;
 const nodes = (elem) =>
       Array.prototype.slice.call($.qS(elem).children);
 
-var place = localStorage.place || 'new york';
+var place = localStorage.place || 'trondheim';
 
 (function () {
   if (localStorage.getItem("todo") === null)
