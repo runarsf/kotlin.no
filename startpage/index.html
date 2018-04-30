@@ -9,9 +9,6 @@
     <title>~</title>
 </head>
 <body>
-	<div id="search">
-        <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
-    </div>
     <div id="links" class="-">
         <div id="tabs" class="!-">
             <cols>
@@ -21,6 +18,9 @@
                     <li></li>
                     <li></li>
                 </ul>
+				<div id="search">
+					<input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+				</div>
                 <div class="+ widgets col-end">
                     <p class="time">00<span>:00</span></p>
                     <div class="+ weather">
@@ -57,7 +57,7 @@
                         <a href="https://humblebundle.com/">humble</a>
                         <a href="https://osu.ppy.sh/u/MagicStick/">osu!userprofile</a>
                         <a href="https://mail.protonmail.com/login/">proton</a>
-</li>
+					</li>
                 </div>
             </ul>
             <ul class="music">   
@@ -94,27 +94,16 @@
     <script type="text/javascript" src="js/script.js"></script>
     <script>
         // Search on enter key event
+		document.getElementById('search').style.display = 'none';
         function search(e) {
             if (e.keyCode == 13) {
-                var val = document.getElementById("search-field").value; 
-
-                var strap = val.trim();
-                var str = val;
-
-                if (strap.startsWith("r:")) {
-                	window.open("https://reddit.com/r/" + val.replace("r:", "").replace(" ", ""));
-                } else if (strap.startsWith("o:")) {
-                	window.open("https://osu.ppy.sh/home/search?mode=all&query=" + val.replace("o:", "").replace(" ", ""));
-                } else if (strap.startsWith("t:")) {
-                	window.open("https://twitter.com/search?q=" + val.replace("t:", "").replace(" ", ""));
-                } else if (strap.startsWith("g:")) {
-                	window.open("https://www.google.no/#q=" + val.replace("g:", "").replace(" ", ""));
-                } else if (val == str.trim()) {
+                var val = document.getElementById("search-field").value;
+                if (val == val.trim()) {
                 	newVal = val.replace("https://", "").replace("http://", "")
-                    window.open("https://" + newVal);
+                    window.location = "https://" + newVal;
                 }
                 else {
-                    window.open("https://duckduckgo.com/?q=" + str.trim());
+                    window.location = "https://duckduckgo.com/?q=" + val.trim();
                 }
             }
         }
