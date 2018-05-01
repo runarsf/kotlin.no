@@ -21,7 +21,7 @@
 	font-family: Roboto;
 	font-size: 200%;
 	content: var(--banner);
-    animation: nana 1s;
+    animation: nana 2.5s;
 }
 @keyframes nana {
     from { color: var(--bcolor); }
