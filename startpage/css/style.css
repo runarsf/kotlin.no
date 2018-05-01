@@ -4,21 +4,28 @@
 
 :root {
     --accent: #ffa6e8;
-    --banner: 'あえいおうかけきこく';
+	--bcolor: #C38490;
+	--fcolor: #313B3C;
+    --banner: 'ななし';
+	--bonner: 'nanashi';
 }
 
-.banner span {
+#banner span {
   display: none;
 }
-.banner:after {
+#banner:after {
 	position: relative;
 	top: -7.7em;
 	left: 2.7em;
-	color: #313B3C;
+	color: var(--fcolor);
 	font-family: Roboto;
-	font-style: normal;
 	font-size: 200%;
-	content: 'あえいおうかけきこく';
+	content: var(--banner);
+    animation: nana 1s;
+}
+@keyframes nana {
+    from { color: var(--bcolor); }
+    to { color: var(--fcolor); }
 }
 
 #search {
@@ -55,7 +62,6 @@
     --bg: #0f0f12;
     --done: #37eb94;
     --undone: #ff1b91;
-    --banner: 'あえいおうかけきこく';
 }
 
 body {

@@ -1,2 +1,2 @@
 # Startpage
-Eyy
+A startpage called 'nanashi'.
