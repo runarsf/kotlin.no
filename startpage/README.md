@@ -1,2 +1,2 @@
 # Startpage
-A startpage called 'nanashi' / 'ななし'.
+A startpage called 'nanashi'.
