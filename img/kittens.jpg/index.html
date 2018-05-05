@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+		<head>
+			<title>cute kittens</title>
+			<link rel="icon" href="favicon.png" type="image/x-icon">
+		</head>
+
+		<body>
+			<img src="my-cat.jpg">
+			<script>
+			var audio = new Audio('kittens.wav');
+			
+			function sleep(ms) {
+				return new Promise(resolve => setTimeout(resolve, ms));
+			}
+			
+			
+			async function demo() {
+			
+				var i = 4;
+				
+				while(i>0) {
+					audio.play();
+					console.log(i);
+					await sleep(5000);
+					i--;
+				}
+			}
+			demo();
+			</script>
+		</body>
+</html>
