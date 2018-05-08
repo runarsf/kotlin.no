@@ -1,0 +1,356 @@
+---
+layout: default
+---
+<html lang="en-US">
+		<head>
+			<meta charset="UTF-8">
+			<title>About</title>
+			<link rel="icon" href="https://runarsf.github.io/favicon.ico">
+		</head>
+
+		<body>
+			<link rel="stylesheet" type="text/css" href="home.css" media="screen" />
+			<h1><a href="https://github.com/runarsf/delimeter">Delimeter</a> - A <i>repository</i> with help of all kinds.</h1>
+			
+			<h3><a id="Not_getting_IP_even_though_Im_connected_to_router_access_point_ethernet_0"></a>Not getting IP even though I’m connected to router (access point, ethernet)</h3>
+			<ol>
+			<li>Open Windows Command Prompt and type:<br>
+			1.1 <code>ipconfig /release</code><br>
+			1.2 <code>ipconfig /renew</code></li>
+			<li>Make sure to disable the access point’s DHCP and change it’s IP to differ from the main router.<br>
+			(eg. if the main router’s IP is ‘192.168.0.1’, you can set the access point’s IP to ‘192.168.0.2’).</li>
+			<li>Reset the access point’s settings and disconnect it from the main router.<br>
+			3.1 Connect to the AP using the IP.</li>
+			</ol>
+			<h3><a id="Discord_freezing_when_clicking_links_9"></a>Discord freezing when clicking links</h3>
+			<ol>
+			<li>Reset and repair Edge<br>
+			1.1 Open Apps &amp; Features<br>
+			1.2 Find Microsoft Edge<br>
+			1.3 Click Microsoft Edge and then click ‘Advanced options’<br>
+			1.4 Click both ‘Reset’ and ‘Repair’</li>
+			<li>Clear Discord cache<br>
+			§ The name of the Discord folder may change between Discord releases.<br>
+			§ All your Discord settings will be reset.<br>
+			2.1 Go to %appdata%\discord\Cache\ <br>
+			2.2 Delete everything in the folder</li>
+			</ol>
+			<h3><a id="Installing_Arch_Linux_21"></a>Installing Arch Linux</h3>
+			<ol>
+			<li>Don’t</li>
+			<li>Install <a href="http://www.ponyos.org/">PonyOS</a>, <a href="http://hannahmontana.sourceforge.net/">Hannah Montana Linux</a> or <a href="http://biebian.sourceforge.net/">Biebian</a></li>
+			</ol>
+			<h3><a id="Share_folders_from_LinuxUbuntu_SourcehttpshelpubuntucomcommunityHow20to20Create20a20Network20Share20Via20Samba20Via20CLI2028Commandline20interfaceLinux20Terminal292020Uncomplicated20Simple20and20Brief20Way_25"></a>Share folders from Linux/Ubuntu (<a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20%28Command-line%20interface/Linux%20Terminal%29%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">Source</a>)</h3>
+			<ol start="0">
+			<li><em>The following commands are for use in bash</em></li>
+			<li>Install Samba<br>
+			<code>sudo apt-get update</code><br>
+			<code>sudo apt-get install samba</code></li>
+			<li>Set a password for your user in Samba<br>
+			<code>sudo smbpasswd -a &lt;user_name&gt;</code></li>
+			<li>Create a directory to be shared<br>
+			<code>mkdir /home/&lt;user_name&gt;/&lt;folder_name&gt;</code></li>
+			<li>Make a safe backup copy of the original smb.conf file to your home folder, in case you make an error<br>
+			<code>sudo cp /etc/samba/smb.conf ~</code></li>
+			<li>Edit the file ‘/etc/samba/smb.conf’<br>
+			<code>sudo vim /etc/samba/smb.conf</code><br>
+			5.1 Once ‘smb.conf’ has loaded, add this to the very end of the file:<pre><code class="language-brainfuck"><span class="hljs-title">[</span>&lt;<span class="hljs-comment">folder_name</span>&gt;<span class="hljs-title">]</span>
+			<span class="hljs-comment">path</span> <span class="hljs-comment">=</span> <span class="hljs-comment">/home/</span>&lt;<span class="hljs-comment">user_name</span>&gt;<span class="hljs-comment">/</span>&lt;<span class="hljs-comment">folder_name</span>&gt;
+			<span class="hljs-comment">valid</span> <span class="hljs-comment">users</span> <span class="hljs-comment">=</span> &lt;<span class="hljs-comment">user_name</span>&gt;
+			<span class="hljs-comment">read</span> <span class="hljs-comment">only</span> <span class="hljs-comment">=</span> <span class="hljs-comment">no</span>
+			</code></pre>
+			</li>
+			<li>Restart Samba:<br>
+			<code>sudo service smbd restart</code></li>
+			<li>Once Samba has restarted, use this command to check your smb.conf for any syntax errors<br>
+			<code>testparm</code></li>
+			</ol>
+			<h3><a id="Mapping_a_network_drive_on_windows_Extrahttpswwwtenforumscomnetworksharing15059networkcredentialshtml_50"></a>Mapping a network drive on windows (<a href="https://www.tenforums.com/network-sharing/15059-network-credentials.html">Extra</a>)</h3>
+			<table class="table table-striped table-bordered">
+			<thead>
+			<tr>
+			<th>Example</th>
+			<th>Type</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>\\server\share</td>
+			<td>shared folder</td>
+			</tr>
+			<tr>
+			<td><a href="http://webserver/share">http://webserver/share</a></td>
+			<td>Web Share</td>
+			</tr>
+			<tr>
+			<td><a href="ftp://ftp.microsoft.com">ftp://ftp.microsoft.com</a></td>
+			<td>FTP site</td>
+			</tr>
+			</tbody>
+			</table>
+			<ol>
+			<li>Right click on ‘This PC’, click ‘Add a network location’</li>
+			<li>Click ‘Next’</li>
+			<li>Select ‘Choose a custom network location’ and click ‘Next’</li>
+			<li>Type the shared location (eg. \\192.168.0.24\Shared) and click ‘Next’</li>
+			<li>Type a name for this network location</li>
+			<li>Click ‘Next’, then ‘Finish’</li>
+			<li>If you are prompted with a login box, type PCNAME\USERNAME</li>
+			</ol>
+			<h3><a id="Microphone_not_working_64"></a>Microphone not working</h3>
+			<ol>
+			<li>Click the Windows Button</li>
+			<li>Click on/select ‘All apps’</li>
+			<li>Scroll down and click on ‘Settings’</li>
+			<li>In upper right search box ‘i.e., Find a setting’, type in ‘microphone’</li>
+			<li>Click on/select ‘Microphone privacy settings’</li>
+			<li>Turn on ‘Let apps use my microphone’</li>
+			</ol>
+			<h3><a id="Cant_login_to_osu_client_72"></a>Can’t login to osu! client</h3>
+			<ul>
+			<li>Type your password in cleartext and copy it, then paste it into the password field</li>
+			</ul>
+			<h3><a id="Markdown_75"></a>Markdown???</h3>
+			<ul>
+			<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Here you go</a></li>
+			<li><a href="https://highlightjs.readthedocs.io/en/latest/css-classes-reference.html#language-names-and-aliases">Supported code block languages (highlight.js)</a></li>
+			</ul>
+			<h3><a id="Linux_partitioning_79"></a>Linux partitioning</h3>
+			<table class="table table-striped table-bordered">
+			<thead>
+			<tr>
+			<th>Size (MiB)</th>
+			<th>Location (primary, ext4)</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>512</td>
+			<td>/boot</td>
+			</tr>
+			<tr>
+			<td>4096</td>
+			<td>/swap</td>
+			</tr>
+			<tr>
+			<td>30720</td>
+			<td>/</td>
+			</tr>
+			<tr>
+			<td>the rest</td>
+			<td>/home</td>
+			</tr>
+			</tbody>
+			</table>
+			<h3><a id="Removing_the_Creative_Cloud_Files_folder_from_space_tree_Forumhttpsforumsadobecomthread1870123_87"></a>Removing the ‘Creative Cloud Files’ folder from space tree (<a href="https://forums.adobe.com/thread/1870123">Forum</a>)</h3>
+			<ol start="0">
+			<li><em>You decide yourself if you want to delete the folder, this is not always recommended though.</em></li>
+			<li>Open regedit</li>
+			<li>Press CTRL+F and type ‘Creative Cloud Files’<br>
+			2.1 Uncheck all checkboxes except ‘Data’</li>
+			<li>Click ‘Find Next’</li>
+			<li>The key ‘System.IsPinnedToNameSpaceTree’ should appear</li>
+			<li>Right click on it and click ‘Modify’, set the value to ‘0’</li>
+			<li>Right click the folder with the key in and click ‘Permissions…’</li>
+			<li>Select ‘SYSTEM’ and click <em>Deny</em> &gt; ‘Full Control’</li>
+			<li>Click ‘OK’</li>
+			</ol>
+			<h3><a id="Install_Firefox_Nightly_on_LinuxUbuntu_Sourcehttpsgistgithubcombrenopolanski2a25088801b2de342200_99"></a>Install Firefox Nightly on Linux/Ubuntu (<a href="https://gist.github.com/brenopolanski/2a25088801b2de342200">Source</a>)</h3>
+			<ol>
+			<li>Add the repository<br>
+			<code>sudo add-apt-repository ppa:ubuntu-mozilla-daily/ppa</code></li>
+			<li>Update package list<br>
+			<code>sudo apt-get update</code></li>
+			<li>Install Nightly<br>
+			<code>sudo apt-get install firefox-trunk</code></li>
+			</ol>
+			<h3><a id="Run_Control_Panel_items_from_command_Sourcehttpssupportmicrosoftcomenushelp192806howtoruncontrolpaneltoolsbytypingacommand_107"></a>Run Control Panel items from command (<a href="https://support.microsoft.com/en-us/help/192806/how-to-run-control-panel-tools-by-typing-a-command">Source</a>)</h3>
+			<table class="table table-striped table-bordered">
+			<thead>
+			<tr>
+			<th>Control panel tool</th>
+			<th>Command</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>Accessibility Options</td>
+			<td>control access.cpl</td>
+			</tr>
+			<tr>
+			<td>Add New Hardware</td>
+			<td>control sysdm.cpl add new hardware</td>
+			</tr>
+			<tr>
+			<td>Add/Remove Programs</td>
+			<td>control appwiz.cpl</td>
+			</tr>
+			<tr>
+			<td>Date/Time Properties</td>
+			<td>control timedate.cpl</td>
+			</tr>
+			<tr>
+			<td>Display Properties</td>
+			<td>control desk.cpl</td>
+			</tr>
+			<tr>
+			<td>FindFast</td>
+			<td>control findfast.cpl</td>
+			</tr>
+			<tr>
+			<td>Fonts Folder</td>
+			<td>control fonts</td>
+			</tr>
+			<tr>
+			<td>Internet Properties</td>
+			<td>control inetcpl.cpl</td>
+			</tr>
+			<tr>
+			<td>Joystick Properties</td>
+			<td>control joy.cpl</td>
+			</tr>
+			<tr>
+			<td>Keyboard Properties</td>
+			<td>control main.cpl keyboard</td>
+			</tr>
+			<tr>
+			<td>Microsoft Exchange</td>
+			<td>control mlcfg32.cpl</td>
+			</tr>
+			<tr>
+			<td><em>(or Windows Messaging)</em></td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>Microsoft Mail Post Office</td>
+			<td>control wgpocpl.cpl</td>
+			</tr>
+			<tr>
+			<td>Modem Properties</td>
+			<td>control modem.cpl</td>
+			</tr>
+			<tr>
+			<td>Mouse Properties</td>
+			<td>control main.cpl</td>
+			</tr>
+			<tr>
+			<td>Multimedia Properties</td>
+			<td>control mmsys.cpl</td>
+			</tr>
+			<tr>
+			<td>Network Properties</td>
+			<td>control netcpl.cpl</td>
+			</tr>
+			<tr>
+			<td></td>
+			<td><em>NOTE: In Windows NT 4.0, Network properties is Ncpa.cpl, not Netcpl.cpl</em></td>
+			</tr>
+			<tr>
+			<td>Password Properties</td>
+			<td>control password.cpl</td>
+			</tr>
+			<tr>
+			<td>PC Card</td>
+			<td>control main.cpl pc card (PCMCIA)</td>
+			</tr>
+			<tr>
+			<td>Power Management (Windows 95)</td>
+			<td>control main.cpl power</td>
+			</tr>
+			<tr>
+			<td>Power Management (Windows 98)</td>
+			<td>control powercfg.cpl</td>
+			</tr>
+			<tr>
+			<td>Printers Folder</td>
+			<td>control printers</td>
+			</tr>
+			<tr>
+			<td>Regional Settings</td>
+			<td>control intl.cpl</td>
+			</tr>
+			<tr>
+			<td>Scanners and Cameras</td>
+			<td>control sticpl.cpl</td>
+			</tr>
+			<tr>
+			<td>Sound Properties</td>
+			<td>control mmsys.cpl sounds</td>
+			</tr>
+			<tr>
+			<td>System Properties</td>
+			<td>control sysdm.cpl</td>
+			</tr>
+			</tbody>
+			</table>
+			<h3><a id="Where_do_I_change_my_Google_activity_138"></a>Where do I change my Google activity?</h3>
+			<ul>
+			<li>Go to <a href="https://myaccount.google.com/activitycontrols?utm_source=my-activity&amp;utm_medium=home">activitycontrols</a> to change activity controls</li>
+			<li>Go to <a href="https://myactivity.google.com/myactivity">myactivity</a>to modify your Google history</li>
+			</ul>
+			<h3><a id="How_do_I_change_the_default_AutoHotkey_editor_142"></a>How do I change the default AutoHotkey editor?</h3>
+			<ol>
+			<li>Press Windows+R</li>
+			<li>Search <em>regedit</em> and click Enter</li>
+			<li>Click <strong>Yes</strong> on the popup that says <em>Do you want to allow this app to make changes to your device?</em></li>
+			</ol>
+			<ul>
+			<li>The Verified Publisher of the regedit application should be <em>Microsoft Windows</em></li>
+			</ul>
+			<ol start="4">
+			<li>When regedit opens, enter <em>HKEY_CLASSES_ROOT\AutoHotkeyScript\Shell\Edit\Command</em> in the search bar &lt;sup&gt;(NOT the find box)&lt;/sup&gt;</li>
+			</ol>
+			<ul>
+			<li>Alternatively, you can search for <em>AutoHotkeyScript</em> by clicking Ctrl+F, note that this won’t always find it, or take some time.</li>
+			</ul>
+			<ol start="5">
+			<li>Your file structure should look something like this.</li>
+			</ol>
+			<pre><code>AutoHotkeyScript
+			└── Shell
+				└── Edit
+					└── Command
+			</code></pre>
+			<ol start="6">
+			<li>Inside the Command folder, you should find a key named <em>(Default)</em></li>
+			</ol>
+			<table class="table table-striped table-bordered">
+			<thead>
+			<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Data</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+			<td>(Default)</td>
+			<td>REG_SZ</td>
+			<td>“editor.exe” “%1”</td>
+			</tr>
+			</tbody>
+			</table>
+			<ol start="7">
+			<li>Double click the key</li>
+			<li>Under <em>Value Data</em>, change the .exe file location to your new editor</li>
+			</ol>
+			<ul>
+			<li>Eg. Change <em>editor.exe</em> to <em>C:\Program Files\Sublime Text 3\sublime_text.exe</em></li>
+			<li>Note: Do not remove the quotation marks around the editor path and <em>%1</em></li>
+			</ul>
+			<h3><a id="Use_grep_to_search_through_files_bash_zsh_etc_167"></a>Use <em>grep</em> to search through files (bash, zsh etc.)</h3>
+			<pre><code>grep
+			</code></pre>
+			<h3><a id="Weird_crackling_in_headset_and_microphone_VBCABLE_172"></a>Weird crackling in headset and microphone (VBCABLE)</h3>
+			<ol>
+			<li>Reinstall VBCABLE.</li>
+			</ol>
+			<ul>
+			<li>This can also be caused by peaking, if this is the case, read next step.
+			<ul>
+			<li>Lower the max volume in VoiceMeeter or playback devices.</li>
+			</ul>
+			</li>
+			</ul>
+		</body>
+</html>
