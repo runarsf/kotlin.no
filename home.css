@@ -1,7 +1,80 @@
-body {
-    background-color: #222;
+:root {
+    --title: 'Runar Fredagsvik';
+	--subtitle: 'Welcome to my site!';
+}
+
+html, body {
+	background-color: #222;
+    padding:0;
+    margin:0;
+	height: 100%;
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
 }
 
 p {
     color: #FFF;
+}
+
+#wrapper {
+	background-color: #159957;
+	background: linear-gradient(120deg, #155799, #159957);
+	height: 28%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.title span { 
+	display: none;
+}
+.title:after {
+	position: absolute;
+	content: var(--title);
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	font-size: 3.25em;
+	font-style: bold;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding: 5rem 6rem;
+	text-align: center;
+	line-height: 1.5;
+	padding-bottom: 0;
+}
+.subtitle span { 
+	display: none;
+}
+.subtitle:after {
+	position: absolute;
+	content: var(--subtitle);
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	font-size: 1.25em;
+	font-style: normal;
+	font-weight: 100;
+	color: rgba(255, 255, 255, 0.8);
+	padding: 0rem 0rem;
+	text-align: center;
+}
+
+#links {
+	margin-left: 28.5%;
+	margin-right: 28.5%;
+	margin-top: 3.25em;
+}
+.content a {
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	font-size: 1.2em;
+	font-weight: 100;
+	color: #FFFFFF;
+}
+.content a:hover {
+	text-decoration: underline #1E6BB8;
+}
+.content a:link {
+    color: #1E6BB8;
+}
+.content a:visited {
+    color: #1E6BB8;
 }
