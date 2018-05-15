@@ -27,8 +27,7 @@ p {
 	padding: 0;
 	margin: 0;
 }
-.title span { display: none; }
-.title:after {
+.title {
 	content: var(--title);
 	font-family: "Open Sans", sans-serif;
 	text-decoration: none;
@@ -41,15 +40,14 @@ p {
 	line-height: 1.5;
 	padding-bottom: 0;
 }
-.subtitle span { display: none; }
-.subtitle:after {
+.subtitle {
 	content: var(--subtitle);
 	font-family: "Open Sans", sans-serif;
 	text-decoration: none;
 	font-size: 1.25em;
 	font-style: normal;
 	font-weight: 100;
-	color: rgba(255, 255, 255, 0.8);
+	color: rgba(255, 255, 255, 0.7);
 	padding: 0rem 0rem;
 	text-align: center;
 }
