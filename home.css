@@ -1,19 +1,22 @@
 :root {
+	--bgcolor: #155799;
+	--fgcolor: #159957;
+	--urlcolor: #1E6BB8;
     --title: 'Runar Fredagsvik';
 	--subtitle: 'Welcome to my site!';
 }
 
 html, body {
 	background-color: #222;
-    padding:0;
-    margin:0;
+    padding: 0;
+    margin: 0;
 	height: 100%;
 	font-family: sans-serif;
 	-webkit-text-size-adjust: 100%;
 }
 
 p {
-    color: #FFF;
+    color: #FFFFFF;
 }
 
 #wrapper {
@@ -24,13 +27,10 @@ p {
 	padding: 0;
 	margin: 0;
 }
-.title span { 
-	display: none;
-}
+.title span { display: none; }
 .title:after {
-	position: absolute;
 	content: var(--title);
-	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	text-decoration: none;
 	font-size: 3.25em;
 	font-style: bold;
@@ -41,13 +41,10 @@ p {
 	line-height: 1.5;
 	padding-bottom: 0;
 }
-.subtitle span { 
-	display: none;
-}
+.subtitle span { display: none; }
 .subtitle:after {
-	position: absolute;
 	content: var(--subtitle);
-	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	text-decoration: none;
 	font-size: 1.25em;
 	font-style: normal;
@@ -63,18 +60,24 @@ p {
 	margin-top: 3.25em;
 }
 .content a {
-	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
 	text-decoration: none;
 	font-size: 1.2em;
 	font-weight: 100;
 	color: #FFFFFF;
 }
 .content a:hover {
-	text-decoration: underline #1E6BB8;
+	/* text-decoration: underline #1E6BB8; */
+	animation: urlhover 0.75s;
 }
-.content a:link {
-    color: #1E6BB8;
+@keyframes urlhover {
+    from {
+		color: var(--bgcolor);
+	}
+    to {
+		color: var(--fgcolor);
+	}
 }
-.content a:visited {
-    color: #1E6BB8;
-}
+
+.content a:link { color: var(--bgcolor); }
+.content a:visited { color: var(--bgcolor); }
