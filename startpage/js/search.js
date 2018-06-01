@@ -13,6 +13,29 @@ function search(e) {
     }
 }
 
+document.getElementById('search').style.display = 'flex';
+document.getElementById('search-field').focus();
+
+window.onload = function() {
+    document.getElementById('search').onclick = function searchClick() {
+        document.getElementById('search').style.display = 'flex';
+        document.getElementById('search-field').focus();
+    }
+}
+
+document.addEventListener("keydown", event => {
+    if (event.keyCode == 45) {
+        document.getElementById('search').style.display = 'flex';
+        document.getElementById('search-field').focus();
+    }
+    if (event.keyCode == 27) {   // Esc to close search
+        document.getElementById('search-field').value = '';
+        document.getElementById('search-field').blur();
+        document.getElementById('search').style.display = 'none';
+    }
+});
+
+/*
 document.addEventListener("keydown", event => {
     if (event.keyCode == 32) {          // Spacebar code to open search
         document.getElementById('search').style.display = 'flex';
@@ -23,3 +46,4 @@ document.addEventListener("keydown", event => {
         document.getElementById('search').style.display = 'none';
     }
 });
+*/
