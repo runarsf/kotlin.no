@@ -6,13 +6,43 @@
 		<center>
 			<div class="round-button">
 				<div class="round-button-circle">
-					<a onclick="audio.play()" class="round-button">NUT</a>
+					<a onclick="f1();" class="round-button">NUT</a>
 				</div>
 			</div>
 		</center>
 		
 		<script>
-			var audio = new Audio('nut.mp3');
+			var audio0 = new Audio('nut0.mp3');
+			var audio1 = new Audio('nut1.mp3');
+			var audio2 = new Audio('nut2.mp3');
+			var audio3 = new Audio('nut3.mp3');
+			
+			var a0 = 0;
+			
+			function f1() {
+				
+				if (a0 = 0) {
+					a0 = 1;
+					audio0.play();
+					console.clear();
+					console.log(a0);
+				} else if (a0 = 1) {
+					a0 = 2;
+					audio1.play();
+					console.clear();
+					console.log(a0);
+				} else if (a0 = 2) {
+					a0 = 3;
+					audio2.play();
+					console.clear();
+					console.log(a0);
+				} else if (a0 = 3) {
+					a0 = 0;
+					audio3.play();
+					console.clear();
+					console.log(a0);
+				}
+			}
 		</script>
 	</body>
 </html>
