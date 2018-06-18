@@ -4,14 +4,14 @@
 #line {
     width: 100%;
     height: 150%;
-    background: linear-gradient(
+    /* background: linear-gradient(
         135deg,
         rgba(143, 36, 237, 1) 20%,
         rgba(143, 36, 237, 1) 20%,
         rgba(143, 36, 237, 1) 22%,
         rgba(143, 36, 237, 1) 25%,
         rgba(16, 124, 179, 1) 100%
-    );
+    ); */
     animation: line 0.25s ease forwards;
 }
 @keyframes line {
@@ -20,14 +20,15 @@
 }
 
 body {
-    background: linear-gradient(
+    /* background: linear-gradient(
         135deg,
         rgba(143, 36, 237, 1) 20%,
         rgba(143, 36, 237, 1) 20%,
         rgba(143, 36, 237, 1) 22%,
         rgba(143, 36, 237, 1) 25%,
         rgba(16, 124, 179, 1) 100%
-      );
+      ); */
+	background: rgb(74, 79, 92);
     /* background-image: url("forest.jpg"); */
     margin: 0px;
 }
