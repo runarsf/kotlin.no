@@ -1,0 +1,31 @@
+html, body {
+	background-color: #212121;
+}
+
+p {
+    color: #FFFFFF;
+}
+a {
+    color: #FFFFFF;
+}
+
+.controls {
+}
+.comboAdd {
+	position: absolute;
+	margin-left: 50%;
+	margin-top: 25%;
+	font-size: 5em;
+	height: 50px;
+	width: 50px;
+	background-color: rgb(51, 5, 255);
+}
+.comboReset {
+	position: absolute;
+	margin-left: 53%;
+	margin-top: 25%;
+	font-size: 5em;
+	height: 50px;
+	width: 50px;
+	background-color: rgb(255, 5, 5);
+}
