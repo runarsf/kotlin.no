@@ -74,7 +74,7 @@
 
                 var strap = val.trim();
                 var str = val;
-
+				
                 if (strap.startsWith("r:")) {
                 	window.open("https://reddit.com/r/" + val.replace("r:", "").replace(" ", ""));
                 } else if (strap.startsWith("o:")) {
@@ -88,9 +88,9 @@
                     window.open("https://" + newVal);
                 }
                 else {
+					open(location, '_self').close();
                     window.open("https://duckduckgo.com/?q=" + str.trim());
                 }
-				window.close();
             }
         }
 
