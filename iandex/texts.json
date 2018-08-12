@@ -1,9 +1,9 @@
 {
-	"mla": [
+	"milton": [
 		{
-			"Title": "arkady_journal77",
-			"Type": "txt",
-			"Content":
+			"title": "arkady_journal77",
+			"type": "txt",
+			"content":
 				[
 					"Officially began work on Archive today.",
 					"Contributors from every country on Earth while",
@@ -15,9 +15,9 @@
 				]
 		},
 		{
-			"Title": "straton_of_stageira",
-			"Type": "wiki",
-			"Content":
+			"title": "straton_of_stageira",
+			"type": "wiki",
+			"content":
 				[
 					"STRATON of Stageira (311 - 254 BC) was a Greek",
 					"materialist philosopher associated with the",
