@@ -5,6 +5,7 @@ function open(textFile) {
 			console.log('jQuery: successfully imported json');
 			$.each(data.milton, function(i, mla) {
 				if(textFile === mla.title+'.'+mla.type) {
+					$('ul').empty();
 					scratchpad();
 					$('ul').append('<li>'+mla.title+'.'+mla.type+'</li>');
 					$('ul').append('<li>'+mla.content.join('<br/>')+'</li>&nbsp')
