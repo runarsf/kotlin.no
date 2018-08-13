@@ -1,18 +1,20 @@
 // https://www.gun.io/blog/multi-line-strings-in-json
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
-// file = talos.mla['arkady_journal77'].content.join('\n');
-
-$(function(){
-	$.getJSON('texts.json',function(data){
-		console.log('jQuery: successfully imported json');
-		$.each(data.milton,function(i,mla){
-			$('ul').append('<li>'+mla.title+'.'+mla.type+'</li>');
-			$('ul').append('<li>'+mla.content+'</li>&nbsp')
+function open(textFile) {
+	$(function(){
+		$.getJSON('texts.json', function(data) {
+			console.log('jQuery: successfully imported json');
+			$.each(data.milton, function(i, mla) {
+				if(textFile === mla.title+'.'+mla.type) {
+					scratchpad();
+					$('ul').append('<li>'+mla.title+'.'+mla.type+'</li>');
+					$('ul').append('<li>'+mla.content.join('<br/>')+'</li>&nbsp')
+				}
+			});
+		}).error(function(){
+			console.log('jQuery: json error');
 		});
-	}).error(function(){
-		console.log('jQuery: json error');
 	});
-});
+}
 
 
 function scratchpad() {
