@@ -97,16 +97,68 @@ ul {
 	border-right: 4px solid var(--bordercolor);
 }
 
-#scratchpad p {
-	color: beige; 
+#scratchpad ul {
+	color: beige;
+	list-style: none;
 	font-family: "Courier";
-	font-size: 16px;
+	font-size: 28px;
+	font-weight: 500;
 	width: 100%;
-	margin: 10px 0 0 10px;
-	white-space: nowrap;
-	overflow: hidden;
+	line-height: 30px;
+	margin: 35px 10px 0 10px;
+	white-space: pre-wrap;
+	width: 90%;
+	animation: type 2s steps(60, end);
+}
+
+#button {
+	text-indent: -9999px;
+	line-height: 0;
+
+	z-index: 2;
+	visibility: hidden;
+	width: 40%;
+	height: 3%;
+	justify-content: center;
+	background: var(--bgcolor);
+	position: fixed;
+	left: 50%;
+	bottom: 3%;
+	transform: translate(-50%, -50%);
+
+	border: 3px solid var(--bordercolor);
+}
+#button::after {
+	text-indent: initial;
+	line-height: 1;
+	display: block;
+	content: "Close";
+}
+#button:hover {
+	cursor: pointer;
+	border: 3px solid #7c7c7cc9;
+}
+
+#allfiles {
+	visibility: hidden;
+	z-index: 2;
+	position: absolute;
 	width: 100%;
-	animation: type 4s steps(60, end); 
+	height: 100%;
+	background: #000000be;
+}
+#allfiles ul {
+	color: beige;
+	list-style: none;
+	font-family: "Courier";
+	font-size: 25px;
+	font-weight: 500;
+	width: 100%;
+	line-height: 35px;
+	margin: 35px 10px 0 10px;
+	white-space: pre-wrap;
+	width: 90%;
+	animation: type 2s steps(60, end);
 }
 
 @keyframes type {

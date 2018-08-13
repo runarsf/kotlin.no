@@ -2,6 +2,7 @@
 	"milton": [
 		{
 			"title": "arkady_journal77",
+			"adminNotes": "",
 			"type": "txt",
 			"terminal": "",
 			"content":
@@ -17,6 +18,7 @@
 		},
 		{
 			"title": "straton_of_stageira",
+			"adminNotes": "",
 			"type": "wiki",
 			"terminal": "",
 			"content":
@@ -31,6 +33,35 @@
 					"commentaries on Aristotle were considered an",
 					"important work. Much of his writing was lost in the",
 					"destruction of the Library of Alexandria."
+				]
+		},
+		{
+			"title": "a_simple_principle",
+			"adminNotes": " - fix href",
+			"type": "html",
+			"terminal": "",
+			"content":
+				[
+					"<a href=\"45 52 52 4F 52 3A 20 46 49 4C 45 53 20 4D",
+					"49 53 53 49 4E 47<",
+					"",
+					"Though Straton himself never used the term, his",
+					"remark about the inescapable materiality of life -",
+					"that like the bronze giant Talos, \"even the most",
+					"faithful philosopher cannot live without his blood\"",
+					"- ultimately became know as the Talos Principle.",
+					"What seemingly enraged many of his contemporaries",
+					"and a significant number of later thinkers is the",
+					"principle's simplicity and unassailability, which",
+					"(according to a fragment found in Miletus) \"cut",
+					"through their thetorical webs, which sought to",
+					"tangle the lsitener with fanciful words and",
+					"thoughts of the heavens, like Alexander's sword",
+					"through the Gordian Knot.\"",
+					"",
+					"Diogenes Laertius makes mention of a dialogue by",
+					"Anaximander of Chalcedon that expanded greatly on",
+					"the Talos Principle, but that work remains lost."
 				]
 		}
 	]
