@@ -6,7 +6,8 @@ $(function(){
 	$.getJSON('texts.json',function(data){
 		console.log('jQuery: successfully imported json');
 		$.each(data.milton,function(i,mla){
-			$('ul').append('<li>'+mla.title+' '+mla.type+'</li>');
+			$('ul').append('<li>'+mla.title+'.'+mla.type+'</li>');
+			$('ul').append('<li>'+mla.content+'</li>&nbsp')
 		});
 	}).error(function(){
 		console.log('jQuery: json error');
@@ -34,4 +35,14 @@ document.addEventListener("keydown", event => {
 
 function colorScheme(bgColor, textColor, rulerColor) {
 	document.getElementById("body").style.backgroundColor = bgColor;
+	document.getElementById("terminput").style.backgroundColor = bgColor;
+	document.getElementById("jsontext").style.color = textColor;
+}
+function loadScheme(scheme) {
+	if(scheme === "solarizedDark") {
+		colorScheme("#002B36", "#839496");
+	}
+	else if(scheme === "solarizedLight") {
+		colorScheme("#FDF6E3");
+	}
 }

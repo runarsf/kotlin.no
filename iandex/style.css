@@ -4,7 +4,7 @@
 	--bordercolor: #898989;
 }
 /* http://www.css3.info/preview/rounded-border/ */
-/* https://goo.gl/QKi8YG */
+/* https://goo.gl/QKi8YG <--- terminal visuals*/
 html, body {
 	padding: 0;
 	margin: 0;
@@ -41,6 +41,13 @@ textarea p {
 	overflow: hidden;
 	width: 100%;
 	animation: type 4s steps(60, end);
+}
+
+ul {
+	z-index: 2;
+	color: white;
+	position: absolute;
+	margin: 30px 20px 30px 20px;
 }
 
 #bgblur {
