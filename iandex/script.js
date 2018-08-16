@@ -139,6 +139,12 @@ function keyRegister(keyCode1, keyCode2, runFunction) {
 
 keyRegister(71, 71, google);		// gg
 keyRegister(84, 82, translate);		// tr
+
+function helpMe() {
+	document.onHelp = function () { return (false); } // remove default help(f1) function for document
+	window.onHelp = function () { return (false); } // remove default help(f1) function for window
+	alert('Work in progess, expect a help menu here soon');
+};
 function linkIt(url, args) {
 	if(args === 'self') {
 		window.open(url+', "self"');
