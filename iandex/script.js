@@ -108,7 +108,7 @@ function importFile(file) {
 // keycodes can be found at http://keycode.info/
 // this === document.activeElement
 function keyRegister(keyCode1, keyCode2, runFunction) {
-	let id = keyCode1+'+'+keyCode2;
+	let id = keyCode1+'.'+keyCode2+'.'+Math.random()*100;
 	this[id] = null; // In this setup, this[id] can be thought of as the previous key pressed
 	console.log(this[id]+'-1');
 	document.addEventListener('keydown', event => {
