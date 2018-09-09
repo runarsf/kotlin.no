@@ -1,0 +1,24 @@
+:root {
+	--bgcolor: #2f343f;
+}
+
+html, body {
+	background-color: var(--bgcolor);
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	/* overflow: hidden; */
+	pointer-events: none;
+}
+
+p, a, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 36px;
+	color: azure;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
