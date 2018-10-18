@@ -1,29 +1,50 @@
 :root {
-	--bgcolor: rgb(0, 0, 0);
-	--fgcolor: rgb(30, 30 ,30);
+	--gbcolor: #252233;
+	--fgcolor: #3c3b52;
+	--bordercolor: #312E3F;
 }
 
 html, body {
-	background-color: var(--bgcolor);
+	background: #282537;
+	background-image: -webkit-linear-gradient(#3c3b52 0%, #252233 80%, #252233 100%);
+	background-image: -moz-linear-gradient(#3c3b52 0%, #252233 80%, #252233 100%);
+	background-image: -o-linear-gradient(#3c3b52 0%, #252233 80%, #252233 100%);
+	background-image: linear-gradient(#3c3b52 0%, #252233 80%, #252233 100%);
+
 	padding: 0;
 	margin: 0;
 	height: 100%;
 	width: 100%;
 	font-family: 'Courier New', Courier, monospace;
-	color: rgb(41, 235, 41);
 }
 
 section {
+}
+
+main {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
-#input {
-	font-size: 14px;
-	width: 100%;
-	color: white;
-	background: black;
-	border: 0;
+.box {
+	width: 225px;
+	height: 400px;
+    padding: 0px; /* Space inside box */
+    margin: 25px; /* Space between boxes */
+    border: 1px solid var(--bordercolor);
+    background-color: #25223350;
+}
+
+ul {
+	position: relative;
+	overflow: hidden;
 }
