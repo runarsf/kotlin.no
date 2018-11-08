@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-		<head>
-			<meta charset='UTF-8'>
-			<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-			<meta name='viewport' content='width=device-width, initial-scale=1'>
-			<link rel='stylesheet' type='text/css' href='style.css' media='screen' />
-			<link rel='icon' href='favicon.ico'>
-			<script type='text/javascript' src='jquery.min.js'></script>
-			<script src='script.js'></script>
-			<title>~</title>
-		</head>
+<html>
+	<head>
+		<meta http-equiv='content-type' content='text/html' charset='utf-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='icon' type='image/png' href='favicon.ico' />
+		<link rel='stylesheet' type='text/css' media='screen' href='style.css' />
+		<script type='text/javascript' src='jquery.min.js'></script>
+		<script type='text/javascript' src='script.js'></script>
+		<title>~</title>
+	</head>
 
-		<body>
-			
-			<section></section>
+	<body onload='startTime()'>
 
-			<main>
-				<div class="box">
-					<ul>
-						<li><a href="https://youtube.com/">YouTube</a></li>
-					</ul>
-				</div>
-				<div class="box"></div>
-			</main>
-
-		</body>
+		<input id='engineInput' type='text' placeholder='https://google.com/#q=' onkeypress='return setEngine(event)' onfocus='setFocus()' onblur='setUnfocus()'/>
+		<p id='search-text'>search</p>
+		<input id='search-field' type='text' placeholder='https://' onkeypress='return search(event)' onfocus='setFocus()' onblur='setUnfocus()'/>
+		
+		<main>
+			<h2 id='time'></h2>
+		
+			<section>
+			</section>
+		</main>
+		
+	</body>
 </html>
