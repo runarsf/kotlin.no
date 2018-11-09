@@ -45,7 +45,9 @@ keyRegister(84, 82, translate);		// tr
 keyRegister(82, 82, reload);		// rr
 keyRegister(112, null, helpMe);		// F1
 keyRegister(71, 72, gitHub);		// gh
+keyRegister(89, 84, youTube);		// gh
 function gitHub() { linkIt('https://github.com/') };
+function youTube() { linkIt('https://youtube.com/') };
 function google() { linkIt('https://google.com/') };
 function translate() { linkIt('https://translate.google.com/') };
 function reload() { location.reload() };
@@ -61,6 +63,22 @@ function helpMe() {
 		visibility = 'hidden';
 	} else if(visibility === 'hidden') {
 		visibility = 'visible';
+	}
+}
+
+function linkIt(url) {
+	redir = getCookie('redirect');
+	if(redir !== true || redir !== false) {
+		redir = false;
+	}
+	if(url === "") {
+		alert("Missing URL");
+	}
+	else if(redir === true) {
+		window.open(url, "_self");
+	}
+	else if(redir !== true) {
+		window.open(url);
 	}
 }
 
