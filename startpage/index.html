@@ -13,17 +13,43 @@
 
 	<body onload='startTime()'>
 
-		<input id='engineInput' type='text' placeholder='https://google.com/#q=' onkeypress='return setEngine(event)' onfocus='setFocus()' onblur='setUnfocus()'/>
 		<p id='search-text'>search</p>
 		<input id='search-field' type='text' placeholder='https://' onkeypress='return search(event)' onfocus='setFocus()' onblur='setUnfocus()'/>
 
 		<main>
 			<h2 id='time'></h2>
 
-			<section>
-				<ul></ul>
-				<div class="vr"></div>
+			<section id="section">
+
+				<div id="settingsPanel">
+					<input id='engineInput' type='text' placeholder='https://google.com/#q=' onkeypress='return setEngine(event)' onfocus='setFocus()' onblur='setUnfocus()'/>
+				</div>
+
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<div id="vr"></div>
+				<div id="pac"></div>
 			</section>
+
+			<div id="cog" onclick="settings()"></div>
 		</main>
 
 	</body>

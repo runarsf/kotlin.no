@@ -23,12 +23,6 @@ p, a, h1, h2, h3 {
 	margin: 0;
 	padding: 0;
 }
-li a:hover::before {
-	content:'>';
-	cursor: pointer;
-	position: absolute;
-	left: -15px;
-}
 
 main {
 	width: inherit;
@@ -40,31 +34,129 @@ main {
 }
 
 #time {
+	position: relative;
+	margin-left: 0;
 	font-size: 48px;
 	color: #FFF;
+	transition: 1s;
 }
 
 section {
+	padding: 0;
+	margin: 0;
 	width: 1100px;
 	height: 300px;
 	background-color: #333333;
 	position: relative;
-	display: block;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	overflow: hidden;
 }
 
-section ul {
-	width: 200px;
-	height: 96%;
-	border: 2px solid #FFFFFF66;
+ul {
+	width: 250px;
+	height: 93%;
+	border: 2px solid #44444466;
+	list-style: none;
+	overflow: hidden;
+	padding-left: 5px;
+	margin-top: 15px;
+	transition: .2s;
 }
 
-.vr {
+section li {
+	padding: 0;
+	margin: 0;
+	left: 0;
+	margin-top: 5px;
+	margin-left: 10px;
+	text-align: left;
+	font-size: 18px;
+
+	position: relative;
+
+	color: #f4f4f4;
+}
+
+li a:link, li a:visited {
+	color: #f4f4f4;
+	text-decoration: none;
+}
+
+li a:hover::before {
+	content:'>';
+	position: absolute;
+	cursor: pointer;
+	left: -15px;
+	transition: .5s;
+}
+
+#settingsPanel {
+	width: 98%;
+	height: 0;
+	top: 7px;
+	position: absolute;
+	border: 2px solid #44444466;
+	list-style: none;
+	overflow: hidden;
+	padding-top: 5px;
+	padding-left: 5px;
+	visibility: hidden;
+	transition: .1s;
+}
+
+#cog {
+	position: relative;
+	height: 10px;
+	width: 40px;
+	border-radius: 0 0 90px 90px;
+	background: gray;
+	transition: .2s;
+}
+#cog:hover {
+	height:20px;
+	width:40px;
+	cursor: pointer;
+	border-color: white;
+	border-radius: 0 0 90px 90px;
+	background: gray;
+}
+
+#pac {
+	position: absolute;
+	right: -5px;
+	bottom: -5px;
+	width: 0px;
+	height: 0px;
+	border-right: 10px solid transparent;
+	border-top: 10px solid gray;
+	border-left: 10px solid gray;
+	border-bottom: 10px solid gray;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	transform: rotate(45deg);
+	transition: .5s;
+}
+#pac:hover {
+	transform: rotate(210deg);
+	right: 0;
+	bottom: 0;
+	border-top: 10px solid yellow;
+	border-left: 10px solid yellow;
+	border-bottom: 10px solid yellow;
+}
+
+#vr {
 	position: absolute;
 	height: 96%; /* = 100% - ( 2 * top) */
 	width: 2px;
 	top: 2%;
 	left: 50%;
 	border-left: 2px solid #FFFFFF66;
+	transition: .1s;
 }
 
 /*---------------------------*/

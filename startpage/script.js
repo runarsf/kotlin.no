@@ -2,7 +2,7 @@
 $(document).ready(
 	function()
 	{
-		
+
 	}
 );
 
@@ -52,6 +52,35 @@ function google() { linkIt('https://google.com/') };
 function translate() { linkIt('https://translate.google.com/') };
 function reload() { location.reload() };
 
+function settings() {
+	const x = document.getElementById('vr');
+	const y = document.getElementById('settingsPanel');
+	const t = document.getElementById('time');
+	const list = document.getElementsByTagName("ul");
+	if(list[0].style.height == "0px") {
+		for(let i = 0; i <= list.length; i++) {
+			t.style.marginLeft = "0px";
+			x.style.visibility = "visible";
+			x.style.height = "96%";
+			list[i].style.visibility = "visible";
+			list[i].style.height = "93%";
+			list[i].style.marginTop = "15px";
+			y.style.height = "0px";
+			y.style.visibility = "hidden";
+		}
+	} else {
+		for(let i = 0; i <= list.length; i++) {
+			t.style.marginLeft = "860px";
+			x.style.height = "0px";
+			x.style.visibility = "hidden";
+			list[i].style.height = "0px";
+			list[i].style.marginTop = "-264px";
+			list[i].style.visibility = "hidden";
+			y.style.visibility = "visible";
+			y.style.height = "93%";
+		}
+	}
+}
 
 visibility = 'visible';
 function helpMe() {
@@ -123,7 +152,7 @@ function search(e) {
 document.addEventListener('keydown', evt => {
 	let field = document.getElementById('search-field');
 	let text = document.getElementById('search-text');
-	
+
 	if (evt.keyCode == 32) { // space
 		if(field.style.bottom <= 0) {
 			field.value = '';
@@ -202,8 +231,12 @@ function setEngine(ev) {
 	ngin = document.getElementById('engineInput').value;
 	if(ev.keyCode == 13) {
 		if(ngin === "") {
-			ngin = "https://google.com/#q=";
-			alert("Set search engine to google")
+			if (confirm('Do you want to reset to the default search engine (Google)?')) {
+				ngin = "https://google.com/#q=";
+				alert("Set search engine to google")
+			} else {
+				ngin = getCookie('engine');
+			}
 		} else if(ngin.startsWith("https://") || ngin.startsWith("http://")) {
 			alert("Set search engine to "+ngin);
 		} else {
