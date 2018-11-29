@@ -2,17 +2,48 @@
 $(document).ready(
 	function()
 	{
-
+		currentEngine();
+		getNotes();
 	}
 );
+let ngin;
+function setCookie(cname, cvalue, cexpires, cpath) {
+	if(!cvalue) {
+		var cvalue = null;
+	}
+	if(!cexpires) {
+		var cexpires = 'Tue, 19 Jan 2038 03:14:07 UTC';
+	}
+	if(!cpath) {
+		var cpath = '/';
+	}
+	document.cookie = cname + '=' + cvalue + '; expires=' + cexpires + '; path=' + cpath;
+}
+function getCookie(cname) {
+	var cname = cname + '=';
+	var dcookie = decodeURIComponent(document.cookie);
+	var scookie = dcookie.split(';');
+	for(var i = 0; i < scookie.length; i++) {
+		var c = scookie[i];
+		while (c.charAt(0) === ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(cname) === 0) {
+			return c.substring(cname.length, c.length);
+		}
+	}
+	return '';
+}
 
 let enableKeybinds = true;
-function setFocus() {
-	enableKeybinds = false;
-	return enableKeybinds;
-}
-function setUnfocus() {
-	enableKeybinds = true;
+function setFocus(type) {
+	if(type === "focused") {
+		enableKeybinds = false;
+	} else if (type === "unfocused") {
+		enableKeybinds = true;
+	} else {
+		enableKeybinds = true;
+	}
 	return enableKeybinds;
 }
 function keyRegister(keyCode1, keyCode2, runFunction) {
@@ -43,13 +74,12 @@ function keyRegister(keyCode1, keyCode2, runFunction) {
 keyRegister(71, 71, google);		// gg
 keyRegister(84, 82, translate);		// tr
 keyRegister(82, 82, reload);		// rr
-keyRegister(112, null, helpMe);		// F1
 keyRegister(71, 72, gitHub);		// gh
 keyRegister(89, 84, youTube);		// gh
-function gitHub() { linkIt('https://github.com/') };
-function youTube() { linkIt('https://youtube.com/') };
-function google() { linkIt('https://google.com/') };
-function translate() { linkIt('https://translate.google.com/') };
+function gitHub() { window.open('https://github.com/') };
+function youTube() { window.open('https://youtube.com/') };
+function google() { window.open('https://google.com/') };
+function translate() { window.open('https://translate.google.com/') };
 function reload() { location.reload() };
 
 function settings() {
@@ -57,7 +87,7 @@ function settings() {
 	const y = document.getElementById('settingsPanel');
 	const t = document.getElementById('time');
 	const list = document.getElementsByTagName("ul");
-	if(list[0].style.height == "0px") {
+	if(list[0].style.height === "0px") {
 		for(let i = 0; i <= list.length; i++) {
 			t.style.marginLeft = "0px";
 			x.style.visibility = "visible";
@@ -82,54 +112,40 @@ function settings() {
 	}
 }
 
-visibility = 'visible';
-function helpMe() {
-	document.onHelp = function () { return (false); } // remove default help(f1) function for document
-	window.onHelp = function () { return (false); } // remove default help(f1) function for window
-	document.getElementById('info').style.visibility = visibility;
-	document.getElementById('bgblur').style.visibility = visibility;
-	if(visibility === 'visible') {
-		visibility = 'hidden';
-	} else if(visibility === 'hidden') {
-		visibility = 'visible';
+let notes;
+function notepad() {
+	let np = document.getElementById('notepad');
+	if(np.style.width === "400px") {
+		np.style.width = "0px";
+	} else {
+		np.style.width = "400px";
 	}
 }
-
-function linkIt(url) {
-	redir = getCookie('redirect');
-	if(redir !== true || redir !== false) {
-		redir = false;
-	}
-	if(url === "") {
-		alert("Missing URL");
-	}
-	else if(redir === true) {
-		window.open(url, "_self");
-	}
-	else if(redir !== true) {
-		window.open(url);
-	}
+function saveNotes() {
+	notes = document.getElementById('notearea');
+	setCookie("notes", notes.value);
 }
+function getNotes() {
+	notes = getCookie('notes');
+	document.getElementById('notearea').value = notes;
+}
+//https://roopeshreddy.wordpress.com/tag/localstorage/
 
 function startTime() {
 	var today = new Date();
 	var h = today.getHours();
 	var m = today.getMinutes();
 	var s = today.getSeconds();
-	m = checkTime(m);
-	s = checkTime(s);
+	if (m < 10) { m = '0' + m };
+	if (s < 10) { s = '0' + s };
 	document.getElementById('time').innerHTML = h + ':' + m + ':' + s;
 	var t = setTimeout(startTime, 500);
-}
-function checkTime(i) {
-	if (i < 10) { i = '0' + i }; // add zero in front of numbers < 10
-	return i;
 }
 
 var tld = ["com", "net", "org", "no", "hiphop", "coffee", "io"];
 function search(e) {
 	currentEngine();
-	if (e.keyCode == 13) { // enter
+	if (e.keyCode === 13) { // enter
 		let val = document.getElementById('search-field').value;
 		let strap = val.trim();
 		var pop = val.split('.').pop();
@@ -153,30 +169,22 @@ document.addEventListener('keydown', evt => {
 	let field = document.getElementById('search-field');
 	let text = document.getElementById('search-text');
 
-	if (evt.keyCode == 32) { // space
+	if (evt.keyCode === 32) { // space
 		if(field.style.bottom <= 0) {
 			field.value = '';
 		}
 		field.focus();
 		field.style.bottom = '20%';
 		text.style.bottom = '30%';
-		visblr = document.getElementById('info').style.visibility;
-		if(visblr === "visible") {
-			helpMe();
-		}
 	}
-	else if (evt.keyCode == 27) { // esc
+	else if (evt.keyCode === 27) { // esc
 		hideSearch();
-		visblr = document.getElementById('info').style.visibility;
-		if(visblr === "visible") {
-			helpMe();
-		}
 	}
-	else if (evt.keyCode == 38) {
+	else if (evt.keyCode === 38) {
 		ngin = getCookie('engine');
 		document.getElementById('engineInput').value = ngin;
 	}
-	else if (evt.keyCode == 40) {
+	else if (evt.keyCode === 40) {
 		document.getElementById('engineInput').value = "";
 	}
 });
@@ -189,35 +197,6 @@ function hideSearch() {
 	text.style.bottom = '-10%';
 }
 
-function setCookie(cname, cvalue, cexpires, cpath) {
-	if(!cvalue) {
-		var cvalue = null;
-	}
-	if(!cexpires) {
-		var cexpires = 'Tue, 19 Jan 2038 03:14:07 UTC';
-	}
-	if(!cpath) {
-		var cpath = '/';
-	}
-	document.cookie = cname + '=' + cvalue + '; expires=' + cexpires + '; path=' + cpath;
-}
-function getCookie(cname) {
-	var cname = cname + '=';
-	var dcookie = decodeURIComponent(document.cookie);
-	var scookie = dcookie.split(';');
-	for(var i = 0; i < scookie.length; i++) {
-		var c = scookie[i];
-		while (c.charAt(0) == ' ') {
-			c = c.substring(1);
-		}
-		if (c.indexOf(cname) == 0) {
-			return c.substring(cname.length, c.length);
-		}
-	}
-	return '';
-}
-
-let ngin;
 function currentEngine() {
 	ngin = getCookie('engine');
 	if(ngin === "") {
@@ -229,7 +208,7 @@ function currentEngine() {
 }
 function setEngine(ev) {
 	ngin = document.getElementById('engineInput').value;
-	if(ev.keyCode == 13) {
+	if(ev.keyCode === 13) {
 		if(ngin === "") {
 			if (confirm('Do you want to reset to the default search engine (Google)?')) {
 				ngin = "https://google.com/#q=";

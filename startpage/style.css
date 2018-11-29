@@ -159,6 +159,65 @@ li a:hover::before {
 	transition: .1s;
 }
 
+#notepad {
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 0px;
+	position: fixed;
+	transition: .4s;
+}
+
+#notepad p {
+	color: white;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	padding-top: 25px;
+	font-size: 24px;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#notepad button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4182C4;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px #999;
+}
+
+#notepad button:hover {background-color: #1475B8}
+
+#notepad button:active {
+  background-color: #1475B8;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#notepad textarea {
+	text-align: left;
+	padding-top: 75px;
+	padding-left: 10px;
+	padding-right: 500px;
+	color: white;
+	font-size: 16px;
+	background-color: #343943;
+	border: none;
+	border-left: 3px solid #282C34;
+	height: 100%;
+	width: 95%;
+}
+
 /*---------------------------*/
 /*     General KBD Style     */
 /*---------------------------*/
