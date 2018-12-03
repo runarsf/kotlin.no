@@ -1,0 +1,41 @@
+:root {
+	--bgcolor: #2f343f;
+}
+
+html, body {
+	background-color: var(--bgcolor);
+	padding: 0;
+	margin: 100px 0 0 75px;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	overflow: hidden;
+}
+
+img {
+	position: fixed;
+	left: 0;
+	top: 0;
+	pointer-events: none;
+}
+
+p, h1, a:visited, a:link {
+	color: white;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#header {
+	position: absolute;
+	font-size: 82px;
+	top: 10%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+section {
+	font-size: 62px;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='content-type' content='text/html' charset='utf-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<link rel='icon' type='image/png' href='favicon.ico' />
+		<link rel='stylesheet' type='text/css' media='screen' href='style.css' />
+		<script type='text/javascript' src='jquery.min.js'></script>
+		<script type='text/javascript' src='script.js'></script>
+		<title>~</title>
+	</head>
+
+	<body onload='startTime()'>
+
+		<input id='search-field' type='text' placeholder='https://' onkeypress='return search(event)' onfocus='setFocus("focused")' onblur='setFocus("unfocused")'/>
+		<p id='search-text'>search</p>
+
+		<main>
+			<h2 id='time'></h2>
+			<div id="notepad">
+				<p>Notes</p>
+				<button type="button" name="save" onclick="saveNotes()">Save</button>
+				<textarea name="notes" rows="8" cols="80" id="notearea" onfocus='setFocus("focused")' onblur='setFocus("unfocused")'></textarea>
+			</div>
+
+			<section id="section">
+
+				<div id="settingsPanel">
+					<input id='engineInput' type='text' placeholder='https://google.com/#q=' onkeypress='return setEngine(event)' onfocus='setFocus("focused")' onblur='setFocus("unfocused")'/>
+					<button type="button" name="save" class="js-change-theme">Dark/Light</button>
+				</div>
+
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<ul>
+					<li><a href="javascript:void(0)">aaa</a></li>
+					<li><a href="javascript:void(0)">bbb</a></li>
+					<li><a href="javascript:void(0)">ccc</a></li>
+				</ul>
+				<div id="vr"></div>
+				<div id="pac" onclick="notepad()"></div>
+			</section>
+
+			<div id="cog" onclick="settings()"></div>
+		</main>
+
+	</body>
+</html>
