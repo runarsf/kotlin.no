@@ -1,7 +1,7 @@
 root {
     --text-color: #FFFFFF;
 }
-/*»*/
+
 html, body {
     position: absolute;
     width: 100%;
@@ -16,7 +16,7 @@ html, body {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
 }
 
@@ -31,13 +31,7 @@ section#input {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-}
-
-section#output {
-    width: 50%;
-    min-height: 100px;
-    background: red;
-    margin-bottom: 15%;
+    margin-top: 15%;
 }
 
 p#prefix {
@@ -62,6 +56,37 @@ input#input-field {
     line-height: 100px;
     font-size: 36px;
     color: white;
-    padding-left: 20px; /* TODO: Check padding vs line height */
+    padding-left: 20px; /* TODO: Check padding vs line height (e.g. small line height + more padding and reverse) */
+    padding-right: 20px;
+}
+
+section#output {
+    width: 50%;
+    min-height: 0px;
+    height: auto;
+
+    background: rgb(30, 40, 32);
+    border: 10px solid rgb(20, 43, 40);
+    border-top: none;
+}
+
+div#output-field p {
+    line-height: 0px;
+}
+
+div#output-field {
+    width: 100%;
+    height: auto;
+    background: transparent;
+    border: none;
+    resize: auto;
+    display: inline-block;
+    outline: none;
+
+    font-family: "Ubuntu Mono", Ubuntu, sans-serif;
+    line-height: auto;
+    font-size: 36px;
+    color: white;
+    padding-left: 20px; /* TODO: Check padding vs line height (e.g. small line height + more padding and reverse) */
     padding-right: 20px;
 }

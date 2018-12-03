@@ -6,19 +6,20 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='icon' type='image/png' href='favicon.ico' />
 		<link rel='stylesheet' type='text/css' media='screen' href='style.css' />
+        <script type='text/javascript' src='jquery.min.js'></script>
 		<script type='text/javascript' src='script.js'></script>
 		<title>~</title>
 	</head>
 
 	<body>
 
-        <section id="input">
+        <section id='input'>
             <p id='prefix'>»</p>
-            <input id='input-field' type='text' placeholder="type: 'help'" onkeypress='return parse(event)'/>
+            <input id='input-field' type='text' placeholder="type: 'help'" autofocus="autofocus" onkeypress='return parse(event)'/>
         </section>
 
         <section id='output'>
-            asd
+            <div id='output-field' contentEditable='true'></div>
         </section>
 
 	</body>
