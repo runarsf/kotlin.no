@@ -13,14 +13,13 @@
 
 	<body>
 
-        <section id='input'>
-            <p id='triangleOnRight'></p>
-            <kbd contentEditable='true' id='prefix' class='letter'>»</kbd>
-            <input id='input-field' type='text' placeholder="'help'" autofocus="autofocus" onkeypress='return parse(event)'/>
+        <section id='inputPlaceholder'>
+            <kbd contentEditable='true' id='prefix' class='letter' onfocus='setFocus("focused")' onblur='setFocus("unfocused")'>»</kbd>
+            <input id='input-field' type='text' placeholder="'help'" autofocus="autofocus" onkeypress='return parse(event)' onfocus='setFocus("focused")' onblur='setFocus("unfocused")'/>
         </section>
 
-        <section id='output'>
-            <div id='output-field' contentEditable='true'></div>
+        <section id='outputPlaceholder'>
+            <div id='output-field' contentEditable='true' onfocus='setFocus("focused")' onblur='setFocus("unfocused")'></div>
         </section>
 
 	</body>
