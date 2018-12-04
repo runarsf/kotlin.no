@@ -30,7 +30,7 @@ section#input {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     margin-top: 15%;
 }
 
@@ -43,7 +43,7 @@ p#prefix {
     font-family: "Ubuntu Mono", Ubuntu, sans-serif;
     line-height: 100px;
     font-size: 42px;
-    color: teal;
+    color: ;
     height: 100%;
     padding-left: 20px;
 }
@@ -56,8 +56,44 @@ input#input-field {
     line-height: 100px;
     font-size: 36px;
     color: white;
-    padding-left: 20px; /* TODO: Check padding vs line height (e.g. small line height + more padding and reverse) */
+    padding-left: 10px; /* TODO: Check padding vs line height (e.g. small line height + more padding and reverse) */
     padding-right: 20px;
+}
+
+kbd#prefix.kbd {
+    font-family: "Ubuntu Mono", Ubuntu, sans-serif;
+    line-height: auto;
+    font-size: 36px;
+    color: white;
+    background-color: teal;
+    margin-left: 10px;
+    padding: 15px 20px 15px 20px;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px teal inset;
+    -moz-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px teal inset;
+    -ms-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px teal inset;
+    -o-box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px teal inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2),0 0 0 2px teal inset;
+    border: 1px solid teal;
+    text-shadow: 0 1px 0 #444;
+}
+kbd#prefix.letter {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
+    font-family: "Ubuntu Mono", Ubuntu, sans-serif;
+    line-height: 100px;
+    font-size: 42px;
+    color: teal;
+    height: 100%;
+    padding: 15px 20px 15px 20px;
 }
 
 section#output {
@@ -68,15 +104,17 @@ section#output {
     background: rgb(30, 40, 32);
     border: 10px solid rgb(20, 43, 40);
     border-top: none;
+    transition: .5s;
 }
 
 div#output-field p {
     line-height: 0px;
 }
 
-div#output-field {
+div#output-field, a:visited, a:link {
     width: 100%;
     height: auto;
+    min-height: inherit;
     background: transparent;
     border: none;
     resize: auto;

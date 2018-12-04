@@ -47,8 +47,8 @@ function parse(e) {
         if(!(cmd.value.replace(/(\s*)/gm, "") === "")) {
             history[history.length] = cmd.value;
             histIndex = history.length;
+            submit(cmd.value);
         }
-        submit(cmd.value);
         cmd.value = "";
     } else if (e.keyCode === 38) { // up
         if(history != "") {
@@ -74,25 +74,57 @@ function parse(e) {
     }
 }
 
+function man(args) {
+    let out = document.getElementById('output-field');
+    out.innerHTML = "What manual page do you want?";
+    out.innerHTML = "Command: man<br/>"
+                  + "Description: an interface to the on-line reference manuals<br/>"
+                  + "Usage: man [command]"
+}
+
 function submit(arg) {
     let cmd = document.getElementById('input-field');
-    let out = document.getElementById("output-field");
+    let out = document.getElementById('output-field');
+    out.style.color = "white";
 
-    if(arg === "clear") {
-        cmd.value = "";
-        out.innerHTML = "";
-    } else if(arg === "help") {
-        out.innerHTML = "Available commands:<br/>"
-                      + "help<br/>"
-                      + "history<br/>"
-                      + "clear<br/>"
-                      + "echo<br/>";
-    } else if(arg === "history") {
-        out.innerHTML = history.join("<br/>");
-    } else if(arg.startsWith("echo")) {
-        out.innerHTML = arg.replace("echo", "");
-    } else if(arg === "" ) {} else {
-        out.innerHTML = "command not found: " + arg;
+    switch(arg) {
+        case 'cls':
+        case 'clear':
+            cmd.value = "";
+            out.innerHTML = "";
+            break;
+        case 'commands':
+        case 'help':
+            out.style.color = "#8CBCBB";
+            out.style.fontWeight = "bold";
+            out.innerHTML = "Available commands:<br/>"
+                          + "&emsp; help<br/>"
+                          + "&emsp; history<br/>"
+                          + "&emsp; clear<br/>"
+                          + "&emsp; echo<br/>"
+                          + "&emsp; man"
+            break;
+        case 'history':
+            out.innerHTML = history.join("<br/>");
+            break;
+        case 'echo':
+            out.innerHTML = arg.replace("echo", "");
+            break;
+        case 'time':
+        case 'man':
+            man(arg);
+            break;
+        case 'style':
+            let pre = document.getElementById("prefix");
+            if(pre.className === "letter") {
+                pre.className = "kbd";
+            } else {
+                pre.className = "letter";
+            }
+            break;
+        default:
+            out.style.color = "#BF616A";
+            out.innerHTML = "command not found: " + arg;
     }
 
 
