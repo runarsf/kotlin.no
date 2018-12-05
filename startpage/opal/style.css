@@ -39,6 +39,7 @@ input#input-field {
     width: 100%;
     background: transparent;
     border: none;
+    outline: none;
 
     font-family: "Ubuntu Mono", Ubuntu, sans-serif;
     line-height: auto;

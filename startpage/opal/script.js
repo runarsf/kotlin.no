@@ -5,11 +5,9 @@ $(document).ready(
 	}
 );
 
-let history = [
 
-];
-let histIndex = history.length;
-let newHist = [];
+let history = [];
+let histIndex = 0;
 let customCommand = false;
 let customEngine = "";
 let enableKeybinds = true;
@@ -17,6 +15,21 @@ let enableKeybinds = true;
 let cmd = document.getElementById('input-field');
 let out = document.getElementById('output-field');
 let pre = document.getElementById('prefix');
+
+/*function fixHistory() {
+	let historyString = getCookie("historyCookie");
+	if(historyString === "") {
+		setCookie("historyCookie", "[\"\"]");
+	}
+}
+function checkHistoryCookie() {
+	let historyString = getCookie("historyCookie");
+	if(historyString !== null) {
+		history = JSON.parse(historyString);
+		histIndex = history.length;
+	}
+}
+checkHistoryCookie();*/
 
 function setFocus(type) {
 	if(type === "focused") {
@@ -102,6 +115,7 @@ document.onkeyup = function(e) {
 
 function parse(e) {
     let cmd = document.getElementById('input-field');
+	let out = document.getElementById('output-field');
 
 	if(customCommand && e.keyCode === 13) { // enter with custom command
 		window.open(customEngine+cmd.value.replace(/(\s+)/gm, "+"));
@@ -109,10 +123,14 @@ function parse(e) {
 	}
 
     else if(e.keyCode === 13) { // enter
-        histIndex = history.length;
+		histIndex = history.length;
         if(!(cmd.value.replace(/(\s*)/gm, "") === "")) {
             history[history.length] = cmd.value;
             histIndex = history.length;
+			/*if(history != null) {
+				let historyStr = JSON.stringify(history);
+				setCookie('historyCookie', historyStr); // failed to write history to cookie
+			}*/
             submit(cmd.value);
         }
         cmd.value = "";
@@ -132,7 +150,7 @@ function parse(e) {
 		prefixFormat("y");
 		return customEngine = "https://www.youtube.com/results?search_query=";
 	}
-	else if(/^$/.test(cmd.value)) { prefixFormat("default"); }
+	else if(/^\s*$/.test(cmd.value) && e.keyCode === 8 || e.keyCode === 27) { prefixFormat("default"); }
 
 	if(e.keyCode === 38) { // up
         if(history != "") {
@@ -186,6 +204,11 @@ function submit(arg) {
         case 'history':
             out.innerHTML = history.join("<br/>");
             break;
+		/*case 'history -c':
+			setCookie("historyCookie", "");
+			out.style.color = "#7EA466";
+			out.innerHTML = "History cleared!";
+			break;*/
         case 'echo\.*':
             out.innerHTML = arg.replace("echo", "");
             break;
@@ -193,6 +216,8 @@ function submit(arg) {
         case 'man':
             man(arg);
             break;
+		case 'todo':
+			break;
         default:
             out.style.color = "#BF616A";
             out.innerHTML = "command not found: " + arg;
