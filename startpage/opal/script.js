@@ -14,6 +14,10 @@ let customCommand = false;
 let customEngine = "";
 let enableKeybinds = true;
 
+let cmd = document.getElementById('input-field');
+let out = document.getElementById('output-field');
+let pre = document.getElementById('prefix');
+
 function setFocus(type) {
 	if(type === "focused") {
 		enableKeybinds = false;
@@ -88,15 +92,23 @@ function getCookie(cname) {
 	return '';
 }
 
+document.onkeyup = function(e) {
+    let cmd = document.getElementById('input-field');
+
+    if(e.keyCode === 32) { // space
+        if(enableKeybinds) { cmd.focus(); }
+    }
+}
+
 function parse(e) {
     let cmd = document.getElementById('input-field');
 
-	if(customCommand && e.keyCode === 13) {
+	if(customCommand && e.keyCode === 13) { // enter with custom command
 		window.open(customEngine+cmd.value.replace(/(\s+)/gm, "+"));
 		prefixFormat("default");
 	}
 
-    else if (e.keyCode === 13) { // enter
+    else if(e.keyCode === 13) { // enter
         histIndex = history.length;
         if(!(cmd.value.replace(/(\s*)/gm, "") === "")) {
             history[history.length] = cmd.value;
@@ -104,7 +116,7 @@ function parse(e) {
             submit(cmd.value);
         }
         cmd.value = "";
-	} else if (e.keyCode === 27) { // esc
+	} else if(e.keyCode === 27) { // esc
 		if(cmd.value === "") { cmd.blur(); }
         cmd.value = "";
         histIndex = history.length;
@@ -122,7 +134,7 @@ function parse(e) {
 	}
 	else if(/^$/.test(cmd.value)) { prefixFormat("default"); }
 
-	if (e.keyCode === 38) { // up
+	if(e.keyCode === 38) { // up
         if(history != "") {
             cmd.value = history[histIndex-1];
         }
@@ -130,7 +142,7 @@ function parse(e) {
             --histIndex;
         }
     }
-	if (e.keyCode === 40) { // down
+	if(e.keyCode === 40) { // down
         if(history != "") {
             cmd.value = history[histIndex];
         }
@@ -143,7 +155,6 @@ function parse(e) {
 }
 
 function man(args) {
-    let out = document.getElementById('output-field');
     out.innerHTML = "What manual page do you want?";
     out.innerHTML = "Command: man<br/>"
                   + "Description: an interface to the on-line reference manuals<br/>"
@@ -175,7 +186,7 @@ function submit(arg) {
         case 'history':
             out.innerHTML = history.join("<br/>");
             break;
-        case 'echo':
+        case 'echo\.*':
             out.innerHTML = arg.replace("echo", "");
             break;
         case 'time':
@@ -189,18 +200,18 @@ function submit(arg) {
 }
 
 function prefixFormat(value) {
-	let pre = document.getElementById("prefix");
-	let inf = document.getElementById('input-field');
+    let cmd = document.getElementById('input-field');
+    let pre = document.getElementById('prefix');
 
 	if(value === "default") {
 		pre.className = "letter";
 		pre.innerHTML = "»";
-		inf.value = "";
+		cmd.value = "";
 		return customCommand = false;
 	} else {
 		pre.className = "kbd";
 		pre.innerHTML = value;
-		inf.value = inf.value.replace((value+":"), "");
+		cmd.value = cmd.value.replace((value+":"), "");
 		return customCommand = true;
 	}
 }

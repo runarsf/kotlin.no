@@ -1,0 +1,35 @@
+html {
+    margin: 0;
+    padding: 0;
+    background: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e3e3e3;
+}
+main {
+    text-align: center;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-family: Ubuntu;
+    margin: 0 0 5em 0;
+}
+@media only screen and (max-width: 920px) {
+  main {
+    font-size: 1em;
+  }
+}
