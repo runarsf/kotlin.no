@@ -1,41 +1,35 @@
-:root {
-	--bgcolor: #2f343f;
+html {
+    margin: 0;
+    padding: 0;
+    background: url("bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
 }
-
-html, body {
-	background-color: var(--bgcolor);
-	padding: 0;
-	margin: 100px 0 0 75px;
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	overflow: hidden;
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e3e3e3;
 }
-
-img {
-	position: fixed;
-	left: 0;
-	top: 0;
-	pointer-events: none;
+main {
+    text-align: center;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-family: Ubuntu;
+    margin: 0 0 5em 0;
 }
-
-p, h1, a:visited, a:link {
-	color: white;
-	font-family: 'Ubuntu', sans-serif;
-}
-
-#header {
-	position: absolute;
-	font-size: 82px;
-	top: 10%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-section {
-	font-size: 62px;
-	position: absolute;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+@media only screen and (max-width: 920px) {
+  main {
+    font-size: 1em;
+  }
 }
