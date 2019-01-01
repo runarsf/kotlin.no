@@ -18,6 +18,11 @@ function open(textFile) {
 	});
 }
 
+arr = ['1', '2']
+function stdout(content) {
+
+}
+
 show = 1;
 hide = 0;
 function scratchpad(state) {
@@ -36,13 +41,13 @@ function scratchpad(state) {
 }
 
 document.addEventListener('keydown', event => {
-	if(event.keyCode == 13) { // enter
-		alert('asd');
+	if(event.keyCode === 13) { // enter
+		alert(document.getElementById('terminput').value);
 	}
-	if(event.keyCode == 9) { // tab
+	if(event.keyCode === 9) { // tab
 		allFiles();
 	}
-	if(event.keyCode == 27) { // esc
+	if(event.keyCode === 27) { // esc
 		allFiles('hide');
 		scratchpad(hide);
 	}
@@ -62,7 +67,9 @@ function allFiles(optional) {
 					console.log('jQuery: successfully imported json');
 					$('ul').empty();
 					$.each(data.milton, function(i, mla) {
-						$('ul').append('<li>'+mla.title+'.'+mla.type+mla.adminNotes+'</li>');
+						if(mla.title+'.'+mla.type !== '.') {
+							$('ul').append('<li>'+mla.title+'.'+mla.type+'</li>');
+						}
 					});
 				}).error(function(){
 					console.log('jQuery: json error');
@@ -74,82 +81,3 @@ function allFiles(optional) {
 		}
 	}
 }
-
-function colorScheme(bgColor, textColor, rulerColor) {
-	document.getElementById('body').style.backgroundColor = bgColor;
-	document.getElementById('terminput').style.backgroundColor = bgColor;
-	document.getElementById('jsontext').style.color = textColor;
-}
-function loadScheme(scheme) {
-	if(scheme === 'solarizedDark') {
-		colorScheme('#002B36', '#839496');
-	}
-	else if(scheme === 'solarizedLight') {
-		colorScheme('#FDF6E3');
-	}
-}
-
-
-// document.addEventListener('keydown', code => {
-// 	console.log('KeyCode: '+code.keyCode);
-// });
-
-
-function importFile(file) {
-	if(file.endsWith('css')) {
-		$('head').append('<link rel="stylesheet" type="text/css" media="screen" href="'+file+'" />');
-	}
-	if(file.endsWith('js')) {
-		$('head').append('<script type="text/javascript" src="'+file+'"></script>');
-	}
-}
-
-
-// keycodes can be found at http://keycode.info/
-// this === document.activeElement
-function keyRegister(keyCode1, keyCode2, runFunction) {
-	let id = keyCode1+'.'+keyCode2+'.'+Math.random()*100;
-	this[id] = null; // In this setup, this[id] can be thought of as the previous key pressed
-	console.log(this[id]+'-1');
-	document.addEventListener('keydown', event => {
-		if(event.keyCode === keyCode1 || event.keyCode === keyCode2) {
-			if(keyCode2 === null) { // register single key
-				runFunction();
-				this[id] = null;
-				console.log(this[id]+'-2');
-			}
-			else if(event.keyCode === keyCode2) { // register two keys
-				if(this[id] === keyCode1) {
-						runFunction();
-						this[id] = null;
-						console.log(this[id]+'-3');
-				}
-				else {
-					this[id] = event.keyCode;
-					console.log(this[id]+'-4');
-				}
-			}
-			// this[id] = event.keyCode;
-		}
-		this[id] = event.keyCode;
-		console.log(this[id]+'-5');
-	});
-	// console.log(id);
-}
-
-keyRegister(71, 71, google);		// gg
-keyRegister(84, 82, translate);		// tr
-
-function helpMe() {
-	document.onHelp = function () { return (false); } // remove default help(f1) function for document
-	window.onHelp = function () { return (false); } // remove default help(f1) function for window
-	alert('Work in progess, expect a help menu here soon');
-};
-function linkIt(url, args) {
-	if(args === 'self') {
-		window.open(url+', "self"');
-	}
-	else {
-		window.open(url);
-	}
-};

@@ -16,11 +16,11 @@ html, body {
 	font-family: 'Ubuntu', sans-serif;
 }
 
-textarea {
+#terminput {
 	z-index: 0;
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
-	padding: 50px;
+	padding: 35px;
 	font-size: 18px;
 	width: 100%;
 	height: 100%;
@@ -31,7 +31,7 @@ textarea {
 	background-color: #000000;
 	resize: none;
 }
-textarea p {
+#terminput p {
 	color: beige;
 	font-family: "Courier";
 	font-size: 16px;
@@ -65,7 +65,7 @@ ul {
 	width: 100%;
 	height: 100%;
 	pointer-events: none;
-	background: repeating-linear-gradient(
+	/*background: repeating-linear-gradient(
 		0deg,
 		#24242450 1px,
 		#00000000 1px,
@@ -73,6 +73,7 @@ ul {
 		#00000000 14px,
 		#24242450 17px
 	);
+	*/
 }
 
 #allfiles {
@@ -100,12 +101,6 @@ ul {
 @keyframes type {
 	from { width: 0; }
 }
-
-
-
-
-
-
 
 
 main {
@@ -156,6 +151,8 @@ main {
 	visibility: hidden;
 	width: 40%;
 	height: 3%;
+	display: flex;
+	align-items: center;
 	justify-content: center;
 	background: var(--bgcolor);
 	position: fixed;
