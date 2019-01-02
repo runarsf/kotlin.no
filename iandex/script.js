@@ -1,8 +1,10 @@
+show = 1;
+hide = 0;
+
 // https://www.gun.io/blog/multi-line-strings-in-json
-function open(textFile) {
+function openfile(textFile) {
 	$(function(){
 		$.getJSON('texts.json', function(data) {
-			console.log('jQuery: successfully imported json');
 			$.each(data.milton, function(i, mla) {
 				if(textFile === mla.title+'.'+mla.type) {
 					$('ul').empty();
@@ -23,8 +25,6 @@ function stdout(content) {
 
 }
 
-show = 1;
-hide = 0;
 function scratchpad(state) {
 	if(state === show) {
 		document.getElementById('allfiles').style.visibility = 'hidden';
@@ -42,7 +42,7 @@ function scratchpad(state) {
 
 document.addEventListener('keydown', event => {
 	if(event.keyCode === 13) { // enter
-		alert(document.getElementById('terminput').value);
+		alert(document.getElementById('input-field').value);
 	}
 	if(event.keyCode === 9) { // tab
 		allFiles();
@@ -68,7 +68,8 @@ function allFiles(optional) {
 					$('ul').empty();
 					$.each(data.milton, function(i, mla) {
 						if(mla.title+'.'+mla.type !== '.') {
-							$('ul').append('<li>'+mla.title+'.'+mla.type+'</li>');
+							let file=mla.title+'.'+mla.type
+							$('ul').append('<li onclick="openfile(\''+file+'\')">'+mla.title+'.'+mla.type+'</li>');
 						}
 					});
 				}).error(function(){

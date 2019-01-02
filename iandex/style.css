@@ -8,39 +8,19 @@
 html, body {
 	padding: 0;
 	margin: 0;
-	max-width: 100%;
-	max-height: 100%;
 	height: 100%;
 	width: 100%;
 	color: white;
 	font-family: 'Ubuntu', sans-serif;
-}
-
-#terminput {
-	z-index: 0;
-	position: absolute;
-	top: 0; left: 0; bottom: 0; right: 0;
-	padding: 35px;
-	font-size: 18px;
-	width: 100%;
-	height: 100%;
-	border: none;
-	margin: 0;
-	color: beige;
-	box-sizing: border-box;
-	background-color: #000000;
-	resize: none;
-}
-#terminput p {
-	color: beige;
-	font-family: "Courier";
-	font-size: 16px;
-	width: 100%;
-	margin: 10px 0 0 10px;
-	white-space: nowrap;
 	overflow: hidden;
-	width: 100%;
-	animation: type 4s steps(60, end);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	background-color: rgb(20, 43, 40);
+	/*background-color: rgb(15, 20, 17);
+	box-shadow: 0 0 0 10px rgb(20, 43, 40) inset;*/
 }
 
 ul {
@@ -49,6 +29,15 @@ ul {
 	position: absolute;
 	margin: 30px 20px 30px 20px;
 }
+
+#inputPlaceholder {
+	margin: 5px;
+	width: 99%;
+	height: 98%;
+	background-color: rgb(15, 20, 17);
+}
+
+
 
 #bgblur {
 	visibility: hidden;
@@ -76,13 +65,16 @@ ul {
 	*/
 }
 
+
+
+
+
 #allfiles {
 	visibility: hidden;
 	z-index: 2;
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background: #000000be;
 }
 #allfiles ul {
 	color: beige;
@@ -95,12 +87,13 @@ ul {
 	margin: 35px 10px 0 10px;
 	white-space: pre-wrap;
 	width: 90%;
-	animation: type 2s steps(60, end);
+}
+#allfiles li {
+	cursor: pointer;
 }
 
-@keyframes type {
-	from { width: 0; }
-}
+
+
 
 
 main {
