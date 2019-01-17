@@ -12,6 +12,10 @@ html, body {
 	padding: 0;
 	margin: 0;
 	font-family: 'Ubuntu', sans-serif;
+
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
 }
 p, h1, h2, h3, li, a:link, a:visited, a:hover, a:active {
 	color: #fff;

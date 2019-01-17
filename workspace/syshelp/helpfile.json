@@ -1,116 +1,17 @@
 {
-	"links": [
+	"issues": [
 		{
-			"category": "Ofte brukt",
-			"url": "https://",
-			"content": [
-                {
-                    "title": "current",
-                    "url": "https://"
-                },
-                {
-                    "title": "portal.azure.com",
-                    "url": "https://"
-                },
-                {
-                    "title": "portal",
-                    "url": "https://"
-                },
-                {
-                    "title": "ECP O365",
-                    "url": "https://"
-                },
-                {
-                    "title": "ECP Hybrid",
-                    "url": "https://"
-                },
-                {
-                    "title": "MFA MGMT",
-                    "url": "https://"
-                }
-            ]
-		},
-		{
-			"category": "Management",
-			"url": "https://",
-			"content": [
-                {
-                    "title": "WACGW",
-                    "url": "https://"
-                },
-                {
-                    "title": "Duo Security",
-                    "url": "https://"
-                },
-                {
-                    "title": "Adobe CC",
-                    "url": "https://"
-                },
-                {
-                    "title": "phpIPAM",
-                    "url": "https://"
-                },
-                {
-                    "title": "mysql",
-                    "url": "https://"
-                },
-                {
-                    "title": "Norid EPP",
-                    "url": "https://"
-                },
-                {
-                    "title": "Norid Reg",
-                    "url": "https://"
-                },
-                {
-                    "title": "MyVijuCloud",
-                    "url": "http://"
-                },
-                {
-                    "title": "GitLab",
-                    "url": "https://"
-                },
-                {
-                    "title": "GitHub",
-                    "url": "https://"
-                },
-                {
-                    "title": "Jenkins",
-                    "url": "https://"
-                },
-                {
-                    "title": "TeamViewer",
-                    "url": "https://"
-                },
-                {
-                    "title": "AppleID",
-                    "url": "https://"
-                },
-                {
-                    "title": "O365 Admin",
-                    "url": "https://"
-                },
-                {
-                    "title": "ECP O365",
-                    "url": "https://"
-                },
-                {
-                    "title": "ECP Hybrid",
-                    "url": "https://"
-                },
-                {
-                    "title": "Robin",
-                    "url": "https://"
-                },
-                {
-                    "title": "passdb",
-                    "url": "https://"
-                },
-                {
-                    "title": "Oneview",
-                    "url": "https://"
-                }
-			]
+			"header": "Not getting IP even though I'm connected to router (access point, ethernet)",
+			"solution":
+				[
+					"Officially began work on Archive today.",
+					"Contributors from every country on Earth while",
+					"network connections last. Team intimidated by",
+					"project scope but working hard.",
+					"",
+					"Will be sharing space with Drennan & Sarabhai team.",
+					"Look forward to meeting them."
+				]
 		}
 	]
 }
