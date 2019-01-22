@@ -72,7 +72,8 @@ div.banner {
 
 div.box {
     position: absolute;
-    width: 35%;
+    width: 30%;
+    min-width: 600px;
     height: 80%;
     padding: 20px;
     background-color: var(--boxColor);
