@@ -1,12 +1,18 @@
 :root {
-    --shadowcolor: #000000;
+    --bgColor: #333333;
+    --gradientPrimary: #fc466b;
+    --gradientSecondary: #3f5efb;
+
+    --shadowColor: #000000;
+    --boxColor: #ffffff;
+    --textColor: #222222;
+    --urlHoverColor: #42cc88;
+    --urlColor: #4288cc;
 }
 html {
     margin: 0;
     padding: 0;
-    background: url("bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: var(--bgColor);
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -20,31 +26,139 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #e3e3e3;
 }
+
+div.banner {
+    top: 0; left: 0;
+    width: 100%;
+	height: 30%;
+
+	background: var(--gradientPrimary);
+    background: -webkit-linear-gradient(270deg, var(--gradientPrimary), var(--gradientSecondary));
+    background: linear-gradient(270deg, var(--gradientPrimary), var(--gradientSecondary));
+    background-size: 400% 400%;
+
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%); /* top left, top right, bottom right, bottom left (x, y)*/
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 50%, 0 100%);
+    display: block;
+    position: absolute;
+    z-index: 0;
+
+    -webkit-animation: bannerGradientAnimation 20s ease infinite;
+    -moz-animation: bannerGradientAnimation 20s ease infinite;
+    -o-animation: bannerGradientAnimation 20s ease infinite;
+    animation: bannerGradientAnimation 20s ease infinite;
+}
+@-webkit-keyframes bannerGradientAnimation {
+   0% { background-position: 0% 50% }
+   50% {background-position: 100% 50% }
+   100% {background-position: 0% 50% }
+}
+@-moz-keyframes bannerGradientAnimation {
+    0% { background-position: 0% 50% }
+    50% {background-position: 100% 50% }
+    100% {background-position: 0% 50% }
+}
+@-o-keyframes bannerGradientAnimation {
+    0% { background-position: 0% 50% }
+    50% {background-position: 100% 50% }
+    100% {background-position: 0% 50% }
+}
+@keyframes bannerGradientAnimation {
+    0% { background-position: 0% 50% }
+    50% {background-position: 100% 50% }
+    100% {background-position: 0% 50% }
+}
+
 div.box {
+    position: absolute;
     width: 35%;
     height: 80%;
-    background-color: white;
+    padding: 20px;
+    background-color: var(--boxColor);
     border-radius: 15px;
-    -webkit-box-shadow:	0px 0px 8px -1px var(--shadowcolor);
-	-moz-box-shadow: 	0px 0px 8px -1px var(--shadowcolor);
-	-ms-box-shadow:		0px 0px 8px -1px var(--shadowcolor);
-	-o-box-shadow:		0px 0px 8px -1px var(--shadowcolor);
-	box-shadow:			0px 0px 8px -1px var(--shadowcolor);
+    -webkit-box-shadow:	0px 0px 8px -1px var(--shadowColor);
+	-moz-box-shadow: 	0px 0px 8px -1px var(--shadowColor);
+	-ms-box-shadow:		0px 0px 8px -1px var(--shadowColor);
+	-o-box-shadow:		0px 0px 8px -1px var(--shadowColor);
+	box-shadow:			0px 0px 8px -1px var(--shadowColor);
 
-    animation: 1s ease-in 0s 1 slideInFromBottom;
+    -webkit-animation: 1s ease-out .5s slideInFromBottom;
+    -moz-animation: 1s ease-out .5s slideInFromBottom;
+    -o-animation: 1s ease-out .5s slideInFromBottom;
+    animation: 1s ease-out .5s slideInFromBottom;
+}
+@-webkit-keyframes slideInFromBottom {
+  0% { transform: translateY(250%); }
+  100% { transform: translateY(0); }
+}
+@-moz-keyframes slideInFromBottom {
+  0% { transform: translateY(250%); }
+  100% { transform: translateY(0); }
+}
+@-o-keyframes slideInFromBottom {
+  0% { transform: translateY(250%); }
+  100% { transform: translateY(0); }
 }
 @keyframes slideInFromBottom {
-  0% {
-    transform: translateY(200%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(250%); }
+  100% { transform: translateY(0); }
 }
+
 @media only screen and (max-width: 920px) {
   main {
     font-size: 1em;
   }
+}
+
+/*
+    MARKUP
+*/
+.box * {
+    color: var(--textColor);
+    font-family: Ubuntu, sans-serif;
+}
+.box h1 {
+    text-align: center;
+    font-weight: bolder;
+}
+.box h2, .box h3, .box h4, .box h5, .box h6 {
+    text-align: left;
+    font-weight: bold;
+}
+.box p {
+    text-align: left;
+    font-size: 1.1em;
+}
+.box a, .box a:link, .box a:visited, .box a:active {
+    text-align: left;
+    text-decoration: none;
+    color: var(--urlColor);
+
+    background-image: linear-gradient(transparent, transparent),linear-gradient(transparent, transparent),linear-gradient(to right, var(--gradientPrimary), var(--gradientSecondary));
+  	background-repeat: no-repeat;
+	background-position: 0 18px;
+    background-size: 100%;
+
+    transition: 0.4s;
+}
+.box a:hover {
+    color: var(--urlHoverColor);
+}
+.box img.profilePicture {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.box img.followers {
+    position: absolute;
+    top: 105px; right: 10px;
+    width: 90px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.box sub {
+    font-style: italic;
 }
