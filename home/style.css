@@ -29,7 +29,8 @@ body {
 }
 
 div.banner {
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
 	height: 30%;
 
@@ -44,106 +45,106 @@ div.banner {
     position: absolute;
     z-index: 0;
 
-    -webkit-animation: bannerGradientAnimation 20s ease infinite;
-    -moz-animation: bannerGradientAnimation 20s ease infinite;
-    -o-animation: bannerGradientAnimation 20s ease infinite;
-    animation: bannerGradientAnimation 20s ease infinite;
+    -webkit-animation: bannerGradientAnimation 15s ease infinite;
+       -moz-animation: bannerGradientAnimation 15s ease infinite;
+         -o-animation: bannerGradientAnimation 15s ease infinite;
+            animation: bannerGradientAnimation 15s ease infinite;
 }
 @-webkit-keyframes bannerGradientAnimation {
-   0% { background-position: 0% 50% }
-   50% {background-position: 100% 50% }
-   100% {background-position: 0% 50% }
+   0%   { background-position: 0% 50%; }
+   50%  { background-position: 100% 50%; }
+   100% { background-position: 0% 50%; }
 }
 @-moz-keyframes bannerGradientAnimation {
-    0% { background-position: 0% 50% }
-    50% {background-position: 100% 50% }
-    100% {background-position: 0% 50% }
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 @-o-keyframes bannerGradientAnimation {
-    0% { background-position: 0% 50% }
-    50% {background-position: 100% 50% }
-    100% {background-position: 0% 50% }
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 @keyframes bannerGradientAnimation {
-    0% { background-position: 0% 50% }
-    50% {background-position: 100% 50% }
-    100% {background-position: 0% 50% }
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
-.animateArrowUp { margin-bottom: 80px; }
-.animateArrowDown { margin-top: 80px; }
-.animateArrowLeft { margin-right: 80px; }
+
+.animateArrowUp    { margin-bottom: 80px; }
+.animateArrowDown  { margin-top: 80px; }
+.animateArrowLeft  { margin-right: 80px; }
 .animateArrowRight { margin-left: 80px; }
-.animateb { transform: rotate(-10deg); }
-.animatea { transform: rotate(180deg); }
-div.box {
+.animateb          { transform: rotate(-10deg); }
+.animatea          { transform: rotate(180deg); }
+.box {
     position: absolute;
     width: 30%;
-    min-width: 600px;
     height: 80%;
     padding: 20px;
     background-color: var(--boxColor);
     border-radius: 15px;
     -webkit-box-shadow:	0px 0px 8px -1px var(--shadowColor);
-	-moz-box-shadow: 	0px 0px 8px -1px var(--shadowColor);
-	-ms-box-shadow:		0px 0px 8px -1px var(--shadowColor);
-	-o-box-shadow:		0px 0px 8px -1px var(--shadowColor);
-	box-shadow:			0px 0px 8px -1px var(--shadowColor);
-
-    animation-fill-mode: forwards;
-    opacity: 0;
+	   -moz-box-shadow: 0px 0px 8px -1px var(--shadowColor);
+	    -ms-box-shadow:	0px 0px 8px -1px var(--shadowColor);
+	     -o-box-shadow: 0px 0px 8px -1px var(--shadowColor);
+	        box-shadow: 0px 0px 8px -1px var(--shadowColor);
 
     transition: 0.1s ease-in-out;
-    -webkit-animation: slideInFromBottom 0.9s ease-out 0.5s forwards;
-    -moz-animation: slideInFromBottom 0.9s ease-out 0.5s forwards;
-    -o-animation: slideInFromBottom 0.9s ease-out 0.5s forwards;
-    animation: slideInFromBottom 0.9s ease-out 0.5s forwards;
+}
+.slide {
+    -webkit-animation: 1s ease-out slideInFromBottom;
+       -moz-animation: 1s ease-out slideInFromBottom;
+         -o-animation: 1s ease-out slideInFromBottom;
+            animation: 1s ease-out slideInFromBottom;
 }
 @-webkit-keyframes slideInFromBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(250%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-  }
-@-moz-keyframes slideInFromBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(250%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-  }
-@-o-keyframes slideInFromBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(250%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-  }
-@keyframes slideInFromBottom {
-  0% {
-      opacity: 0;
-      transform: translateY(250%);
-  }
-  100% {
-      opacity: 1;
-      transform: translateY(0);
-  }
+  0%   { transform: translateY(250%); }
+  100% { transform: translateY(0); }
 }
-
-/*@media only screen and (max-width: 920px) {
-  main {
-    font-size: 1em;
-  }
-}*/
+@-moz-keyframes slideInFromBottom {
+  0%   { transform: translateY(250%); }
+  100% { transform: translateY(0); }
+}
+@-o-keyframes slideInFromBottom {
+  0%   { transform: translateY(250%); }
+  100% { transform: translateY(0); }
+}
+@keyframes slideInFromBottom {
+  0%   { transform: translateY(250%); }
+  100% { transform: translateY(0); }
+}
+.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes shake {
+    0%   { transform: translate(1px, 1px) rotate(0deg); }
+    10%  { transform: translate(-1px, -2px) rotate(-1deg); }
+    20%  { transform: translate(-3px, 0px) rotate(1deg); }
+    30%  { transform: translate(3px, 2px) rotate(0deg); }
+    40%  { transform: translate(1px, -1px) rotate(1deg); }
+    50%  { transform: translate(-1px, 2px) rotate(-1deg); }
+    60%  { transform: translate(-3px, 1px) rotate(0deg); }
+    70%  { transform: translate(3px, 1px) rotate(-1deg); }
+    0%   { transform: translate(-1px, -1px) rotate(1deg); }
+    90%  { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+@media only screen and (max-width: 920px) {
+    .box {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border-radius: 0px;
+    }
+    .box p {
+        padding-left: 15px;
+    }
+    img {
+        visibility: hidden;
+    }
+}
 
 #particles-js {
     z-index: 0;
@@ -188,14 +189,16 @@ div.box {
 }
 .box img.profilePicture {
     position: absolute;
-    top: 10px; right: 10px;
+    top: 10px;
+    right: 10px;
     width: 90px;
     border-radius: 10px;
     cursor: pointer;
 }
 .box img.followers {
     position: absolute;
-    top: 105px; right: 10px;
+    top: 105px;
+    right: 10px;
     width: 90px;
     border-radius: 3px;
     cursor: pointer;
