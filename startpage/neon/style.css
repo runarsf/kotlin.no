@@ -1,0 +1,61 @@
+:root {
+    --prefixcolor: #CA8AF7;
+
+    --wallcolor: #1D2330;
+    --shadowcolor: #000000;
+
+    --bgcolor: #2E3440;
+    --fgcolor: #6187B5;
+    --textcolor: #FFFFFF;
+    --font: Ubuntu, sans-serif;
+    --prefix: '» ';
+            /*'❯';*/
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    background-color: var(--wallcolor);
+}
+
+#terminal {
+    width: 40%;
+    height: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    padding: 0.4rem;
+    font-family: var(--font);
+    color: var(--textcolor);
+    background-color: var(--bgcolor);
+    border-style: solid;
+    border-width: 0.3rem;
+    border-color: var(--fgcolor);
+    -webkit-box-shadow:	0px 0px 8px -1px var(--shadowcolor);
+	   -moz-box-shadow: 0px 0px 8px -1px var(--shadowcolor);
+	    -ms-box-shadow:	0px 0px 8px -1px var(--shadowcolor);
+	     -o-box-shadow: 0px 0px 8px -1px var(--shadowcolor);
+	        box-shadow: 0px 0px 8px -1px var(--shadowcolor);
+}
+
+span.stdin {
+    color: var(--prefixcolor);
+    line-height: 1rem;
+    height: 1rem;
+    background-color: #00000000;
+    border: #00000000;
+}
+
+span.stdin input {
+    border: 0px;
+    color: var(--textcolor);
+    background-color: #00000000;
+}
