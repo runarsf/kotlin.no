@@ -1,13 +1,33 @@
 :root {
-    --prefixcolor: #CA8AF7;
 
-    --wallcolor: #1D2330;
-    --shadowcolor: #000000;
+    --t_black: rgb(0, 0, 0);
+    --t_red: rgb(128, 0, 0);
+    --t_green: rgb(0, 128, 0);
+    --t_yellow: rgb(221, 210, 130);
+    --t_blue: rgb(0, 0, 128);
+    --t_magenta: rgb(128, 0, 128);
+    --t_cyan: rgb(0, 128, 128);
+    --t_white: rgb(192, 192, 192);
+    --t_gray: rgb(128, 128, 128); /* because bright black doesn't exist */
+    --t_brightRed: rgb(255, 0, 0);
+    --t_brightGreen: rgb(0, 255, 0);
+    --t_brightYellow: rgb(255, 255, 0);
+    --t_brightBlue: rgb(0, 0, 255);
+    --t_brightMagenta: rgb(255, 0, 255);
+    --t_brightCyan: rgb(0, 255, 255);
+    --t_brightWhite: rgb(255, 255, 255);
+    --t_reset: rgb(192, 192, 192);
 
-    --bgcolor: #2E3440;
-    --fgcolor: #6187B5;
-    --textcolor: #FFFFFF;
-    --font: Ubuntu, sans-serif;
+    --c_transparent: #00000000;
+    --c_prefix: #CA8AF7;
+
+    --c_wall: #1D2330;
+    --c_shadow: #000000;
+
+    --c_bgcolor: #2E3440;
+    --c_fgcolor: #6187B5;
+    --c_textcolor: #FFFFFF;
+    --font: 'Ubuntu Mono', sans-serif;
     --prefix: '» ';
             /*'❯';*/
 }
@@ -18,7 +38,13 @@ html, body {
     overflow: hidden;
     padding: 0;
     margin: 0;
-    background-color: var(--wallcolor);
+    background-color: var(--c_wall);
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
 }
 
 #terminal {
@@ -28,34 +54,44 @@ html, body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    overflow: hidden;
 
     display: flex;
     flex-direction: column-reverse;
 
     padding: 0.4rem;
     font-family: var(--font);
-    color: var(--textcolor);
-    background-color: var(--bgcolor);
+    color: var(--c_textcolor);
+    background-color: var(--c_bgcolor);
     border-style: solid;
     border-width: 0.3rem;
-    border-color: var(--fgcolor);
-    -webkit-box-shadow:	0px 0px 8px -1px var(--shadowcolor);
-	   -moz-box-shadow: 0px 0px 8px -1px var(--shadowcolor);
-	    -ms-box-shadow:	0px 0px 8px -1px var(--shadowcolor);
-	     -o-box-shadow: 0px 0px 8px -1px var(--shadowcolor);
-	        box-shadow: 0px 0px 8px -1px var(--shadowcolor);
+    border-color: var(--c_fgcolor);
+    -webkit-box-shadow:	0px 0px 8px -1px var(--c_shadow);
+	   -moz-box-shadow: 0px 0px 8px -1px var(--c_shadow);
+	    -ms-box-shadow:	0px 0px 8px -1px var(--c_shadow);
+	     -o-box-shadow: 0px 0px 8px -1px var(--c_shadow);
+	        box-shadow: 0px 0px 8px -1px var(--c_shadow);
+}
+
+#stdout {
+    float: inherit;
+    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box; /* So the width will be 100% + 17px */
+    overflow: hidden;
 }
 
 span.stdin {
-    color: var(--prefixcolor);
+    color: var(--c_prefix);
     line-height: 1rem;
     height: 1rem;
-    background-color: #00000000;
-    border: #00000000;
+    background-color: var(--c_transparent);
+    border: var(--c_transparent);
 }
 
 span.stdin input {
+    outline: 0;
     border: 0px;
-    color: var(--textcolor);
-    background-color: #00000000;
+    width: 95%;
+    color: var(--c_textcolor);
+    background-color: var(--c_transparent);
 }
