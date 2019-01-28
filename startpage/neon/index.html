@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
-        <meta http-equiv='content-type' content='text/html' charset='utf-8'>
         <link href='https://fonts.googleapis.com/css?family=Muli|Ubuntu' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <meta http-equiv='content-type' content='text/html' charset='utf-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
 		<link rel='stylesheet' type='text/css' href='style.css'>
         <link rel='icon' type='image/png' href='favicon.ico' />
@@ -11,15 +12,13 @@
         <title>~</title>
     </head>
     <body>
+        <div id='bgblur'></div>
         <div id='terminal'>
             <span class='stdin'>
                 »
                 <input type='text' name='stdin' onkeypress='updateScroll()' id='stdin' autocomplete='off' onkeydown='return parse(event)' autofocus />
             </span>
-            <div id='stdout'>
-                <div class='stdout'>test2</div>
-                <div class='stdout'>test1</div>
-            </div>
+            <div id='stdout'></div>
         </div>
     </body>
 </html>

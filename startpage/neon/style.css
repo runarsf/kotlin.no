@@ -21,16 +21,34 @@
     --c_transparent: #00000000;
     --c_prefix: #CA8AF7;
 
-    --c_wall: #1D2330;
     --c_shadow: #000000;
 
     --c_bgcolor: #2E3440;
     --c_fgcolor: #6187B5;
     --c_textcolor: #FFFFFF;
-    --font: 'Ubuntu Mono', sans-serif;
+    --font: 'Source Sans Pro', sans-serif;
     --prefix: '» ';
             /*'❯';*/
 }
+.t_black         { color: var(--t_black); }
+.t_red           { color: var(--t_red); }
+.t_green         { color: var(--t_green); }
+.t_yellow        { color: var(--t_yellow); }
+.t_blue          { color: var(--t_blue); }
+.t_magenta       { color: var(--t_magenta); }
+.t_cyan          { color: var(--t_cyan); }
+.t_white         { color: var(--t_white); }
+.t_gray          { color: var(--t_gray); }
+.t_brightRed     { color: var(--t_brightRed); }
+.t_brightGreen   { color: var(--t_brightGreen); }
+.t_brightYellow  { color: var(--t_brightYellow); }
+.t_brightBlue    { color: var(--t_brightBlue); }
+.t_brightMagenta { color: var(--t_brightMagenta); }
+.t_brightCyan    { color: var(--t_brightCyan); }
+.t_brightWhite   { color: var(--t_brightWhite); }
+.t_reset         { color: var(--t_reset); }
+.c_prefix        { color: var(--c_prefix); }
+.c_transparent   { color: var(--c_transparent); }
 
 html, body {
     width: 100%;
@@ -38,13 +56,21 @@ html, body {
     overflow: hidden;
     padding: 0;
     margin: 0;
-    background-color: var(--c_wall);
+
+    font-family: var(--font);
+
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
 }
 ::-webkit-scrollbar {
     width: 0px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
+}
+#bgblur {
+    width: 100%;
+    height: 100%;
+    background-color: var(--c_bgcolor);
+    filter: grayscale(50%);
 }
 
 #terminal {
@@ -74,13 +100,24 @@ html, body {
 }
 
 #stdout {
+    font-size: 1rem;
+    font-family: var(--font);
+
     float: inherit;
-    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
-    box-sizing: content-box; /* So the width will be 100% + 17px */
     overflow: hidden;
+}
+#stdout p {
+    padding: 0;
+    margin: 0;
+    display: inline;
 }
 
 span.stdin {
+    font-size: 1rem;
+    font-family: var(--font);
+
+    padding-bottom: 3px;
+
     color: var(--c_prefix);
     line-height: 1rem;
     height: 1rem;
@@ -89,6 +126,9 @@ span.stdin {
 }
 
 span.stdin input {
+    font-size: 1rem;
+    font-family: var(--font);
+
     outline: 0;
     border: 0px;
     width: 95%;
