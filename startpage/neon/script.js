@@ -1,41 +1,85 @@
-// window.getComputedStyle(document.documentElement).getPropertyValue('--wallcolor')
 let prefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--prefix').replace(/\'+/g, '')+'</p>';
+let history = [];
+let histIndex = 0;
 
-$(document).on('keypress', function(e) {
-    stdin = document.getElementById('stdin');
-    stdin.focus();
-});
+let commands = {
+    help: function() {
+        out.put('USAGE:');
+        out.put('&nbsp;&nbsp;&nbsp;&nbsp;[COMMAND] [ARGS]<br/>');
+        out.put('COMMANDS:');
+        out.put('&nbsp;&nbsp;&nbsp;&nbsp;help');
+        out.put('&nbsp;&nbsp;&nbsp;&nbsp;clear');
+        out.put('&nbsp;&nbsp;&nbsp;&nbsp;about');
+        out.put('&nbsp;&nbsp;&nbsp;&nbsp;ifconfig');
+    },
+    clear: function() {
+        $('#stdout').empty();
+    },
+    about: function() {
+        out.put('<p class="t_white">A web-terminal concept made by <a href="https://github.com/runarsf" target="_blank">runarsf</a>.</p>');
+    },
+    ifconfig: function() {
+    	$.getJSON('https://api.ipify.org/?format=json', function(data) {
+            out.put(data.ip);
+        });
+    }
+}
 
 function parse(e) {
     stdin = document.getElementById('stdin');
     stdout = document.getElementById('stdout');
 
-    if(e.keyCode === 13) {
-        if(stdin.value === 'clear') {
-            out.clear();
+    histIndex = history.length;
+    if(e.keyCode === 13) { // enter
+        out.same();
+        if(commands[stdin.value] == null) {
+            out.put((stdin.value === '') ? '' : '<p class="t_brightRed">command not found: '+stdin.value+'</p>');
+        } else {
+            commands[stdin.value]();
         }
-        else if(stdin.value.trim() === '') { $('#stdout').append(prefix); }
-        else {
-            out.put('<p class="t_brightRed">command not found: '+stdin.value+'</p>')
+        if(stdin.value) {
+            history[history.length] = stdin.value;
         }
-        out.put('<br/>');
-        stdin.value = '';
+        histIndex = history.length;
+        console.log(history);
+        document.getElementById('stdin').value = '';
+    }
+    if(e.keyCode === 38) { // up
+
+    }
+	if(e.keyCode === 40) { // down
+
     }
 }
 
-function updateScroll() {
+document.addEventListener('keydown', function (e) {
+    // focus stdin
+    stdin = document.getElementById('stdin');
+    stdin.focus();
+    // update scroll position
     var element = document.getElementById('stdout');
     element.scrollTop = element.scrollHeight;
-}
+    // ctrl+c check
+    if (e.ctrlKey &&  e.code === 'KeyC') {
+        out.same();
+        document.getElementById('stdin').value = '';
+    }
+});
 
 var out = {
     put: function(ln) {
-        if(ln) { $('#stdout').append('<p>'+ln+'</p>'); }
+        if(ln) { $('#stdout').append('<p>'+ln+'</p><br/>'); }
   	},
-	clear: function() {
-		 $('#stdout').empty();
-	}
+    same: function() {
+        this.put(prefix+'<p class="t_brightWhite">'+document.getElementById('stdin').value+'</p>');
+    }
 }
+
+
+
+
+
+
 
 var cookies = {
 	set: function(cname, cvalue, cexpires, cpath) {
