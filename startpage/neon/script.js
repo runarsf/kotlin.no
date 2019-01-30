@@ -1,4 +1,4 @@
-let prefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--prefix').replace(/\'+/g, '')+'</p>';
+let prefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--prefix').replace(/[\'\"]+/g, '')+'</p>';
 let history = [];
 let yrotsih = [];
 let histIndex = 0;
@@ -74,7 +74,12 @@ let commands = {
     },
     inspect: {
         function(func) {
-            out.put(eval('commands.'+func+'.function').toString().replace(/\n+/g, '<br/>'));
+            try {
+                out.put(eval('commands.'+func+'.function').toString().replace(/\n+/g, '<br/>'));
+            }
+            catch(err) {
+                out.put('No function named '+func);
+            }
         },
         description: 'Inspect the source-code of a command.',
         synopsis: '[function]'
@@ -159,15 +164,17 @@ function parse(e) {
 
 document.addEventListener('keydown', function (e) {
     // focus stdin
-    stdin = document.getElementById('stdin');
-    stdin.focus();
+    //stdin = document.getElementById('stdin');
+    //stdin.focus();
     // update scroll position
     var element = document.getElementById('stdout');
     element.scrollTop = element.scrollHeight;
     // ctrl+c check
     if (e.ctrlKey &&  e.code === 'KeyC') {
-        out.same(' ^C');
-        document.getElementById('stdin').value = '';
+        if($('#stdin').is(':focus')) {
+            out.same(' ^C');
+            document.getElementById('stdin').value = '';
+        }
     }
 });
 
