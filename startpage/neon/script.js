@@ -7,16 +7,16 @@ let histIndex = 0;
 let commands = {
     help: {
         function() {
-            out.put('USAGE:');
-            out.put('&nbsp;&nbsp;&nbsp;&nbsp;[COMMAND] [ARGS]<br/>');
-            out.put('COMMANDS:');
+            out.put('<b>USAGE:</b>');
+            out.put('&nbsp;&nbsp;&nbsp;&nbsp;[COMMAND] [ARGS]');
+            out.put('<br/><b>COMMANDS:</b>');
             var cmds = Object.keys(commands);
             cmds.forEach(function(element) {
-                out.put('&nbsp;&nbsp;&nbsp;&nbsp;'+element);
+                if(!(eval('commands.'+element+'.hidden'))) out.put('&nbsp;&nbsp;&nbsp;&nbsp;'+element);
             });
         },
         description: 'Display help reference.',
-        synopsis: ''
+        synopsis: '',
     },
     man: {
         function(cmd) {
@@ -56,6 +56,25 @@ let commands = {
         description: 'Website information.',
         synopsis: ''
     },
+    animate: {
+        function() {
+            $('#bgblur').addClass('bgGradientAnimation');
+            $('#bgblur').removeClass('bgNoGradientAnimation');
+        },
+        description: 'Animate background.',
+        synopsis: ''
+    },
+    ping: {
+        function(ip) {
+            if(ip) {
+            } else {
+                out.put('Could not ping remote URL');
+            }
+        },
+        description: 'Ping a server and return time in ms. Experimental.',
+        synopsis: '[server]',
+        hidden: true
+    },
     ifconfig: {
         function() {
             $.getJSON('https://api.ipify.org/?format=json', function(data) {
@@ -72,13 +91,6 @@ let commands = {
         description: 'Display recent history.',
         synopsis: ''
     },
-    git: {
-        function() {
-
-        },
-        description: '',
-        synopsis: ''
-    },
     inspect: {
         function(func) {
             try {
@@ -93,10 +105,10 @@ let commands = {
     },
     fetch: {
         function() {
-            out.put('Not implemented yet.');
         },
         description: 'System information',
-        synopsis: ''
+        synopsis: '',
+        hidden: true
     },
     env: {
         function() {
@@ -166,16 +178,17 @@ function parse(e) {
         histIndex = (yrotsih[histIndex-1] == undefined) ? -1 : histIndex - 1;
         stdin.value = (yrotsih[histIndex] == undefined) ? '' : yrotsih[histIndex];
     }
+    // insert
 }
 
 document.addEventListener('keydown', function (e) {
     // focus stdin
     //stdin = document.getElementById('stdin');
     //stdin.focus();
+    if(e.keyCode === 45) stdin.focus();
     // ctrl+c check
     if (e.ctrlKey && e.key === 'c') {
         if($('#stdin').is(':focus')) {
-            console.log(e);
             out.same('^C');
             document.getElementById('stdin').value = '';
         }
@@ -201,6 +214,11 @@ var out = {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+
+
+
+
 
 
 
