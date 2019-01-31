@@ -72,6 +72,13 @@ let commands = {
         description: 'Display recent history.',
         synopsis: ''
     },
+    git: {
+        function() {
+
+        },
+        description: '',
+        synopsis: ''
+    },
     inspect: {
         function(func) {
             try {
@@ -147,18 +154,17 @@ function parse(e) {
         if(stdin.value) {
             history[history.length] = stdin.value;
         }
-        histIndex = 0;
         document.getElementById('stdin').value = '';
     }
     if(e.keyCode === 38) { // up
-        histIndex++;
         yrotsih = history.slice().reverse();
-        console.log(yrotsih[histIndex]);
+        histIndex = (yrotsih[histIndex+1] == undefined) ? histIndex : histIndex + 1;
+        stdin.value = (yrotsih[histIndex] == undefined) ? '' : yrotsih[histIndex];
     }
 	if(e.keyCode === 40) { // down
-        histIndex--;
         yrotsih = history.slice().reverse();
-        console.log(yrotsih[histIndex]);
+        histIndex = (yrotsih[histIndex-1] == undefined) ? -1 : histIndex - 1;
+        stdin.value = (yrotsih[histIndex] == undefined) ? '' : yrotsih[histIndex];
     }
 }
 
@@ -166,16 +172,17 @@ document.addEventListener('keydown', function (e) {
     // focus stdin
     //stdin = document.getElementById('stdin');
     //stdin.focus();
-    // update scroll position
-    var element = document.getElementById('stdout');
-    element.scrollTop = element.scrollHeight;
     // ctrl+c check
-    if (e.ctrlKey &&  e.code === 'KeyC') {
+    if (e.ctrlKey && e.key === 'c') {
         if($('#stdin').is(':focus')) {
-            out.same(' ^C');
+            console.log(e);
+            out.same('^C');
             document.getElementById('stdin').value = '';
         }
     }
+    // update scroll position
+    var element = document.getElementById('stdout');
+    element.scrollTop = element.scrollHeight;
 });
 
 var out = {
@@ -186,6 +193,7 @@ var out = {
         if(append == undefined) {
             append = '';
         }
+        histIndex = -1;
         this.put(prefix+'<p class="t_brightWhite">'+document.getElementById('stdin').value+append+'</p>');
     }
 }
