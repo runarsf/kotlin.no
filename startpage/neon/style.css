@@ -26,7 +26,7 @@
     --c_fgcolor: rgb(20, 43, 40);
     --font: 'Monaco', 'Ubuntu Mono', Mono, sans-serif;
     --prefix: '» ';
-            /*'❯';*/
+    --secondPrefix: '❯ ';
 }
 .t_black         { color: var(--t_black); }
 .t_red           { color: var(--t_red); }
@@ -142,6 +142,7 @@ html, body {
 
     float: inherit;
     overflow: hidden;
+    overflow-x: auto;
 }
 #stdout p {
     padding: 0;
@@ -158,7 +159,7 @@ span.stdin {
     font-size: 1rem;
     font-family: var(--font);
 
-    padding-bottom: 3px;
+    padding-bottom: 0.1rem;
 
     color: var(--c_prefix);
     line-height: 1rem;
@@ -166,16 +167,19 @@ span.stdin {
     background-color: var(--c_transparent);
     border: var(--c_transparent);
 }
-
 span.stdin input {
     font-size: 1rem;
     font-family: var(--font);
 
+    display: inline;
     outline: 0;
     border: 0px;
     width: 95%;
     color: var(--t_brightWhite);
     background-color: var(--c_transparent);
+}
+span.stdin p {
+    display: inline;
 }
 
 @media only screen and (max-width: 600px) {

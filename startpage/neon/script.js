@@ -1,7 +1,19 @@
+$(document).ready(
+	function()
+	{
+        history = cookies.get('history');
+        history = '\[\"'+history.replace(/\,+/g, '\", \"')+'\"\]'
+        history = JSON.parse(history);
+	}
+);
+
 let prefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--prefix').replace(/[\'\"]+/g, '')+'</p>';
+let secondPrefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--secondPrefix').replace(/[\'\"]+/g, '')+'</p>';
+let currentPrefix = prefix;
 let history = [];
 let yrotsih = [];
 let histIndex = 0;
+let evalMode = false;
 
 // https://stackoverflow.com/questions/208016/how-to-list-the-properties-of-a-javascript-object
 let commands = {
@@ -58,10 +70,34 @@ let commands = {
     },
     animate: {
         function() {
-            $('#bgblur').addClass('bgGradientAnimation');
-            $('#bgblur').removeClass('bgNoGradientAnimation');
+            if(document.getElementById('bgblur').className.includes('bgNoGradientAnimation')) {
+                $('#bgblur').addClass('bgGradientAnimation');
+                $('#bgblur').removeClass('bgNoGradientAnimation');
+            } else {
+                $('#bgblur').removeClass('bgGradientAnimation');
+                $('#bgblur').addClass('bgNoGradientAnimation');
+            }
         },
         description: 'Animate background.',
+        synopsis: ''
+    },
+    eval: {
+        function(forceMode) {
+            if(forceMode == false) {
+                evalMode = false;
+                currentPrefix = prefix;
+                document.getElementById('prefix').innerHTML = prefix;
+            } else if(forceMode == true) {
+                evalMode = true;
+                currentPrefix = secondPrefix;
+                document.getElementById('prefix').innerHTML = secondPrefix;
+            } else if(document.getElementById('prefix').innerHTML === secondPrefix) {
+                eval('this.function(false)');
+            } else {
+                eval('this.function(true)');
+            }
+        },
+        description: 'Toggle eval mode. This lets you run js-commands directly in the web terminal.',
         synopsis: ''
     },
     ping: {
@@ -85,16 +121,21 @@ let commands = {
         synopsis: ''
     },
     history: {
-        function() {
-            out.put(history.join('<br/>'));
+        function(mod) {
+            if(mod === 'clear') {
+                history = [];
+                cookies.delete('history');
+            } else {
+                out.put(history.join('<br/>'));
+            }
         },
         description: 'Display recent history.',
-        synopsis: ''
+        synopsis: '[clear]'
     },
     inspect: {
         function(func) {
             try {
-                out.put(eval('commands.'+func+'.function').toString().replace(/\n+/g, '<br/>'));
+                out.put(eval('commands.'+func+'.function').toString().replace(/\<+/g, '&#60;').replace(/\>+/g, '&#62;').replace(/\&nbsp;+/g, '&#38;nbsp;').replace(/\n+/g, '<br/>'));
             }
             catch(err) {
                 out.put('No function named '+func);
@@ -105,10 +146,24 @@ let commands = {
     },
     fetch: {
         function() {
+            // Opera 8.0+
+            let isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+            // Firefox 1.0+
+            let isFirefox = typeof InstallTrigger !== 'undefined';
+            // Safari 3.0+ "[object HTMLElementConstructor]"
+            let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+            // Internet Explorer 6-11
+            let isIE = /*@cc_on!@*/false || !!document.documentMode;
+            // Edge 20+
+            let isEdge = !isIE && !!window.StyleMedia;
+            // Chrome 1+
+            let isChrome = !!window.chrome && !!window.chrome.webstore;
+            // Blink engine detection
+            let isBlink = (isChrome || isOpera) && !!window.CSS;
+            out.put((isOpera) ? 'opera' : (isFirefox) ? 'firefox' : (isSafari) ? 'safari' : (isIE) ? 'IE' : (isEdge) ? 'edge' : (isChrome) ? 'chrome' : (isBlink) ? 'blink' : 'toaster')
         },
         description: 'System information',
         synopsis: '',
-        hidden: true
     },
     env: {
         function() {
@@ -119,7 +174,7 @@ let commands = {
                 var result = {}
                 for (var i = 0; i < allVar.length; i++) {
                   var a = allVar[i].split(':');
-                  if (a[0] !== "")
+                  if(a[0] !== "")
                     result[a[0].trim()] = a[1].trim();
                 }
 
@@ -158,15 +213,25 @@ function parse(e) {
         var args = stdin.value.replace(/^\s+|\s+$/g, '').split(/\s+/);
 
         out.same();
-        if(commands[args[0]] == null) {
+
+        if(evalMode == true && !(args[0] == 'eval')) {
+            try {
+                out.put(eval(stdin.value));
+            }
+            catch(err) {
+                out.put(err.message);
+            }
+        } else if(commands[args[0]] == null) {
             out.put((stdin.value === '') ? '' : '<p class="t_brightRed">command not found: '+stdin.value+'</p>');
         } else {
             commands[args[0]].function(args[1]);
         }
-        if(stdin.value) {
+        if(stdin.value && !(args[0] == 'history' && args[1] == 'clear')) {
             history[history.length] = stdin.value;
         }
-        document.getElementById('stdin').value = '';
+
+        stdin.value = '';
+        cookies.set('history', eval(JSON.stringify(history)));
     }
     if(e.keyCode === 38) { // up
         yrotsih = history.slice().reverse();
@@ -178,7 +243,6 @@ function parse(e) {
         histIndex = (yrotsih[histIndex-1] == undefined) ? -1 : histIndex - 1;
         stdin.value = (yrotsih[histIndex] == undefined) ? '' : yrotsih[histIndex];
     }
-    // insert
 }
 
 document.addEventListener('keydown', function (e) {
@@ -186,9 +250,19 @@ document.addEventListener('keydown', function (e) {
     //stdin = document.getElementById('stdin');
     //stdin.focus();
     if(e.keyCode === 45) stdin.focus();
-    // ctrl+c check
-    if (e.ctrlKey && e.key === 'c') {
+    // ctrl+d check
+    if(e.ctrlKey && e.key === 'd') {
+        e.preventDefault();
         if($('#stdin').is(':focus')) {
+            out.same();
+            commands.eval.function(false);
+            document.getElementById('stdin').value = '';
+        }
+    }
+    // ctrl+c check
+    if(e.ctrlKey && e.key === 'c') {
+        if($('#stdin').is(':focus')) {
+            e.preventDefault();
             out.same('^C');
             document.getElementById('stdin').value = '';
         }
@@ -207,21 +281,13 @@ var out = {
             append = '';
         }
         histIndex = -1;
-        this.put(prefix+'<p class="t_brightWhite">'+document.getElementById('stdin').value+append+'</p>');
+        this.put(currentPrefix+'<p class="t_brightWhite">'+document.getElementById('stdin').value+append+'</p>');
     }
 }
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -242,13 +308,16 @@ var cookies = {
 			while (c.charAt(0) == ' ') {
 				c = c.substring(1);
 			}
-			if (c.indexOf(cname) == 0) {
+			if(c.indexOf(cname) == 0) {
 				return c.substring(cname.length, c.length);
 			}
 		}
 		return '';
 	},
-	clear: function() {
+    delete: function(cname) {
+        document.cookie = cname + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    },
+	purge: function() {
 	    var cookies = document.cookie.split(";");
 
 	    for (var i = 0; i < cookies.length; i++) {
