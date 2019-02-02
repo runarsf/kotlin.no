@@ -15,6 +15,28 @@ let yrotsih = [];
 let histIndex = 0;
 let evalMode = false;
 
+let tronder = {
+	e: 'er',
+	æ: 'jeg',
+	d: 'det',
+	de: 'det',
+	dem: 'de',
+	koss: 'hvordan',
+	kjem: 'kommer',
+	t: 'til',
+	te: 'til',
+	vettu: 'vet du',
+	vunne: 'vunnet',
+	me: 'med',
+	veit: 'vet',
+	dæ: 'deg',
+	va: 'var',
+	te: 'til',
+	no: 'nå',
+	nån: 'noen',
+	nånn: 'noen'
+}
+
 // https://stackoverflow.com/questions/208016/how-to-list-the-properties-of-a-javascript-object
 let commands = {
     help: {
@@ -54,6 +76,32 @@ let commands = {
         description: 'An interface to the on-line reference manuals.',
         synopsis: '[command]'
     },
+	trønder: {
+		function(word) {
+			if(word === '--list' || word === '-l') {
+				var words = Object.keys(tronder);
+	            words.forEach(function(element) {
+	                out.put(element);
+	            });
+			} else {
+				out.put(eval('tronder.'+word));
+			}
+		},
+		description: 'Look up trønder words into bokmål.',
+		synopsis: '[word] [-l | --list]'
+	},
+	tronder: {
+		function(word) {
+			try {
+				eval('commands.trønder.function(word)');
+			}
+			catch(err) {
+				out.put(err.message);
+			}
+		},
+		description: 'Alias for trønder.',
+		synopsis: '[word] [-l | --list]'
+	},
     clear: {
         function() {
             $('#stdout').empty();
