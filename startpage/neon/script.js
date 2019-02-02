@@ -34,10 +34,10 @@ let tronder = {
 	te: 'til',
 	no: 'nå',
 	nån: 'noen',
-	nånn: 'noen'
+	nånn: 'noen',
+	ganga: 'ganger'
 }
 
-// https://stackoverflow.com/questions/208016/how-to-list-the-properties-of-a-javascript-object
 let commands = {
     help: {
         function() {
@@ -81,14 +81,18 @@ let commands = {
 			if(word === '--list' || word === '-l') {
 				var words = Object.keys(tronder);
 	            words.forEach(function(element) {
-	                out.put(element);
+					if(word === '--list') {
+	                	out.put(element+' -- '+eval('tronder.'+element));
+					} else {
+						out.put(element);
+					}
 	            });
 			} else {
 				out.put(eval('tronder.'+word));
 			}
 		},
 		description: 'Look up trønder words into bokmål.',
-		synopsis: '[word] [-l | --list]'
+		synopsis: '[word] [-l] [--list]'
 	},
 	tronder: {
 		function(word) {
