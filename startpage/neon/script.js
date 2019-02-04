@@ -35,7 +35,8 @@ let tronder = {
 	no: 'nå',
 	nån: 'noen',
 	nånn: 'noen',
-	ganga: 'ganger'
+	ganga: 'ganger',
+	mæ: 'meg'
 }
 
 let commands = {
