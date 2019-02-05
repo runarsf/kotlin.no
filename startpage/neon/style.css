@@ -4,7 +4,8 @@
     --t_green: rgb(0, 128, 0);
     --t_yellow: rgb(221, 210, 130);
     --t_blue: rgb(0, 0, 128);
-    --t_magenta: rgb(128, 0, 128);
+    /*--t_magenta: rgb(128, 0, 128);*/
+    --t_magenta: #CA8AF7;
     --t_cyan: rgb(0, 128, 128);
     --t_white: rgb(192, 192, 192);
     --t_gray: rgb(128, 128, 128); /* because bright black doesn't exist */
@@ -25,8 +26,6 @@
     --c_bgcolor: rgb(15, 20, 17);
     --c_fgcolor: rgb(20, 43, 40);
     --font: 'Monaco', 'Ubuntu Mono', Mono, sans-serif;
-    --prefix: '» ';
-    --secondPrefix: '❯ ';
 }
 .t_black         { color: var(--t_black); }
 .t_red           { color: var(--t_red); }
@@ -174,7 +173,7 @@ span.stdin input {
     display: inline;
     outline: 0;
     border: 0px;
-    width: 95%;
+    width: auto;
     color: var(--t_brightWhite);
     background-color: var(--c_transparent);
 }

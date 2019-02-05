@@ -4,54 +4,62 @@ $(document).ready(
         history = cookies.get('history');
         history = '\[\"'+history.replace(/\,+/g, '\", \"')+'\"\]'
         history = JSON.parse(history);
+
+		out.prefix(prefix);
 	}
 );
 
-let prefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--prefix').replace(/[\'\"]+/g, '')+'</p>';
-let secondPrefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--secondPrefix').replace(/[\'\"]+/g, '')+'</p>';
-let currentPrefix = prefix;
 let history = [];
 let yrotsih = [];
 let histIndex = 0;
 let evalMode = false;
+let users = ['root'];
+let user = users[0];
+
+//let prefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--prefix').replace(/[\'\"]+/g, '')+'</p>';
+//let evalPrefix = '<p class="c_prefix">'+window.getComputedStyle(document.documentElement).getPropertyValue('--evalPrefix').replace(/[\'\"]+/g, '')+'</p>';
+let prefix = '<p class="t_brightMagenta">[</p><p class="t_magenta">'+user+'</p><p class="t_brightMagenta">]</p> ';
+let evalPrefix = '<p class="c_prefix">❯</p> ';
+let currentPrefix = prefix;
 
 let tronder = {
 	e: 'er',
 	æ: 'jeg',
 	d: 'det',
-	de: 'det',
-	dem: 'de',
-	koss: 'hvordan',
-	kjem: 'kommer',
 	t: 'til',
-	te: 'til',
-	vettu: 'vet du',
-	vunne: 'vunnet',
-	me: 'med',
-	veit: 'vet',
+	de: 'det',
 	dæ: 'deg',
 	va: 'var',
 	te: 'til',
 	no: 'nå',
+	mæ: 'meg',
+	me: 'med',
+	te: 'til',
+	dem: 'de',
 	nån: 'noen',
+	veit: 'vet',
 	nånn: 'noen',
-	ganga: 'ganger',
-	mæ: 'meg'
+	kjem: 'kommer',
+	koss: 'hvordan',
+	vettu: 'vet du',
+	vunne: 'vunnet',
+	ganga: 'ganger'
 }
 
 let commands = {
     help: {
-        function() {
+        function(args) {
             out.put('<b>USAGE:</b>');
             out.put('&nbsp;&nbsp;&nbsp;&nbsp;[COMMAND] [ARGS]');
             out.put('<br/><b>COMMANDS:</b>');
             var cmds = Object.keys(commands);
             cmds.forEach(function(element) {
-                if(!(eval('commands.'+element+'.hidden'))) out.put('&nbsp;&nbsp;&nbsp;&nbsp;'+element);
+                if(!(eval('commands.'+element+'.hidden')) && !(args == '--all' || args == '-a')) out.put('&nbsp;&nbsp;&nbsp;&nbsp;'+element);
+				if(args == '--all' || args == '-a') out.put('&nbsp;&nbsp;&nbsp;&nbsp;'+element);
             });
         },
         description: 'Display help reference.',
-        synopsis: '',
+        synopsis: '[-a|--all]',
     },
     man: {
         function(cmd) {
@@ -77,7 +85,7 @@ let commands = {
         description: 'An interface to the on-line reference manuals.',
         synopsis: '[command]'
     },
-	trønder: {
+	tronder: {
 		function(word) {
 			if(word === '--list' || word === '-l') {
 				var words = Object.keys(tronder);
@@ -93,19 +101,22 @@ let commands = {
 			}
 		},
 		description: 'Look up trønder words into bokmål.',
-		synopsis: '[word] [-l] [--list]'
+		synopsis: '[word] [-l] [--list]',
+		hidden: true
 	},
-	tronder: {
-		function(word) {
-			try {
-				eval('commands.trønder.function(word)');
-			}
-			catch(err) {
-				out.put(err.message);
-			}
+	useradd: {
+		function(username) {
+
 		},
-		description: 'Alias for trønder.',
-		synopsis: '[word] [-l | --list]'
+		description: 'Add local user.',
+		synopsis: '[username]'
+	},
+	whoami: {
+		function() {
+			out.put(user);
+		},
+		description: 'Print effective userid.',
+		synopsis: ''
 	},
     clear: {
         function() {
@@ -132,19 +143,18 @@ let commands = {
             }
         },
         description: 'Animate background.',
-        synopsis: ''
+        synopsis: '',
+		hidden: true
     },
     eval: {
         function(forceMode) {
             if(forceMode == false) {
                 evalMode = false;
-                currentPrefix = prefix;
-                document.getElementById('prefix').innerHTML = prefix;
+                out.prefix(prefix);
             } else if(forceMode == true) {
                 evalMode = true;
-                currentPrefix = secondPrefix;
-                document.getElementById('prefix').innerHTML = secondPrefix;
-            } else if(document.getElementById('prefix').innerHTML === secondPrefix) {
+                out.prefix(evalPrefix);
+            } else if(document.getElementById('prefix').innerHTML === evalPrefix) {
                 eval('this.function(false)');
             } else {
                 eval('this.function(true)');
@@ -152,17 +162,6 @@ let commands = {
         },
         description: 'Toggle eval mode. This lets you run js-commands directly in the web terminal.',
         synopsis: ''
-    },
-    ping: {
-        function(ip) {
-            if(ip) {
-            } else {
-                out.put('Could not ping remote URL');
-            }
-        },
-        description: 'Ping a server and return time in ms. Experimental.',
-        synopsis: '[server]',
-        hidden: true
     },
     ifconfig: {
         function() {
@@ -240,7 +239,8 @@ let commands = {
             }
         },
         description: 'List CSS environment variables.',
-        synopsis: ''
+        synopsis: '',
+		hidden: true
     },
     logout: {
         function() {
@@ -252,7 +252,8 @@ let commands = {
             exit();
         },
         description: 'Log out of shell and exit page.',
-        synopsis: ''
+        synopsis: '',
+		hidden: true
     }
 }
 
@@ -335,7 +336,11 @@ var out = {
         }
         histIndex = -1;
         this.put(currentPrefix+'<p class="t_brightWhite">'+document.getElementById('stdin').value+append+'</p>');
-    }
+    },
+	prefix: function(fix) {
+		currentPrefix = fix;
+		document.getElementById('prefix').innerHTML = fix;
+	}
 }
 
 function sleep(ms) {
