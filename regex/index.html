@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel='icon' type='image/png' href='favicon.png' />
+		<script type='text/javascript' src='jquery.min.js'></script>
 		<style>
 			body,h1 {
 				font-family: "Raleway", sans-serif;
@@ -26,19 +27,19 @@
 				white-space: nowrap;
 				font-weight: bold;
 				font-size: 3rem;
+				padding-right: 1rem;
 			}
-			#headr::before {
+			#headr:before {
 				font-weight: 100;
 				font-size: 2.5rem !important;
 				color: #aaaaaa;
-				content: "[h-t\\:\\/\\/]{7}(";
+				content: "[h-t\\:\\/\\/]*(";
 			}
-			#headr::after {
+			#headr:after {
 				font-weight: 100;
 				font-size: 2.5rem !important;
 				color: #aaaaaa;
 				content: ")[\\/A-z]*";
-				padding-right: 7rem;
 			}
 		</style>
 	</head>
@@ -47,7 +48,7 @@
 
 		<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
 				<div class="w3-display-middle">
-    				<h1 class="w3-jumbo w3-animate-top" id="headr"></h1>
+    				<h1 class="w3-jumbo w3-animate-top" id="headr">regex\.no</h1>
     				<hr class="w3-border-grey" style="margin:auto;width:40%">
 					<p class="w3-large w3-center">github/<a href="https://github.com/runarsf">runarsf</a></p>
 				</div>
@@ -56,9 +57,9 @@
 
 		<script>
 			if (location.protocol != 'https:') {
-				document.getElementById("headr").innerHTML = "regex\\.no"
+				$('<style>#headr:before{content:"[h-t\\:\\/\\/]{7}("!important}</style>').appendTo('head');
 			} else {
-				document.getElementById("headr").innerHTML = "[h-t\\:\\/\\/]{8}(<b>regex</b>\\<b>.no</b>)[\\/A-z]*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+				$('<style>#headr:before{content:"[h-t\\:\\/\\/]{8}("!important}</style>').appendTo('head');
 			}
 		</script>
 
