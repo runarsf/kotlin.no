@@ -1,35 +1,55 @@
 <!DOCTYPE html>
-<html lang='en'>
-    <head>
-        <meta http-equiv='content-type' content='text/html' charset='utf-8'>
-        <link href='https://fonts.googleapis.com/css?family=Muli|Ubuntu' rel='stylesheet'>
-        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-		<link rel='stylesheet' type='text/css' href='home/style.css'>
-        <link rel='icon' type='image/png' href='home/favicon.ico' />
-        <script type='text/javascript' src='home/jquery.min.js'></script>
-		<script type='text/javascript' src='home/script.js'></script>
-        <title>welcome</title>
-    </head>
-    <body>
-        <div id='particles-js'></div>
-        <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
-        <script>
-            particlesJS.load('particles-js', 'home/particles.json',
-            function(){
-                console.log('particles.json loaded...')
-            })
-        </script>
+<html>
+	<head>
+    	<title>~</title>
+    	<meta charset='UTF-8' />
+    	<meta name='viewport' content='width=device-width, initial-scale=1' />
+    	<link rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css' />
+    	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway' />
+    	<link rel='icon' type='image/png' href='home/favicon.png' />
+    	<script type='text/javascript' src='home/jquery.min.js'></script>
+    	<style>
+			body, html, h1 {
+				width: 100%;
+				height: 100%;
+				padding: 0;
+				margin: 0;
+				overflow: hidden;
+				font-family: 'Raleway', sans-serif;
+				text-align: center;
+			}
+			.bgimg {
+				background-image: url('home/background.jpg');
+				background-position: center;
+				background-size: cover;
+				min-height: 105%;
 
-        <div class='banner'></div>
-        <div class='tabs'>
-            <button type='button' class='tab'>GitHub</button>
-        </div>
+				filter: blur(5px);
+					-webkit-filter: blur(5px);
+					-moz-filter: blur(5px);
+					-o-filter: blur(5px);
+					-ms-filter: blur(5px);
+				transform: scale(1.03);
+				/*margin: -5px -10px -10px -5px;*/
+			}
+			main {
+				position: absolute;
+				width: 50%;
+				height: 50%;
+				top: 50%; left: 50%;
+				transform: translate(-50%, -50%);
+				opacity: 0.5;
+  				filter: alpha(opacity=50); /* For IE8 and earlier */
 
-        <div id='box' class='box slide'>
-            <h1>Hello!</h1>
-            <p>You have reached the landing page of <a href='https://github.com/runarsf/', target='_blank'>runarsf</a>.</p>
-            <img src='https://avatars0.githubusercontent.com/u/16152127?s=460&v=4' alt='GitHub Profile' class='profilePicture' onclick='window.open("https://github.com/runarsf", target="_blank")'>
-            <img src='https://img.shields.io/github/followers/runarsf.svg?style=social&label=Follow&maxAge=2592000' alt='GitHub Followers' class='followers' onclick='window.open("https://github.com/runarsf?tab=followers", target="_blank")'>
-        </div>
-    </body>
+				background-color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class='bgimg'></div>
+		<main>
+
+		</main>
+	</body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta http-equiv='content-type' content='text/html' charset='utf-8'>
+        <link href='https://fonts.googleapis.com/css?family=Muli|Ubuntu' rel='stylesheet'>
+        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+		<link rel='stylesheet' type='text/css' href='home/style.css'>
+        <link rel='icon' type='image/png' href='home/favicon.ico' />
+        <script type='text/javascript' src='home/jquery.min.js'></script>
+		<script type='text/javascript' src='home/script.js'></script>
+        <title>welcome</title>
+    </head>
+    <body>
+        <div id='particles-js'></div>
+        <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+        <script>
+            particlesJS.load('particles-js', 'home/particles.json',
+            function(){
+                console.log('particles.json loaded...')
+            })
+        </script>
+
+        <div class='banner'></div>
+        <div class='tabs'>
+            <button type='button' class='tab'>GitHub</button>
+        </div>
+
+        <div id='box' class='box slide'>
+            <h1>Hello!</h1>
+            <p>You have reached the landing page of <a href='https://github.com/runarsf/', target='_blank'>runarsf</a>.</p>
+            <img src='https://avatars0.githubusercontent.com/u/16152127?s=460&v=4' alt='GitHub Profile' class='profilePicture' onclick='window.open("https://github.com/runarsf", target="_blank")'>
+            <img src='https://img.shields.io/github/followers/runarsf.svg?style=social&label=Follow&maxAge=2592000' alt='GitHub Followers' class='followers' onclick='window.open("https://github.com/runarsf?tab=followers", target="_blank")'>
+        </div>
+    </body>
+</html>
