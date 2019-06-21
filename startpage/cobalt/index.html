@@ -18,13 +18,15 @@
 
     <body> 
 
-        <main>
-            <input id='search' type='text' placeholder='search' name='search' value='' />
+        <div id='search-area'>
+            <kbd id='search-prefix'  contentEditable='true'>»</kbd>
+            <input id='search-input' type='text' placeholder='search' autofocus='autofocus' />
             <!-- onkeypress='return search(event)'' -->
+        </div>
             
-            <ul id='links'>
-            </ul>
-        </main>
+        <div id='box-area'>
+            <ul id='links'></ul>
+        </div>
 
     </body>
 </html>
