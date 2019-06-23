@@ -75,8 +75,6 @@ html, body {
     color: teal;
 
     padding: 15px 20px 15px 20px;
-
-    word-wrap: nowrap;
 }
 
 #box-area {
@@ -88,24 +86,22 @@ html, body {
     border: 10px solid rgb(20, 43, 40);
     border-top: none;
     transition: .5s;
-}
-    
-    
 
-
-
-#links {
-    background-color: #6A7672AA;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-ol {
+ol.list-area {
     background-color: var(--primary);
+    list-style-type: none;
 }
 
-.box {
+p.list-header {
     background-color: var(--secondary);
+}
+
+li.list-item {
+    background-color: aquamarine;
 }

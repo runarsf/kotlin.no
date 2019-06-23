@@ -1,29 +1,29 @@
 {
 	"links": [
 		{
-			"category": "social",
+			"category": "list-one",
 			"url": "https://github.com/runarsf",
 			"content": [
 				{
-					"title": "reddit",
+					"title": "one",
 					"url": "https://reddit.com"
 				},
 				{
-					"title": "reddit",
+					"title": "two",
 					"url": "https://reddit.com"
 				}
 			]
 		},
 		{
-			"category": "sociadl",
+			"category": "list-two",
 			"url": "https://github.com/runarsf",
 			"content": [
 				{
-					"title": "reddit",
+					"title": "three",
 					"url": "https://reddit.com"
 				},
 				{
-					"title": "reddit",
+					"title": "four",
 					"url": "https://reddit.com"
 				}
 			]
