@@ -1,6 +1,9 @@
 :root {
     --primary: #1E2E29;
     --secondary: #192521;
+    --tertiary: #181A1B;
+
+    --font: "Ubuntu Mono", Ubuntu, sans-serif;
 
     --fontPrimary: #6A7672;
     --fontSecondary: #35423D;
@@ -31,11 +34,21 @@ html, body {
     background: transparent;
 }
 
+#time {
+    margin: 0;
+    margin-top: 15%;
+    width: 50%;
 
+    font-family: var(--font);
+    font-size: 1.3rem;
+
+    background-color: none;
+    color: var(--fontPrimary);
+}
 
 #search-area {
     width: 50%;
-    margin-top: 15%;
+    /*margin-top: 15%;*/
     min-height: 3rem;
     height: 3rem;
     background: rgb(15, 20, 17);
@@ -55,7 +68,7 @@ html, body {
     border: none;
     outline: none;
 
-    font-family: "Ubuntu Mono", Ubuntu, sans-serif;
+    font-family: var(--font);
     line-height: auto;
     font-size: 36px;
     color: white;
@@ -69,7 +82,7 @@ html, body {
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
 
-    font-family: "Ubuntu Mono", Ubuntu, sans-serif;
+    font-family: var(--font);
     line-height: 100px;
     font-size: 42px;
     color: teal;
@@ -91,17 +104,54 @@ html, body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+
+    padding: 0;
+    margin: 0;
 }
 
 ol.list-area {
-    background-color: var(--primary);
+    padding: 0;
+    margin: 0;
+
+    background-color: var(--secondary);
+    border: 1px solid var(--tertiary);
     list-style-type: none;
 }
 
 p.list-header {
-    background-color: var(--secondary);
+    padding: 3px;
+    margin: 0;
+
+    cursor: pointer;
+
+    background-color: var(--tertiary);
+    color: var(--fontPrimary);
+
+    font-family: var(--font);
+    font-size: 1rem;
 }
 
 li.list-item {
-    background-color: aquamarine;
+    padding: 0;
+    padding-right: 100px;
+    padding-left: 3px;
+    margin: 3px;
+    margin-left: 10px;
+
+    background-color: none;
+    
+    font-family: var(--font);
+    font-size: 1rem;
+    
+    text-decoration: none;
+
+    transition: .3s;
+}
+li.list-item:hover {
+    background-color: var(--tertiary);
+}
+li.list-item * {
+    /* a:link, li.list-item a:visited, li.list-item a:hover, li.list-item a:active */
+    text-decoration: none;
+    color: var(--fontPrimary);
 }
