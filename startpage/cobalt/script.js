@@ -11,16 +11,20 @@ function loadLinks() {
     $(function () {
         $.getJSON('links.json', function (data) {
             $.each(data.links, function (i, link) {
+                
                 catergoryClass = link.category.replace('/', '_').replace(' ', '_');
-                $('#box-area').append("<ol class=\'" + catergoryClass + " list-area\'><p class='list-header' onclick='window.open(\"" + link.url + "\")'>" + link.category + "</p></ol>");
+                if (!(link.url)) link.url = "javascript: void(0);' style='cursor:var(--cursor);" // if an url isn't set, style the cursor and remove click events
+                $('#box-area').append("<ol class='" + catergoryClass + " list-area'><a href='" + link.url + "' class='list-header'>" + link.category + "</a></ol>");
+                
                 $.each(link.content, function (i, cont) {
                     if (cont.script) {
-                        appendString = "<li class='list-item'><a onclick=\"" + cont.script + "\">" + cont.title + "</a></li>"
+                        appendString = "<li class='list-item'><a onclick='" + cont.script + "'>" + cont.title + "</a></li>"
                         $('.' + catergoryClass).append(appendString);
                     } else if (cont.title) { // is title defined in content
-                        $('.' + catergoryClass).append("<li class='list-item'><a href=\'" + cont.url + "\' target='_blank'>" + cont.title + "</a></li>");
+                        $('.' + catergoryClass).append("<li class='list-item'><a href='" + cont.url + "'>" + cont.title + "</a></li>");
                     }
                 });
+
             });
         }).error(function (error) {
             console.log(error);
@@ -51,6 +55,18 @@ var time = {
     }
 }
 
+function compose() {
+    var input = document.getElementById('search-input').value;
+    var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    // location.href = "mailto:"+emailTo+'?cc='+emailCC+'&subject='+emailSub+'&body='+emailBody;
+    if (re.test(String(input).toLowerCase())) {
+        location.href = 'mailto:' + input;
+        console.log('mailto:' + input);
+    } else {
+        location.href = 'mailto:';
+        console.log('mailto:');
+    }
+}
 
 /* Key binds
  * Triggered on key DOWN -> Important because search is run on key UP, and the binds need to execute first.

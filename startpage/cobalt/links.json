@@ -1,30 +1,61 @@
 {
 	"links": [
 		{
-			"category": "list-one",
-			"url": "https://github.com/runarsf",
-			"content": [
-				{
-					"title": "one",
-					"url": "https://reddit.com"
+			"category": "Social",
+			"url": "",
+			"content": [{
+					"title": "YouTube",
+					"url": "https://youtube.com/"
 				},
 				{
-					"title": "two",
-					"url": "https://reddit.com"
+					"title": "Reddit",
+					"url": "https://reddit.com/"
+				},
+				{
+					"title": "GitHub",
+					"url": "https://github.com/runarsf/"
+				},
+				{
+					"title": "GitLab",
+					"url": "https://gitlab.com/runarsf/"
+				},
+				{
+					"title": "Twitter",
+					"url": "https://twitter.com/"
+				},
+				{
+					"title": "Twitch",
+					"url": "https://twitch.tv/"
 				}
 			]
 		},
 		{
-			"category": "list-two",
-			"url": "https://github.com/runarsf",
+			"category": "Steam",
+			"url": "steam:",
 			"content": [
 				{
-					"title": "three",
-					"url": "https://reddit.com"
+					"title": "CS:GO",
+					"url": "steam://run/730"
 				},
 				{
-					"title": "four",
-					"url": "https://reddit.com"
+					"title": "Astroneer",
+					"url": "steam://run/361420"
+				},
+				{
+					"title": "Rust",
+					"url": "steam://run/252490"
+				},
+				{
+					"title": "Monster Hunter: World",
+					"url": "steam://run/582010"
+				},
+				{
+					"title": "Dark Souls III",
+					"url": "steam://run/374320"
+				},
+				{
+					"title": "Dark Souls Remastered",
+					"url": "steam://run/570940"
 				}
 			]
 		}

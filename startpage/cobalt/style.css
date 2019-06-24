@@ -4,9 +4,12 @@
     --tertiary: #181A1B;
 
     --font: "Ubuntu Mono", Ubuntu, sans-serif;
+    --cursor: url('cursor-blue.png'), default;
 
     --fontPrimary: #6A7672;
     --fontSecondary: #35423D;
+
+    --bordercolor: rgb(20, 43, 40);
 }
 
 html, body {
@@ -16,7 +19,7 @@ html, body {
     overflow: hidden;
     padding: 0;
 
-    cursor: url('cursor-blue.png'), move;
+    cursor: var(--cursor);
 
 	background: -webkit-linear-gradient(left top, #1B3D29, #133337, #1B3D29);
 	background: -o-linear-gradient(bottom right, #1B3D29, #133337, #1B3D29);
@@ -34,16 +37,43 @@ html, body {
     background: transparent;
 }
 
-#time {
+* {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#toolbar {
     margin: 0;
+    padding: 5px 0 5px 0;
     margin-top: 15%;
     width: 50%;
+
+    background: var(--bordercolor);
+    border: 10px solid var(--bordercolor);
+    border-bottom: none;
+    border-top: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#toolbar * {
+    margin: 0;
+    padding: 0;
 
     font-family: var(--font);
     font-size: 1.3rem;
 
     background-color: none;
     color: var(--fontPrimary);
+}
+#mailto {
+    cursor: pointer;
 }
 
 #search-area {
@@ -53,7 +83,8 @@ html, body {
     height: 3rem;
     background: rgb(15, 20, 17);
 
-    border: 10px solid rgb(20, 43, 40);
+    border: 10px solid var(--bordercolor);
+    border-top: none;
 
     display: flex;
     flex-direction: row;
@@ -103,7 +134,8 @@ html, body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: flex-start;
 
     padding: 0;
     margin: 0;
@@ -111,15 +143,21 @@ html, body {
 
 ol.list-area {
     padding: 0;
-    margin: 0;
-
+    /* top right bottom left */
+    margin: 6px 3px 6px 3px;
+    
     background-color: var(--secondary);
     border: 1px solid var(--tertiary);
     list-style-type: none;
 }
 
-p.list-header {
+a.list-header {
+    display: block;
+
+    text-decoration: none;
+
     padding: 3px;
+    padding-left: 5px;
     margin: 0;
 
     cursor: pointer;
@@ -145,7 +183,7 @@ li.list-item {
     
     text-decoration: none;
 
-    transition: .3s;
+    transition: .2s;
 }
 li.list-item:hover {
     background-color: var(--tertiary);
