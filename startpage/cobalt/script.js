@@ -1,11 +1,13 @@
-$(document).ready(
-    function() {
-        loadLinks();
-    }
-);
+$(document).ready(function () {
+    loadLinks();
+    $(document).keydown(function (event) { trigger.binds(event) });
+    $('#search-input').keyup(function () { trigger.search() });
+});
 
 
-// Load links from a JSON file
+/**
+ * Load links from JSON file
+ */
 let catergoryClass;
 function loadLinks() {
     $(function () {
@@ -32,12 +34,9 @@ function loadLinks() {
     });
 }
 
-// TODO: Fix this
-/*$('#all').find('.one:visible').each(function () {
-    // your code....
-});*/
-
-// Time
+/**
+ * Clock
+ */
 var time = {
     start: function () {
         var today = new Date();
@@ -55,6 +54,9 @@ var time = {
     }
 }
 
+/**
+ * Email
+ */
 function compose() {
     var input = document.getElementById('search-input').value;
     var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -68,54 +70,26 @@ function compose() {
     }
 }
 
-/* Key binds
- * Triggered on key DOWN -> Important because search is run on key UP, and the binds need to execute first.
- */
-document.addEventListener('keydown', function (event) {
-    if (event.defaultPrevented) return;
-
-    let input = document.getElementById('search-input');
-    input.focus();
-
-    let key = event.key || event.keyCode || event.which;
-
-    if (key === 'Escape' || key === 'Esc' || key === 27) {
-        if (input.value.trim() !== '') {
-            input.value = '';
-        } else {
-            input.value = '';
-            input.blur();
-        }
-    }
-});
-
-/*
-function check(e, k) { return e.key == k || e.which == k || e.keyCode == k }
-document.onkeyup = function (event) {
-    document.getElementById('search-input').focus();
-    //if (check(event, 32)) document.getElementById('search-input').focus();
-    if (check(event, 27)) document.getElementById('search-input').blur();
-};
-*/
-
+/*document.onkeyup = function (event) {})
+document.addEventListener('keydown', function (event) {}) */
 
 // Modify the jQuery ':contains' function to be case-insensitive
 jQuery.expr[':'].contains = function (a, i, m) {
     return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 };
 
-/* Search links
+/**
+ * Search links
  * Triggered on key UP -> Important because key binds are run on key DOWN, and the binds need to execute first.
  */
-$(document).ready(function () {
-    $('#search-input').keyup(function () {
 
-        // Search text
-        var text = $(this).val();
+var trigger = {
+    search: function () {
+        var text = $('#search-input').val();
 
         // Hide all content class element (.css added for more flexibility)
         $('#box-area .list-area .list-item a').parent().hide().css("visibility", "hidden");
-        
+
         // Search and show (.css added for more flexibility)
         $('#box-area .list-area .list-item a:contains("' + text.trim() + '")').parent().show().css("visibility", "visible");
 
@@ -124,5 +98,31 @@ $(document).ready(function () {
         $('.list-area').filter(function () {
             return $(this).find('li:visible').length == 0;
         }).hide();
-    });
-});
+
+        
+        var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        // location.href = "mailto:"+emailTo+'?cc='+emailCC+'&subject='+emailSub+'&body='+emailBody;
+        if (re.test(String(text).toLowerCase())) {
+            $('#mailbox').show();
+        } else {
+            $('#mailbox').hide();
+        }
+    },
+    binds: function (event) {
+        if (event.defaultPrevented) return;
+
+        let input = document.getElementById('search-input');
+        /*input.focus();*/
+
+        let key = event.key || event.keyCode || event.which;
+
+        if (key === 'Escape' || key === 'Esc' || key === 27) {
+            if (input.value.trim() !== '') {
+                input.value = '';
+            } else {
+                input.value = '';
+                input.blur();
+            }
+        }
+    }
+}

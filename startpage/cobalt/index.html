@@ -19,8 +19,16 @@
     <body onload='time.start()'>
 
         <div id='toolbar'>
-            <p id='time'></p>
-            <p id='mailto' onclick='compose();'>Compose E-Mail</p>
+            <span id='left'>
+                <p id='time'></p>
+            </span>
+
+            <span id='center'></span>
+
+            <span id='right'>
+                <p id='mailto' onclick='compose();'>Compose E-Mail</p>
+                <i id='cog'>&#9881;</i>
+            </span>
         </div>
         
         <div id='search-area'>
@@ -29,7 +37,12 @@
             <!-- onkeypress='return search(event)'' -->
         </div>
 
-        <div id='box-area'></div>
+        <div id='box-area'>
+            <div id='mailbox'>
+                <input id='mail-subject' type='text' placeholder='subject' />
+                <textarea name="mail-input" placeholder='mail body'' id="mail-input"></textarea>
+            </div>
+        </div>
 
     </body>
 </html>
