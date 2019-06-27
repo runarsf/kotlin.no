@@ -3,7 +3,8 @@
 		{
 			"category": "Social",
 			"url": "",
-			"content": [{
+			"content": [
+				{
 					"title": "YouTube",
 					"url": "https://youtube.com/"
 				},
@@ -56,6 +57,22 @@
 				{
 					"title": "Dark Souls Remastered",
 					"url": "steam://run/570940"
+				}
+			]
+		}
+	],
+	"config": [
+		{
+			"engines": [
+				{
+					"url": "https://duckduckgo.com/?q=",
+					"prefix": "ddg",
+					"default": "true"
+				},
+				{
+					"url": "https://google.com/#q=",
+					"prefix": "g",
+					"default": "false"
 				}
 			]
 		}

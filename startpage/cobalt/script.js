@@ -108,6 +108,7 @@ var trigger = {
         if (event.defaultPrevented) return;
 
         let input = document.getElementById('search-input');
+        let text = input.value;
         if (!($("input").is(":focus")) && !($("textarea").is(":focus")) && !($("#search-prefix").is(":focus"))) input.focus();
 
         let key = event.key || event.keyCode || event.which;
@@ -136,6 +137,44 @@ var trigger = {
         return returns;
     },
     engine: function (query) {
-        
+        if (query.toLowerCase().startsWith('http') || !(query.includes(' ')) && query.includes('.')) {
+            window.open('https://' + query.replace('https://', '').replace('http://', ''));
+        } else {
+            window.open('https://duckduckgo.com/?q=' + query);
+        }
+    }
+}
+
+var cookies = {
+    set: function (cname, cvalue, cexpires, cpath) {
+        (!cvalue) && (cvalue = null);
+        (!cexpires) && (cexpires = 'Tue, 19 Jan 2038 03:14:07 UTC');
+        (!cpath) && (cpath = '/');
+        document.cookie = cname + '=' + cvalue + '; expires=' + cexpires + '; path=' + cpath;
+    },
+    get: function (cname) {
+        var cname = cname + '=';
+        var dcookie = decodeURIComponent(document.cookie);
+        var scookie = dcookie.split(';');
+        for (var i = 0; i < scookie.length; i++) {
+            var c = scookie[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(cname) == 0) {
+                return c.substring(cname.length, c.length);
+            }
+        }
+        return '';
+    },
+    clear: function () {
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i];
+            var eqPos = cookie.indexOf("=");
+            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
     }
 }

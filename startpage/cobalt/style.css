@@ -225,6 +225,13 @@ li.list-item {
 li.list-item:hover {
     background-color: var(--tertiary);
 }
+li.list-item:hover::before {
+    content: '█';
+    font-size: 0.9rem;
+    margin-left: -0.46rem;
+    /*margin-left: -0.92rem; for space after prefix*/
+    color: var(--fontSecondary);
+}
 li.list-item * {
     /* a:link, li.list-item a:visited, li.list-item a:hover, li.list-item a:active */
     text-decoration: none;
