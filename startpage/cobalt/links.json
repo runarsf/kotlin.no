@@ -27,6 +27,10 @@
 				{
 					"title": "Twitch",
 					"url": "https://twitch.tv/"
+				},
+				{
+					"title": "Floof",
+					"url": "https://api.runarsf.dev/floof"
 				}
 			]
 		},
