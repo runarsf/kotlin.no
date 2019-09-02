@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  startpage:
+    container_name: startpage
+    hostname: startpage
+    restart: unless-stopped
+    image: startpage
+    build:
+      context: .
+    environment:
+      - GIT_PYTHON_REFRESH=quiet
+      - PORT
+      - DEBUG
+    volumes:
+      - ./src:/startpage
+    ports:
+        - 5747:5747
