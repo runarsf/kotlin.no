@@ -29,6 +29,19 @@
 					"url": "https://twitch.tv/"
 				},
 				{
+					"collapsible": "Irrelevant stuff",
+					"items": [
+						{
+							"title": "EU",
+							"url": "https://en.wikipedia.org/wiki/Toilet"
+						},
+						{
+							"title": "EØS",
+							"url": "https://en.wikipedia.org/wiki/Feces"
+						}
+					]
+				},
+				{
 					"collapsible": "Floof",
 					"items": [
 						{
@@ -76,15 +89,11 @@
 					"url": "steam://run/570940"
 				},
 				{
-					"collapsible": "Irrelevant games",
+					"collapsible": "Other games",
 					"items": [
 						{
-							"title": "EU",
-							"url": "https://en.wikipedia.org/wiki/Toilet"
-						},
-						{
-							"title": "EØS",
-							"url": "https://en.wikipedia.org/wiki/Feces"
+							"title": "Wizard of Legend",
+							"url": "steam://run/230410"
 						}
 					]
 				}

@@ -14,7 +14,7 @@ function loadLinks() {
         $.getJSON('/static/links.json', function (data) {
             $.each(data.links, function (i, link) {
                 
-                catergoryClass = link.category.replace('/', '_').replace(' ', '_');
+                catergoryClass = link.category.replace(/\//g, '_').replace(/\s+/g, '_');
                 if (!(link.url)) link.url = "javascript: void(0);' style='cursor:var(--cursor);" // if an url isn't set, style the cursor and remove click events
                 $('#box-area').append("<ol class='" + catergoryClass + " list-area'><a href='" + link.url + "' class='list-header'>" + link.category + "</a></ol>");
                 
@@ -25,7 +25,7 @@ function loadLinks() {
                     } else if (cont.title) { // is title defined in content
                         $('.' + catergoryClass).append("<li class='list-item'><a href='" + cont.url + "'>" + cont.title + "</a></li>");
                     } else if (cont.collapsible) {
-                        collapsibleId = catergoryClass+cont.collapsible.replace('/', '_').replace(' ', '_');
+                        collapsibleId = catergoryClass + cont.collapsible.replace(/\//g, '_').replace(/\s+/g, '_');
                         $('.'+catergoryClass).append("<div class='list-item wrap-collapsible'><input id=\'"+collapsibleId+"\' class='toggle' type='checkbox'><label for=\'"+collapsibleId+"\' class='lbl-toggle'>"+cont.collapsible+"</label><div class='collapsible-content'><div class='content-inner "+collapsibleId+"\'></div></div></div>");
                         $.each(cont.items, function(i, coll) {
                             $('.' + collapsibleId).append("<li class='link'><a href=\'"+coll.url+"\' target='_blank'> "+coll.title+" </a></li>");
