@@ -206,7 +206,7 @@ a.list-header {
     font-size: 1rem;
 }
 
-li.list-item {
+.list-item {
     padding: 0;
     padding-right: 5rem;
     padding-left: 3px;
@@ -222,17 +222,17 @@ li.list-item {
 
     transition: .2s;
 }
-li.list-item:hover {
+.list-item:hover {
     background-color: var(--tertiary);
 }
-li.list-item:hover::before {
+.list-item:hover::before {
     content: '█';
     font-size: 0.9rem;
     margin-left: -0.46rem;
     /*margin-left: -0.92rem; for space after prefix*/
     color: var(--fontSecondary);
 }
-li.list-item * {
+.list-item * {
     /* a:link, li.list-item a:visited, li.list-item a:hover, li.list-item a:active */
     text-decoration: none;
     color: var(--fontPrimary);
@@ -270,4 +270,74 @@ ol#list-settings {
 
     background-color: rgb(30, 40, 32);
     color: #FFF;
+}
+
+
+
+.wrap-collapsible li a {
+	padding-left: 0.6em;
+}
+
+.wrap-collapsible {
+    padding: 0;
+    padding-right: 5rem;
+    padding-left: 3px;
+    margin: 3px;
+    margin-left: 10px;
+
+    background-color: none;
+    
+    font-family: var(--font);
+    font-size: 1rem;
+    
+    text-decoration: none;
+
+    transition: .2s;
+}
+input[type='checkbox'] {
+    display: none;
+}
+.lbl-toggle {
+    cursor: pointer;
+}
+.lbl-toggle:hover {
+    background-color: var(--tertiary);
+}
+.lbl-toggle::before {
+    content: ' ';
+    display: inline-block;
+
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+    vertical-align: middle;
+    transform: translateY(-1px);
+    margin-right: .3rem;
+    margin-left: -0.5rem;
+
+    transition: transform .3s ease-out; /* arrow rotation */
+}
+.toggle:checked + .lbl-toggle::before {
+    transform: rotate(90deg) translateX(-1px);
+}
+.collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .2s ease-in-out; /* content */
+}
+.toggle:checked + .lbl-toggle + .collapsible-content {
+    max-height: none;
+}
+.toggle:checked + .lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.title:empty {
+    display: none;
+    visibility: hidden;
+}
+
+.title[title]::before {
+    content: attr(title);
 }

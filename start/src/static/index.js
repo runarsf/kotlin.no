@@ -19,14 +19,19 @@ function loadLinks() {
                 $('#box-area').append("<ol class='" + catergoryClass + " list-area'><a href='" + link.url + "' class='list-header'>" + link.category + "</a></ol>");
                 
                 $.each(link.content, function (i, cont) {
-                    if (cont.script) {
+                    if (cont.script) { // is script defined in content
                         appendString = "<li class='list-item'><a onclick='" + cont.script + "'>" + cont.title + "</a></li>"
                         $('.' + catergoryClass).append(appendString);
                     } else if (cont.title) { // is title defined in content
                         $('.' + catergoryClass).append("<li class='list-item'><a href='" + cont.url + "'>" + cont.title + "</a></li>");
+                    } else if (cont.collapsible) {
+                        collapsibleId = catergoryClass+cont.collapsible.replace('/', '_').replace(' ', '_');
+                        $('.'+catergoryClass).append("<div class='list-item wrap-collapsible'><input id=\'"+collapsibleId+"\' class='toggle' type='checkbox'><label for=\'"+collapsibleId+"\' class='lbl-toggle'>"+cont.collapsible+"</label><div class='collapsible-content'><div class='content-inner "+collapsibleId+"\'></div></div></div>");
+                        $.each(cont.items, function(i, coll) {
+                            $('.' + collapsibleId).append("<li class='link'><a href=\'"+coll.url+"\' target='_blank'> "+coll.title+" </a></li>");
+                        }); 
                     }
                 });
-
             });
         }).error(function (error) {
             console.log(error);

@@ -29,8 +29,21 @@
 					"url": "https://twitch.tv/"
 				},
 				{
-					"title": "Floof",
-					"url": "https://floof.runarsf.dev"
+					"collapsible": "Floof",
+					"items": [
+						{
+							"title": "Home",
+							"url": "https://floof.runarsf.dev"
+						},
+						{
+							"title": "Fox",
+							"url": "https://floof.runarsf.dev/albums/fox"
+						},
+						{
+							"title": "Upload",
+							"url": "https://floof.runarsf.dev/upload"
+						}
+					]
 				}
 			]
 		},
@@ -61,6 +74,19 @@
 				{
 					"title": "Dark Souls Remastered",
 					"url": "steam://run/570940"
+				},
+				{
+					"collapsible": "Irrelevant games",
+					"items": [
+						{
+							"title": "EU",
+							"url": "https://en.wikipedia.org/wiki/Toilet"
+						},
+						{
+							"title": "EØS",
+							"url": "https://en.wikipedia.org/wiki/Feces"
+						}
+					]
 				}
 			]
 		}
