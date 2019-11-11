@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id='home'>
+    <img alt='Vue logo' src='@/assets/knut.png'>
+    <HelloWorld msg='BREAKING NEWS: Knut Souls won Game of the Year 2019!' />
   </div>
 </template>
 
