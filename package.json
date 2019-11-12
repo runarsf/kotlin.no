@@ -14,13 +14,14 @@
   "dependencies": {
     "core-js": "^3.3.2",
     "vue": "^2.6.10",
+    "vue-cookies": "^1.5.13",
     "vue-router": "^3.1.3"
   },
   "vue": {
     "devServer": {
       "disableHostCheck": true,
       "host": "0.0.0.0",
-      "port": 8080,
+      "port": 2227,
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"

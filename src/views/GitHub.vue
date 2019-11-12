@@ -13,7 +13,7 @@ export default {
     }
   },
   created: function () {
-    this.getRepos();
+    this.getRepos()
   },
   methods: {
     getRepos: function () {
@@ -23,21 +23,22 @@ export default {
           data.forEach((repo) => {
             this.repos += `
             <div class='repo'>
-              <img src='@/assets/octicons/repo.svg' alt='' />
+              <img src='/octicons/repo.svg' alt='' />
               <a href='${repo.owner.url}'>${repo.owner.login}</a>
               <span> / </span>
               <b><a href='${repo.html_url}'>${repo.name}</a></b>
             </div>
-            `;
-          });
-          document.getElementById('repos').innerHTML = this.repos;
+            `
+          })
+          document.getElementById('repos').innerHTML = this.repos
         })
     }
   }
 }
 </script>
 
-<style scoped lang='scss'>
+<!-- FIXME: Why does this not work scoped -->
+<style lang='scss'>
 #repos {
   width: 100%;
   height: 100%;
