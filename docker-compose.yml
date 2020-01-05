@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  runarsf.dev:
+    image: runarsf.dev
+    hostname: runarsf.dev
+    container_name: runarsf.dev
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DOCKER_USER: dev
+    environment:
+      TZ: Europe/Oslo
+    volumes:
+      - "./:/app:ro"
+        #command: "npm run serve"

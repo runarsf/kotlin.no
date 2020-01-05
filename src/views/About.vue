@@ -1,5 +1,5 @@
 <template>
-  <div id='about'>
+  <div>
     <h1>Runar Fredagsvik</h1>
     <p>I am a <strong>professional</strong> hobbyist developer.</p>
     <p>&lt;html&gt;Is this where the website goes?&lt;/html&gt;</p>

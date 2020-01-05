@@ -2,8 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-import GitHub from '@/views/GitHub.vue'
 
 Vue.use(Router)
 
@@ -21,12 +19,17 @@ const router = new Router({
     {
       path: '/about',
       name: 'about',
-      component: About
+      component: () => import('@/views/About.vue')
     },
     {
       path: '/github',
       name: 'github',
-      component: GitHub
+      component: () => import('@/views/GitHub.vue')
+    },
+    {
+      path: '/blog',
+      name: 'blog',
+      component: () => import('@/views/Blog.vue')
     }
   ]
 })

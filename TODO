@@ -1,2 +1,5 @@
 runarsf.dev:
   ☐ Make the sidebar a component.
+  ☐ Add firebase authentication.
+  ☐ Use firebase to store blog content.
+  ☐ 

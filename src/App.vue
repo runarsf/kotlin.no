@@ -4,6 +4,7 @@
       <router-link to='/'>Home</router-link>
       <router-link to='/about'>About</router-link>
       <router-link to='/github'>GitHub</router-link>
+      <router-link to='/blog'>Blog</router-link>
     </div>
     <router-view id='main' />
   </div>
@@ -11,6 +12,14 @@
 
 <style lang='scss'>
 $navsize: 10rem;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
 
 #app {
   font-family: 'Avenir', 'Ubuntu', Helvetica, Arial, sans-serif;
@@ -49,7 +58,7 @@ $navsize: 10rem;
 
 #main {
   margin-left: $navsize; /* Same as the width of the sidebar */
-  padding: 0px 10px;
+  padding: 0px 10px; // left / right padding
   //padding: 3rem 10rem;
 }
 
